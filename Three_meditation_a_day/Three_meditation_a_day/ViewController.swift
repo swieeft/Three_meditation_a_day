@@ -9,11 +9,140 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    //1주차
+    @IBOutlet weak var sunday1Weeks: UIButton!
+    @IBOutlet weak var monday1Weeks: UIButton!
+    @IBOutlet weak var tuesday1Weeks: UIButton!
+    @IBOutlet weak var wednesday1Weeks: UIButton!
+    @IBOutlet weak var thursday1Weeks: UIButton!
+    @IBOutlet weak var firday1Weeks: UIButton!
+    @IBOutlet weak var saturday1Weeks: UIButton!
+    
+    //2주차
+    @IBOutlet weak var sunday2Weeks: UIButton!
+    @IBOutlet weak var monday2Weeks: UIButton!
+    @IBOutlet weak var tuesday2Weeks: UIButton!
+    @IBOutlet weak var wednesday2Weeks: UIButton!
+    @IBOutlet weak var thursday2Weeks: UIButton!
+    @IBOutlet weak var firday2Weeks: UIButton!
+    @IBOutlet weak var saturday2Weeks: UIButton!
+    
+    //3주차
+    @IBOutlet weak var sunday3Weeks: UIButton!
+    @IBOutlet weak var monday3Weeks: UIButton!
+    @IBOutlet weak var tuesday3Weeks: UIButton!
+    @IBOutlet weak var wednesday3Weeks: UIButton!
+    @IBOutlet weak var thursday3Weeks: UIButton!
+    @IBOutlet weak var firday3Weeks: UIButton!
+    @IBOutlet weak var saturday3Weeks: UIButton!
+    
+    //4주차
+    @IBOutlet weak var sunday4Weeks: UIButton!
+    @IBOutlet weak var monday4Weeks: UIButton!
+    @IBOutlet weak var tuesday4Weeks: UIButton!
+    @IBOutlet weak var wednesday4Weeks: UIButton!
+    @IBOutlet weak var thursday4Weeks: UIButton!
+    @IBOutlet weak var firday4Weeks: UIButton!
+    @IBOutlet weak var saturday4Weeks: UIButton!
+    
+    //5주차
+    @IBOutlet weak var sunday5Weeks: UIButton!
+    @IBOutlet weak var monday5Weeks: UIButton!
+    @IBOutlet weak var tuesday5Weeks: UIButton!
+    @IBOutlet weak var wednesday5Weeks: UIButton!
+    @IBOutlet weak var thursday5Weeks: UIButton!
+    @IBOutlet weak var firday5Weeks: UIButton!
+    @IBOutlet weak var saturday5Weeks: UIButton!
+    
+    //6주차
+    @IBOutlet weak var sunday6Weeks: UIButton!
+    @IBOutlet weak var monday6Weeks: UIButton!
+    @IBOutlet weak var tuesday6Weeks: UIButton!
+    @IBOutlet weak var wednesday6Weeks: UIButton!
+    @IBOutlet weak var thursday6Weeks: UIButton!
+    @IBOutlet weak var firday6Weeks: UIButton!
+    @IBOutlet weak var saturday6Weeks: UIButton!
+    
+    
+    var daysButtons:[[UIButton]] = [[UIButton]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        daysButtons = [[sunday1Weeks, monday1Weeks, tuesday1Weeks, wednesday1Weeks, thursday1Weeks, firday1Weeks, saturday1Weeks],
+        [sunday2Weeks, monday2Weeks, tuesday2Weeks, wednesday2Weeks, thursday2Weeks, firday2Weeks, saturday2Weeks],
+        [sunday3Weeks, monday3Weeks, tuesday3Weeks, wednesday3Weeks, thursday3Weeks, firday3Weeks, saturday3Weeks],
+        [sunday4Weeks, monday4Weeks, tuesday4Weeks, wednesday4Weeks, thursday4Weeks, firday4Weeks, saturday4Weeks],
+        [sunday5Weeks, monday5Weeks, tuesday5Weeks, wednesday5Weeks, thursday5Weeks, firday5Weeks, saturday5Weeks],
+        [sunday6Weeks, monday6Weeks, tuesday6Weeks, wednesday6Weeks, thursday6Weeks, firday6Weeks, saturday6Weeks]]
+        
+        let currentDate = Date.init()
+        
+        navigationTitleSetting(currentDate: currentDate)
+        currentDateSetting(currentDate: currentDate)
     }
+    
+    func navigationTitleSetting(currentDate:Date) {
+        let formatter = DateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale!
+        formatter.dateFormat = "YYYY. MM"
+        
+        let dateString = formatter.string(from: currentDate)
+        
+        self.navigationItem.title = dateString
+    }
+    
+    func currentDateSetting(currentDate:Date) {
+        let calendar = Calendar(identifier: .gregorian)
+        
+        let weekDay = calendar.dateComponents([.weekday], from: currentDate)
+        let weekOfMonth = calendar.dateComponents([.weekOfMonth], from: currentDate)
+        
+        let weekOfMonthButtons = daysButtons[weekOfMonth.weekOfMonth! - 1]
+        let button = weekOfMonthButtons[weekDay.weekday! - 1]
+    
+        button.backgroundColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 0.7)
+        button.setTitleColor(UIColor.white, for: UIControlState.normal)
+        button.layer.cornerRadius = 10
+        
+        let formatter = DateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale!
+        formatter.dateFormat = "d"
+        
+        let dayString = formatter.string(from: currentDate)
+        
+        button.setTitle(dayString, for: UIControlState.normal)
+        
+//        let interval = calendar.dateComponents([.day], from: currentDate)
+//
+//        setCalendar(currentDate: currentDate, interval: interval.day!)
+    }
+    
+//    func setCalendar(currentDate:Date, interval:Int) {
+//        for index in 1..<interval {
+//            let date = currentDate.addingTimeInterval(TimeInterval(-1 * (index * 86400)))
+//            
+//            let calendar = Calendar(identifier: .gregorian)
+//            
+//            let weekDay = calendar.dateComponents([.weekday], from: date)
+//            let weekOfMonth = calendar.dateComponents([.weekOfMonth], from: date)
+//            
+//            print(date)
+//            print(weekOfMonth.weekOfMonth!)
+//            
+//            let weekOfMonthButtons = daysButtons[weekOfMonth.weekOfMonth! - 1]
+//            let button = weekOfMonthButtons[weekDay.weekday! - 1]
+//            
+//            let formatter = DateFormatter()
+//            formatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale!
+//            formatter.dateFormat = "d"
+//            
+//            let dayString = formatter.string(from: date)
+//            
+//            button.setTitle(dayString, for: UIControlState.normal)
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

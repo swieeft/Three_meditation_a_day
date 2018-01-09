@@ -36,6 +36,8 @@ class SettingViewController: UIViewController{
 
         selectTimePicker.isHidden = true
         
+        self.navigationItem.title = "설정"
+        
         setButtonTitleTime(forKey: forKeyStruct.morningTime, button: morningButton)
         setButtonTitleTime(forKey: forKeyStruct.afternoonTime, button: afternoonButton)
         setButtonTitleTime(forKey: forKeyStruct.eveningTime, button: eveningButton)
