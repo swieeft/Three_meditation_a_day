@@ -1,0 +1,355 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B5F56AB52000FD8A00CCED3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F56AB42000FD8A00CCED3E /* AppDelegate.swift */; };
+		B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F56AB62000FD8A00CCED3E /* ViewController.swift */; };
+		B5F56ABA2000FD8A00CCED3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F56AB82000FD8A00CCED3E /* Main.storyboard */; };
+		B5F56ABC2000FD8A00CCED3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5F56ABB2000FD8A00CCED3E /* Assets.xcassets */; };
+		B5F56ABF2000FD8A00CCED3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F56ABD2000FD8A00CCED3E /* LaunchScreen.storyboard */; };
+		B5F56ACA200468F200CCED3E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F56AC7200468F200CCED3E /* Default.png */; };
+		B5F56ACB200468F200CCED3E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F56AC8200468F200CCED3E /* Default@2x.png */; };
+		B5F56ACC200468F200CCED3E /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F56AC9200468F200CCED3E /* Default@3x.png */; };
+		B5F56AD42004781500CCED3E /* Setting.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F56AD32004781500CCED3E /* Setting.png */; };
+		B5F56AD620047B1D00CCED3E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F56AD520047B1D00CCED3E /* SettingViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B5F56AB12000FD8A00CCED3E /* Three_meditation_a_day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Three_meditation_a_day.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5F56AB42000FD8A00CCED3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B5F56AB62000FD8A00CCED3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B5F56AB92000FD8A00CCED3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B5F56ABB2000FD8A00CCED3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B5F56ABE2000FD8A00CCED3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B5F56AC02000FD8A00CCED3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5F56AC7200468F200CCED3E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B5F56AC8200468F200CCED3E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B5F56AC9200468F200CCED3E /* Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@3x.png"; sourceTree = "<group>"; };
+		B5F56AD32004781500CCED3E /* Setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Setting.png; sourceTree = "<group>"; };
+		B5F56AD520047B1D00CCED3E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B5F56AAE2000FD8A00CCED3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B5F56AA82000FD8A00CCED3E = {
+			isa = PBXGroup;
+			children = (
+				B5F56AB32000FD8A00CCED3E /* Three_meditation_a_day */,
+				B5F56AB22000FD8A00CCED3E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B5F56AB22000FD8A00CCED3E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B5F56AB12000FD8A00CCED3E /* Three_meditation_a_day.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B5F56AB32000FD8A00CCED3E /* Three_meditation_a_day */ = {
+			isa = PBXGroup;
+			children = (
+				B5F56AC6200468DD00CCED3E /* Resource */,
+				B5F56AB42000FD8A00CCED3E /* AppDelegate.swift */,
+				B5F56AB62000FD8A00CCED3E /* ViewController.swift */,
+				B5F56AB82000FD8A00CCED3E /* Main.storyboard */,
+				B5F56ABB2000FD8A00CCED3E /* Assets.xcassets */,
+				B5F56ABD2000FD8A00CCED3E /* LaunchScreen.storyboard */,
+				B5F56AC02000FD8A00CCED3E /* Info.plist */,
+				B5F56AD520047B1D00CCED3E /* SettingViewController.swift */,
+			);
+			path = Three_meditation_a_day;
+			sourceTree = "<group>";
+		};
+		B5F56AC6200468DD00CCED3E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				B5F56AD32004781500CCED3E /* Setting.png */,
+				B5F56AC7200468F200CCED3E /* Default.png */,
+				B5F56AC8200468F200CCED3E /* Default@2x.png */,
+				B5F56AC9200468F200CCED3E /* Default@3x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B5F56AB02000FD8A00CCED3E /* Three_meditation_a_day */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5F56AC32000FD8A00CCED3E /* Build configuration list for PBXNativeTarget "Three_meditation_a_day" */;
+			buildPhases = (
+				B5F56AAD2000FD8A00CCED3E /* Sources */,
+				B5F56AAE2000FD8A00CCED3E /* Frameworks */,
+				B5F56AAF2000FD8A00CCED3E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Three_meditation_a_day;
+			productName = Three_meditation_a_day;
+			productReference = B5F56AB12000FD8A00CCED3E /* Three_meditation_a_day.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B5F56AA92000FD8A00CCED3E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = ParkGilNam;
+				TargetAttributes = {
+					B5F56AB02000FD8A00CCED3E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = B5F56AAC2000FD8A00CCED3E /* Build configuration list for PBXProject "Three_meditation_a_day" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B5F56AA82000FD8A00CCED3E;
+			productRefGroup = B5F56AB22000FD8A00CCED3E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B5F56AB02000FD8A00CCED3E /* Three_meditation_a_day */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B5F56AAF2000FD8A00CCED3E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F56ABF2000FD8A00CCED3E /* LaunchScreen.storyboard in Resources */,
+				B5F56ACC200468F200CCED3E /* Default@3x.png in Resources */,
+				B5F56ABC2000FD8A00CCED3E /* Assets.xcassets in Resources */,
+				B5F56ACB200468F200CCED3E /* Default@2x.png in Resources */,
+				B5F56ABA2000FD8A00CCED3E /* Main.storyboard in Resources */,
+				B5F56AD42004781500CCED3E /* Setting.png in Resources */,
+				B5F56ACA200468F200CCED3E /* Default.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B5F56AAD2000FD8A00CCED3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */,
+				B5F56AB52000FD8A00CCED3E /* AppDelegate.swift in Sources */,
+				B5F56AD620047B1D00CCED3E /* SettingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B5F56AB82000FD8A00CCED3E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5F56AB92000FD8A00CCED3E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B5F56ABD2000FD8A00CCED3E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5F56ABE2000FD8A00CCED3E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B5F56AC12000FD8A00CCED3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B5F56AC22000FD8A00CCED3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B5F56AC42000FD8A00CCED3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AYUBF3UYBE;
+				INFOPLIST_FILE = Three_meditation_a_day/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "GilNam.Three-meditation-a-day";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B5F56AC52000FD8A00CCED3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AYUBF3UYBE;
+				INFOPLIST_FILE = Three_meditation_a_day/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "GilNam.Three-meditation-a-day";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B5F56AAC2000FD8A00CCED3E /* Build configuration list for PBXProject "Three_meditation_a_day" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5F56AC12000FD8A00CCED3E /* Debug */,
+				B5F56AC22000FD8A00CCED3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5F56AC32000FD8A00CCED3E /* Build configuration list for PBXNativeTarget "Three_meditation_a_day" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5F56AC42000FD8A00CCED3E /* Debug */,
+				B5F56AC52000FD8A00CCED3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B5F56AA92000FD8A00CCED3E /* Project object */;
+}
