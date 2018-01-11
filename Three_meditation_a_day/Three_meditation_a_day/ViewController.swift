@@ -8,7 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol SelectDateSendDelegate {
+    func selectDateSend(selectDate:Date)
+}
+
+class ViewController: UIViewController, SelectDateSendDelegate {
+    
+    @IBOutlet weak var navigationTitleButton: UIButton!
     
     //1주차
     @IBOutlet weak var sunday1Weeks: UIButton!
@@ -64,8 +70,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var firday6Weeks: UIButton!
     @IBOutlet weak var saturday6Weeks: UIButton!
     
-    
     var daysButtons:[[UIButton]] = [[UIButton]]()
+    var selectDate:Date = Date.init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +96,9 @@ class ViewController: UIViewController {
         
         let dateString = formatter.string(from: currentDate)
         
-        self.navigationItem.title = dateString
+        navigationTitleButton.setTitle("\(dateString)", for: UIControlState.normal)
+        
+        selectDate = currentDate
     }
     
     func currentDateSetting(currentDate:Date) {
@@ -102,7 +110,7 @@ class ViewController: UIViewController {
         let weekOfMonthButtons = daysButtons[weekOfMonth.weekOfMonth! - 1]
         let button = weekOfMonthButtons[weekDay.weekday! - 1]
     
-        button.backgroundColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 0.7)
+        button.backgroundColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 1)
         button.setTitleColor(UIColor.white, for: UIControlState.normal)
         button.layer.cornerRadius = 10
         
@@ -113,6 +121,10 @@ class ViewController: UIViewController {
         let dayString = formatter.string(from: currentDate)
         
         button.setTitle(dayString, for: UIControlState.normal)
+        
+//        let gesture = UITapGestureRecognizer(target: self, action: #selector(goDetailPage(sender:)))
+//
+//        button.addGestureRecognizer(gesture)
         
 //        let interval = calendar.dateComponents([.day], from: currentDate)
 //
@@ -144,6 +156,31 @@ class ViewController: UIViewController {
 //        }
 //    }
 
+    @IBAction func goDetailPage(_ sender: UIButton) {
+        
+        if sender.currentTitle != nil {
+            let storyboard  = UIStoryboard(name: "Main", bundle: nil)
+            
+            let vc = storyboard.instantiateViewController(withIdentifier: "Detail")
+            vc.navigationItem.title = "\(navigationTitleButton.title(for: UIControlState.normal)!). \(sender.currentTitle!)"
+            
+            self.navigationController!.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func selectDateSend(selectDate: Date) {
+        navigationTitleSetting(currentDate:selectDate)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "selectDatePopup" {
+            
+            let viewController : SelectDatePopupViewController = segue.destination as! SelectDatePopupViewController
+            
+            viewController.delegate = self
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

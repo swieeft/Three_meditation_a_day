@@ -38,6 +38,13 @@ class SettingViewController: UIViewController{
         
         self.navigationItem.title = "설정"
         
+        morningButton.layer.cornerRadius = 10
+        afternoonButton.layer.cornerRadius = 10
+        eveningButton.layer.cornerRadius = 10
+        
+        selectTimePicker.setValue(UIColor.white, forKeyPath: "textColor")
+        selectTimePicker.backgroundColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 1)
+        
         setButtonTitleTime(forKey: forKeyStruct.morningTime, button: morningButton)
         setButtonTitleTime(forKey: forKeyStruct.afternoonTime, button: afternoonButton)
         setButtonTitleTime(forKey: forKeyStruct.eveningTime, button: eveningButton)
@@ -47,6 +54,7 @@ class SettingViewController: UIViewController{
         setSwitchOnOff(forKey: forKeyStruct.eveningSwitchIsOn, switchControl: eveningSwitch, button: eveningButton)
     }
     
+    //설정한 시간으로 버튼의 타이틀 변경
     func setButtonTitleTime(forKey:String, button:UIButton) {
         let formatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale!
@@ -63,6 +71,7 @@ class SettingViewController: UIViewController{
         }
     }
     
+    //설정한 값으로 스위치 버튼 값 변경
     func setSwitchOnOff(forKey:String, switchControl:UISwitch, button:UIButton) {
         let isOn:Bool? = UserDefaults.standard.bool(forKey: forKey)
         
@@ -74,13 +83,14 @@ class SettingViewController: UIViewController{
         
         if switchControl.isOn {
             button.isEnabled = true
-            button.setTitleColor(UIColor.black, for: UIControlState.normal)
+            button.setTitleColor(UIColor.white, for: UIControlState.normal)
         } else {
             button.isEnabled = false
             button.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
         }
     }
     
+    //시간 설정 창 숨기기/보이기
     @IBAction func showTimePickerAction(_ sender: UIButton) {
         if selectTimePicker.isHidden == false {
             selectTimePicker.isHidden = true
@@ -91,6 +101,7 @@ class SettingViewController: UIViewController{
         buttonTag = sender.tag
     }
     
+    //시간 설정 창에서 선택된 시간을 버튼에 표시 및 값 저장
     @IBAction func selectTimeAction(_ sender: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale!
@@ -116,6 +127,7 @@ class SettingViewController: UIViewController{
         selectTimePicker.isHidden = true
     }
     
+    //스위치 상태에 따른 시간 설정 버튼 활성 상태 변경 및 스위치 상태 저장
     @IBAction func switchAction(_ sender: UISwitch) {
         var button:UIButton!
         
@@ -133,11 +145,12 @@ class SettingViewController: UIViewController{
         switchOnOffAction(switchControl: sender, button: button)
     }
     
+    //시간 설정 버튼 활성 상태 변경
     func switchOnOffAction(switchControl:UISwitch, button:UIButton)
     {
         if switchControl.isOn {
             button.isEnabled = true
-            button.setTitleColor(UIColor.black, for: UIControlState.normal)
+            button.setTitleColor(UIColor.white, for: UIControlState.normal)
         } else {
             button.isEnabled = false
             button.setTitleColor(UIColor.darkGray, for: UIControlState.normal)

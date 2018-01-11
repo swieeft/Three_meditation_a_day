@@ -10,11 +10,16 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeo.ttc">
+            <string>AppleSDGothicNeo-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--00월-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Three_meditation_a_day" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Three_meditation_a_day" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +37,7 @@
                                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="2Fz-US-YFs" kind="show" id="aYm-8E-3kW"/>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6EF-iv-7WA"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bI9-YR-ipl">
@@ -42,7 +47,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="2Fz-US-YFs" kind="show" id="6VU-Gp-BXA"/>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ok4-zH-Cj0"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kg7-Gh-wXl">
@@ -52,7 +57,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="2Fz-US-YFs" kind="show" id="WvZ-gr-JAM"/>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SKQ-Em-EiE"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f16-YA-iRI">
@@ -61,6 +66,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ml6-hH-JIo"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1y-xZ-OBA">
                                                 <rect key="frame" x="214.5" y="0.0" width="53.5" height="91"/>
@@ -68,6 +76,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VNN-Y3-CNy"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWZ-zU-9Tn">
                                                 <rect key="frame" x="268" y="0.0" width="53.5" height="91"/>
@@ -75,6 +86,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NVe-vE-pzc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmn-DQ-pvk">
                                                 <rect key="frame" x="321.5" y="0.0" width="53.5" height="91"/>
@@ -82,6 +96,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PTs-7H-aLJ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -102,6 +119,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kS9-kL-qrd"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFe-BR-kvY">
                                                 <rect key="frame" x="53.5" y="0.0" width="54" height="90.5"/>
@@ -109,6 +129,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Qm-zS-nUB"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crq-wR-bfy">
                                                 <rect key="frame" x="107.5" y="0.0" width="53" height="90.5"/>
@@ -116,6 +139,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KZK-xD-H70"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xni-Br-nWo">
                                                 <rect key="frame" x="160.5" y="0.0" width="54" height="90.5"/>
@@ -123,6 +149,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7dI-p5-UdN"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbE-SE-fzy">
                                                 <rect key="frame" x="214.5" y="0.0" width="53.5" height="90.5"/>
@@ -130,6 +159,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nSW-gL-RYh"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hb0-Nx-BbU">
                                                 <rect key="frame" x="268" y="0.0" width="53.5" height="90.5"/>
@@ -137,6 +169,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I4W-Ba-gJL"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pya-tN-SJR">
                                                 <rect key="frame" x="321.5" y="0.0" width="53.5" height="90.5"/>
@@ -144,6 +179,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eGu-ko-gaZ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -164,6 +202,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qur-f2-14N"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C9l-uB-xIl">
                                                 <rect key="frame" x="53.5" y="0.0" width="54" height="91"/>
@@ -171,6 +212,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x0s-6t-ZlJ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezx-PG-oPd">
                                                 <rect key="frame" x="107.5" y="0.0" width="53" height="91"/>
@@ -178,6 +222,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uWr-Nh-dZh"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtO-mG-j4E">
                                                 <rect key="frame" x="160.5" y="0.0" width="54" height="91"/>
@@ -185,6 +232,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L8S-tL-idm"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKb-LC-9Cp">
                                                 <rect key="frame" x="214.5" y="0.0" width="53.5" height="91"/>
@@ -192,6 +242,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sfp-r8-qny"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDu-J2-BsV">
                                                 <rect key="frame" x="268" y="0.0" width="53.5" height="91"/>
@@ -199,6 +252,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GFT-6T-qdH"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVl-MJ-Adt">
                                                 <rect key="frame" x="321.5" y="0.0" width="53.5" height="91"/>
@@ -206,6 +262,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9LO-AZ-EWE"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -226,6 +285,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QEE-Iv-1JJ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkR-os-ZRz">
                                                 <rect key="frame" x="53.5" y="0.0" width="54" height="91.5"/>
@@ -233,6 +295,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1ms-MN-aJk"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdd-JP-52v">
                                                 <rect key="frame" x="107.5" y="0.0" width="53" height="91.5"/>
@@ -240,6 +305,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JO9-al-Rci"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMT-X2-tm3">
                                                 <rect key="frame" x="160.5" y="0.0" width="54" height="91.5"/>
@@ -247,6 +315,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Oz-b8-FrE"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUp-ES-GGc">
                                                 <rect key="frame" x="214.5" y="0.0" width="53.5" height="91.5"/>
@@ -254,6 +325,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IiX-o8-m7f"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sz7-S0-6tW">
                                                 <rect key="frame" x="268" y="0.0" width="53.5" height="91.5"/>
@@ -261,6 +335,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aBI-oq-SY2"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYj-oN-haI">
                                                 <rect key="frame" x="321.5" y="0.0" width="53.5" height="91.5"/>
@@ -268,6 +345,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RXK-MH-8mB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -288,6 +368,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ioq-Th-Hgn"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3W-yc-m1q">
                                                 <rect key="frame" x="53.5" y="0.0" width="54" height="91"/>
@@ -295,6 +378,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BaE-YK-p8V"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBS-Yq-ojX">
                                                 <rect key="frame" x="107.5" y="0.0" width="53" height="91"/>
@@ -302,6 +388,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iHH-NF-LIM"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="544-F5-Nzt">
                                                 <rect key="frame" x="160.5" y="0.0" width="54" height="91"/>
@@ -309,6 +398,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lwQ-R4-dLo"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1Y-CR-shu">
                                                 <rect key="frame" x="214.5" y="0.0" width="53.5" height="91"/>
@@ -316,6 +408,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yQ5-Uh-98B"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMg-OY-8lf">
                                                 <rect key="frame" x="268" y="0.0" width="53.5" height="91"/>
@@ -323,6 +418,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="syD-RI-3DW"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rq1-Nv-U68">
                                                 <rect key="frame" x="321.5" y="0.0" width="53.5" height="91"/>
@@ -330,6 +428,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vOa-ga-B5M"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -350,6 +451,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EH1-ag-oqn"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pja-wk-0Zh">
                                                 <rect key="frame" x="53.5" y="0.0" width="54" height="90.5"/>
@@ -357,6 +461,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a2K-j6-yXf"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBi-0J-edY">
                                                 <rect key="frame" x="107.5" y="0.0" width="53" height="90.5"/>
@@ -364,6 +471,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QwK-rR-pIT"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJn-vJ-nIi">
                                                 <rect key="frame" x="160.5" y="0.0" width="54" height="90.5"/>
@@ -371,6 +481,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GUQ-Zy-Zv2"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCg-7I-jbZ">
                                                 <rect key="frame" x="214.5" y="0.0" width="53.5" height="90.5"/>
@@ -378,6 +491,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="goa-wL-b6q"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uyy-oF-mSF">
                                                 <rect key="frame" x="268" y="0.0" width="53.5" height="90.5"/>
@@ -385,6 +501,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JVL-kS-39J"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPE-6L-VeS">
                                                 <rect key="frame" x="321.5" y="0.0" width="53.5" height="90.5"/>
@@ -392,6 +511,9 @@
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="goDetailPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hBG-zm-kXM"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -507,7 +629,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="00월" id="1KC-TX-5cS">
+                    <navigationItem key="navigationItem" id="1KC-TX-5cS">
+                        <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mge-BO-PPE">
+                            <rect key="frame" x="109" y="5" width="157" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                            <state key="normal" title="00월"/>
+                            <connections>
+                                <segue destination="SVj-jU-LYS" kind="presentation" identifier="selectDatePopup" animates="NO" modalPresentationStyle="overFullScreen" id="clp-LM-Q8J"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" image="Setting.png" id="GXU-Hs-vg7">
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="-15" maxY="0.0"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -529,6 +661,7 @@
                         <outlet property="monday4Weeks" destination="C9l-uB-xIl" id="gQX-Dm-wfm"/>
                         <outlet property="monday5Weeks" destination="FFe-BR-kvY" id="waz-Hz-nS2"/>
                         <outlet property="monday6Weeks" destination="bI9-YR-ipl" id="alf-mK-8GI"/>
+                        <outlet property="navigationTitleButton" destination="mge-BO-PPE" id="jaX-7C-Qs8"/>
                         <outlet property="saturday1Weeks" destination="jPE-6L-VeS" id="0tq-BI-Mg4"/>
                         <outlet property="saturday2Weeks" destination="Rq1-Nv-U68" id="d7g-el-ekk"/>
                         <outlet property="saturday3Weeks" destination="xYj-oN-haI" id="FQ5-D4-URf"/>
@@ -568,22 +701,34 @@
         <!--View Controller-->
         <scene sceneID="Pwl-8R-jiN">
             <objects>
-                <viewController id="2Fz-US-YFs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Detail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Fz-US-YFs" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VTe-dr-mBq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uoU-AF-hfH">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uoU-AF-hfH" firstAttribute="bottom" secondItem="2TC-aS-xkO" secondAttribute="bottom" id="85y-0L-r4j"/>
+                            <constraint firstItem="uoU-AF-hfH" firstAttribute="top" secondItem="2TC-aS-xkO" secondAttribute="top" id="Fzd-4Z-Di1"/>
+                            <constraint firstItem="uoU-AF-hfH" firstAttribute="leading" secondItem="2TC-aS-xkO" secondAttribute="leading" id="kKB-EJ-wEm"/>
+                            <constraint firstItem="uoU-AF-hfH" firstAttribute="trailing" secondItem="2TC-aS-xkO" secondAttribute="trailing" id="rM7-Jb-iQ8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2TC-aS-xkO"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSl-oV-gKS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141" y="848"/>
+            <point key="canvasLocation" x="140" y="846.9265367316342"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="imy-FR-WPD">
             <objects>
-                <viewController id="Clb-ll-UXA" customClass="SettingViewController" customModule="Three_meditation_a_day" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Setting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Clb-ll-UXA" customClass="SettingViewController" customModule="Three_meditation_a_day" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VAQ-dk-OUb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -624,10 +769,10 @@
                                                     </switch>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRt-ni-vnu">
                                                         <rect key="frame" x="8" y="51" width="288" height="48"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        <color key="backgroundColor" red="0.57191377880000005" green="0.18910209829999999" blue="0.16870631280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <state key="normal" title="시간설정">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="showTimePickerAction:" destination="Clb-ll-UXA" eventType="touchUpInside" id="5rF-hd-vsg"/>
@@ -663,10 +808,10 @@
                                                     </switch>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qY5-Qu-FoK">
                                                         <rect key="frame" x="8" y="51" width="288" height="48"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        <color key="backgroundColor" red="0.57191377880000005" green="0.18910209829999999" blue="0.16870631280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <state key="normal" title="시간설정">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="showTimePickerAction:" destination="Clb-ll-UXA" eventType="touchUpInside" id="5Mh-Hx-QIv"/>
@@ -703,10 +848,10 @@
                                                     </switch>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbu-wu-qCJ">
                                                         <rect key="frame" x="8" y="51" width="288" height="48"/>
-                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        <color key="backgroundColor" red="0.57191377880000005" green="0.18910209829999999" blue="0.16870631280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <state key="normal" title="시간설정">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="showTimePickerAction:" destination="Clb-ll-UXA" eventType="touchUpInside" id="gdO-NZ-0cD"/>
@@ -727,7 +872,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.57191377878189087" green="0.18910209834575653" blue="0.16870631277561188" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="5e1-La-cig" secondAttribute="trailing" id="7Cf-wD-AID"/>
                                             <constraint firstItem="a4X-SV-20j" firstAttribute="height" secondItem="5e1-La-cig" secondAttribute="height" id="ExD-cT-pXP"/>
@@ -799,11 +944,100 @@
             </objects>
             <point key="canvasLocation" x="-590" y="134"/>
         </scene>
+        <!--Select Date Popup View Controller-->
+        <scene sceneID="5Jp-3T-WN1">
+            <objects>
+                <viewController storyboardIdentifier="selectDateVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SVj-jU-LYS" customClass="SelectDatePopupViewController" customModule="Three_meditation_a_day" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T55-ZJ-7Ig">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v9y-se-HHB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ooC-2W-aAg">
+                                <rect key="frame" x="40" y="173" width="295" height="244"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="35t-sY-sG0">
+                                        <rect key="frame" x="1" y="1" width="293" height="213"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="537346911.00223804">
+                                            <!--2018-01-11 07:01:51 +0000-->
+                                        </date>
+                                        <locale key="locale" localeIdentifier="ko_KR"/>
+                                    </datePicker>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aZO-wk-ifT">
+                                        <rect key="frame" x="0.0" y="214" width="295" height="30"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EV1-oU-ZCm">
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MvD-T4-PJG">
+                                                        <rect key="frame" x="0.0" y="0.0" width="147.5" height="30"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <state key="normal" title="적용">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="applyAction:" destination="SVj-jU-LYS" eventType="touchUpInside" id="LFd-st-PIu"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngj-je-jsP">
+                                                        <rect key="frame" x="147.5" y="0.0" width="147.5" height="30"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <state key="normal" title="취소">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="cancelAction:" destination="SVj-jU-LYS" eventType="touchUpInside" id="Igg-AK-zkD"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="MvD-T4-PJG" firstAttribute="width" secondItem="ngj-je-jsP" secondAttribute="width" id="M2i-7d-TcP"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="aZO-wk-ifT" secondAttribute="trailing" id="0kx-8G-Nvh"/>
+                                    <constraint firstItem="aZO-wk-ifT" firstAttribute="leading" secondItem="ooC-2W-aAg" secondAttribute="leading" id="33x-gc-FmB"/>
+                                    <constraint firstItem="aZO-wk-ifT" firstAttribute="height" secondItem="35t-sY-sG0" secondAttribute="height" multiplier="1:7" id="5cw-cJ-jBS"/>
+                                    <constraint firstItem="35t-sY-sG0" firstAttribute="top" secondItem="ooC-2W-aAg" secondAttribute="top" constant="1" id="as3-dX-rbw"/>
+                                    <constraint firstAttribute="bottom" secondItem="aZO-wk-ifT" secondAttribute="bottom" id="rv5-Hg-SRY"/>
+                                    <constraint firstAttribute="trailing" secondItem="35t-sY-sG0" secondAttribute="trailing" constant="1" id="s6M-yc-Hp6"/>
+                                    <constraint firstItem="aZO-wk-ifT" firstAttribute="top" secondItem="35t-sY-sG0" secondAttribute="bottom" id="uSs-OH-Lhz"/>
+                                    <constraint firstItem="35t-sY-sG0" firstAttribute="leading" secondItem="ooC-2W-aAg" secondAttribute="leading" constant="1" id="y0V-b0-DZ0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="meu-Sa-njq" firstAttribute="bottom" secondItem="ooC-2W-aAg" secondAttribute="bottom" constant="250" id="Eh4-7K-jd7"/>
+                            <constraint firstItem="ooC-2W-aAg" firstAttribute="top" secondItem="meu-Sa-njq" secondAttribute="top" constant="153" id="F22-o5-jzk"/>
+                            <constraint firstItem="meu-Sa-njq" firstAttribute="trailing" secondItem="ooC-2W-aAg" secondAttribute="trailing" constant="40" id="cwi-aB-7fq"/>
+                            <constraint firstItem="v9y-se-HHB" firstAttribute="bottom" secondItem="meu-Sa-njq" secondAttribute="bottom" id="efR-kM-RWY"/>
+                            <constraint firstItem="ooC-2W-aAg" firstAttribute="leading" secondItem="meu-Sa-njq" secondAttribute="leading" constant="40" id="mep-CV-j8D"/>
+                            <constraint firstItem="v9y-se-HHB" firstAttribute="trailing" secondItem="meu-Sa-njq" secondAttribute="trailing" id="sF4-QY-gpe"/>
+                            <constraint firstItem="v9y-se-HHB" firstAttribute="leading" secondItem="meu-Sa-njq" secondAttribute="leading" id="thJ-Ua-ANG"/>
+                            <constraint firstItem="v9y-se-HHB" firstAttribute="top" secondItem="T55-ZJ-7Ig" secondAttribute="top" id="wns-DC-FCr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="meu-Sa-njq"/>
+                    </view>
+                    <connections>
+                        <outlet property="applyButton" destination="MvD-T4-PJG" id="ldu-T9-7Ig"/>
+                        <outlet property="cancelButton" destination="ngj-je-jsP" id="ArH-XV-kxZ"/>
+                        <outlet property="selectDatePicker" destination="35t-sY-sG0" id="1Rc-iV-u4W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sys-NY-kta" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="-551.87406296851577"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Setting.png" width="44" height="44"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="aYm-8E-3kW"/>
-    </inferredMetricsTieBreakers>
 </document>

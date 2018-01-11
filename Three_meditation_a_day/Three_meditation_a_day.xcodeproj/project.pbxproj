@@ -17,6 +17,7 @@
 		B5F56ACC200468F200CCED3E /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F56AC9200468F200CCED3E /* Default@3x.png */; };
 		B5F56AD42004781500CCED3E /* Setting.png in Resources */ = {isa = PBXBuildFile; fileRef = B5F56AD32004781500CCED3E /* Setting.png */; };
 		B5F56AD620047B1D00CCED3E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F56AD520047B1D00CCED3E /* SettingViewController.swift */; };
+		B5F56ADB200741CA00CCED3E /* SelectDatePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F56ADA200741CA00CCED3E /* SelectDatePopupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B5F56AC9200468F200CCED3E /* Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@3x.png"; sourceTree = "<group>"; };
 		B5F56AD32004781500CCED3E /* Setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Setting.png; sourceTree = "<group>"; };
 		B5F56AD520047B1D00CCED3E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		B5F56ADA200741CA00CCED3E /* SelectDatePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDatePopupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				B5F56ABD2000FD8A00CCED3E /* LaunchScreen.storyboard */,
 				B5F56AC02000FD8A00CCED3E /* Info.plist */,
 				B5F56AD520047B1D00CCED3E /* SettingViewController.swift */,
+				B5F56ADA200741CA00CCED3E /* SelectDatePopupViewController.swift */,
 			);
 			path = Three_meditation_a_day;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */,
 				B5F56AB52000FD8A00CCED3E /* AppDelegate.swift in Sources */,
 				B5F56AD620047B1D00CCED3E /* SettingViewController.swift in Sources */,
+				B5F56ADB200741CA00CCED3E /* SelectDatePopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
