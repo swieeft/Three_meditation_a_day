@@ -140,6 +140,10 @@ class SettingViewController: UIViewController{
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
+    func notificationRemove(identifier:String) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         selectTimePicker.isHidden = true
@@ -169,9 +173,36 @@ class SettingViewController: UIViewController{
         if switchControl.isOn {
             button.isEnabled = true
             button.setTitleColor(UIColor.white, for: UIControlState.normal)
+            
+            switch switchControl.tag {
+            case 10 :
+                let time:Date? = UserDefaults.standard.object(forKey: forKeyStruct.morningTime) as? Date
+                if time != nil {
+                    notificationSetting(date: time!, title: "아침묵상", body: "말씀과 함께 상쾌한 하루!", identifier: "morningNoti")
+                }
+            case 11:
+                let time:Date? = UserDefaults.standard.object(forKey: forKeyStruct.afternoonTime) as? Date
+                if time != nil {
+                    notificationSetting(date: time!, title: "점심묵상", body: "졸린 시간 말씀으로 이겨내요!", identifier: "afternoonNoti")
+                }
+            default:
+                let time:Date? = UserDefaults.standard.object(forKey: forKeyStruct.eveningTime) as? Date
+                if time != nil {
+                    notificationSetting(date: time!, title: "저녁묵상", body: "하루의 마무리를 묵상과 함꼐", identifier: "eveningNoti")
+                }
+            }
         } else {
             button.isEnabled = false
             button.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
+            
+            switch switchControl.tag {
+            case 10 :
+                notificationRemove(identifier: "morningNoti")
+            case 11:
+                notificationRemove(identifier: "afternoonNoti")
+            default:
+                notificationRemove(identifier: "eveningNoti")
+            }
         }
     }
     
