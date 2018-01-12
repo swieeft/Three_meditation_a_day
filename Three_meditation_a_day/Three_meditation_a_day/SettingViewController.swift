@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 struct forKeyStruct {
     static let morningTime = "morningTime"
@@ -113,13 +114,30 @@ class SettingViewController: UIViewController{
         case 1:
             morningButton.setTitle(dateString, for: UIControlState.normal)
             UserDefaults.standard.set(sender.date, forKey: forKeyStruct.morningTime)
+            notificationSetting(date: sender.date, title: "아침묵상", body: "말씀과 함께 상쾌한 하루!", identifier: "morningNoti")
         case 2:
             afternoonButton.setTitle(dateString, for: UIControlState.normal)
             UserDefaults.standard.set(sender.date, forKey: forKeyStruct.afternoonTime)
+            notificationSetting(date: sender.date, title: "점심묵상", body: "졸린 시간 말씀으로 이겨내요!", identifier: "afternoonNoti")
         default:
             eveningButton.setTitle(dateString, for: UIControlState.normal)
             UserDefaults.standard.set(sender.date, forKey: forKeyStruct.eveningTime)
+            notificationSetting(date: sender.date, title: "저녁묵상", body: "하루의 마무리를 묵상과 함꼐", identifier: "eveningNoti")
         }
+    }
+    
+    func notificationSetting(date:Date, title:String, body:String, identifier:String) {
+        let notification = UNMutableNotificationContent()
+        notification.title = title
+        notification.body = body
+        
+        let triggerDate = Calendar.current.dateComponents([.hour,.minute], from: date)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: identifier, content: notification, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
