@@ -82,8 +82,10 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         [sunday4Weeks, monday4Weeks, tuesday4Weeks, wednesday4Weeks, thursday4Weeks, firday4Weeks, saturday4Weeks],
         [sunday5Weeks, monday5Weeks, tuesday5Weeks, wednesday5Weeks, thursday5Weeks, firday5Weeks, saturday5Weeks],
         [sunday6Weeks, monday6Weeks, tuesday6Weeks, wednesday6Weeks, thursday6Weeks, firday6Weeks, saturday6Weeks]]
-        
+         
         let currentDate = Date.init()
+        
+        UserDefaults.standard.set(currentDate, forKey: "selectDate")
         
         navigationTitleSetting(currentDate: currentDate)
         currentDateSetting(currentDate: currentDate)
@@ -121,40 +123,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         let dayString = formatter.string(from: currentDate)
         
         button.setTitle(dayString, for: UIControlState.normal)
-        
-//        let gesture = UITapGestureRecognizer(target: self, action: #selector(goDetailPage(sender:)))
-//
-//        button.addGestureRecognizer(gesture)
-        
-//        let interval = calendar.dateComponents([.day], from: currentDate)
-//
-//        setCalendar(currentDate: currentDate, interval: interval.day!)
     }
-    
-//    func setCalendar(currentDate:Date, interval:Int) {
-//        for index in 1..<interval {
-//            let date = currentDate.addingTimeInterval(TimeInterval(-1 * (index * 86400)))
-//            
-//            let calendar = Calendar(identifier: .gregorian)
-//            
-//            let weekDay = calendar.dateComponents([.weekday], from: date)
-//            let weekOfMonth = calendar.dateComponents([.weekOfMonth], from: date)
-//            
-//            print(date)
-//            print(weekOfMonth.weekOfMonth!)
-//            
-//            let weekOfMonthButtons = daysButtons[weekOfMonth.weekOfMonth! - 1]
-//            let button = weekOfMonthButtons[weekDay.weekday! - 1]
-//            
-//            let formatter = DateFormatter()
-//            formatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale!
-//            formatter.dateFormat = "d"
-//            
-//            let dayString = formatter.string(from: date)
-//            
-//            button.setTitle(dayString, for: UIControlState.normal)
-//        }
-//    }
 
     @IBAction func goDetailPage(_ sender: UIButton) {
         

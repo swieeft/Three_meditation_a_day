@@ -698,17 +698,33 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="Pwl-8R-jiN">
             <objects>
-                <viewController storyboardIdentifier="Detail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Fz-US-YFs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Detail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Fz-US-YFs" customClass="DetailViewController" customModule="Three_meditation_a_day" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VTe-dr-mBq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uoU-AF-hfH">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nzz-18-Y0h">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="2Fz-US-YFs" id="C8z-QK-Eme"/>
+                                            <outlet property="delegate" destination="2Fz-US-YFs" id="9zQ-e0-77g"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Nzz-18-Y0h" secondAttribute="bottom" id="FFE-VH-Idc"/>
+                                    <constraint firstItem="Nzz-18-Y0h" firstAttribute="top" secondItem="uoU-AF-hfH" secondAttribute="top" id="Lmy-wJ-HTs"/>
+                                    <constraint firstItem="Nzz-18-Y0h" firstAttribute="leading" secondItem="uoU-AF-hfH" secondAttribute="leading" id="WFq-ue-rLx"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nzz-18-Y0h" secondAttribute="trailing" id="krV-Fb-Nsx"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -720,10 +736,78 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2TC-aS-xkO"/>
                     </view>
+                    <connections>
+                        <outlet property="detailTableView" destination="Nzz-18-Y0h" id="MRS-H6-hla"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSl-oV-gKS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="846.9265367316342"/>
+        </scene>
+        <!--Write Meditation View Controller-->
+        <scene sceneID="baI-lg-F1n">
+            <objects>
+                <viewController storyboardIdentifier="WriteMeditation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iYT-ZE-gtq" customClass="WriteMeditationViewController" customModule="Three_meditation_a_day" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bki-fG-XWx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IIp-KG-fgu">
+                                <rect key="frame" x="16" y="83" width="343" height="564"/>
+                                <color key="backgroundColor" red="0.57191377878189087" green="0.18910209834575653" blue="0.16870631277561188" alpha="0.072078339041095896" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2n-vv-Sag">
+                                <rect key="frame" x="16" y="45" width="70" height="30"/>
+                                <color key="backgroundColor" red="0.57191377880000005" green="0.18910209829999999" blue="0.16870631280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ajZ-Vw-JeN"/>
+                                </constraints>
+                                <state key="normal" title="전체삭제">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="allDeleteAction:" destination="iYT-ZE-gtq" eventType="touchUpInside" id="BDC-1a-CkF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGZ-ol-OxL">
+                                <rect key="frame" x="289" y="45" width="70" height="30"/>
+                                <color key="backgroundColor" red="0.57191377880000005" green="0.18910209829999999" blue="0.16870631280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Xse-0C-8Do"/>
+                                </constraints>
+                                <state key="normal" title="저장">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveAction:" destination="iYT-ZE-gtq" eventType="touchUpInside" id="qwk-2F-Vwv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IIp-KG-fgu" firstAttribute="top" secondItem="cGZ-ol-OxL" secondAttribute="bottom" constant="8" id="6dT-Je-QJW"/>
+                            <constraint firstItem="i2n-vv-Sag" firstAttribute="top" secondItem="Afn-AM-Bch" secondAttribute="top" constant="25" id="B4O-Ac-sSm"/>
+                            <constraint firstItem="cGZ-ol-OxL" firstAttribute="top" secondItem="Afn-AM-Bch" secondAttribute="top" constant="25" id="Ofl-zq-5Tl"/>
+                            <constraint firstItem="Afn-AM-Bch" firstAttribute="bottom" secondItem="IIp-KG-fgu" secondAttribute="bottom" constant="20" id="Pp2-ZK-gPF"/>
+                            <constraint firstItem="Afn-AM-Bch" firstAttribute="trailing" secondItem="IIp-KG-fgu" secondAttribute="trailing" constant="16" id="TbJ-DP-rYW"/>
+                            <constraint firstItem="i2n-vv-Sag" firstAttribute="width" secondItem="cGZ-ol-OxL" secondAttribute="width" id="XUY-Wl-8o2"/>
+                            <constraint firstItem="Afn-AM-Bch" firstAttribute="trailing" secondItem="cGZ-ol-OxL" secondAttribute="trailing" constant="16" id="apM-OF-OC3"/>
+                            <constraint firstItem="IIp-KG-fgu" firstAttribute="leading" secondItem="Afn-AM-Bch" secondAttribute="leading" constant="16" id="bg5-61-ws1"/>
+                            <constraint firstItem="i2n-vv-Sag" firstAttribute="leading" secondItem="Afn-AM-Bch" secondAttribute="leading" constant="16" id="fdy-0F-m7Z"/>
+                            <constraint firstItem="cGZ-ol-OxL" firstAttribute="leading" secondItem="i2n-vv-Sag" secondAttribute="trailing" constant="203" id="r5T-E5-Smz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Afn-AM-Bch"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentsTextView" destination="IIp-KG-fgu" id="hp5-YD-XP9"/>
+                        <outlet property="contentsTextViewBottomMargin" destination="Pp2-ZK-gPF" id="ylW-py-d60"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sP4-UM-GhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904.79999999999995" y="849.62518740629696"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="imy-FR-WPD">

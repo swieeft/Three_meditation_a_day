@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B541EC8C20086BCE00CFA685 /* Afternoon.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC8920086BCE00CFA685 /* Afternoon.png */; };
+		B541EC8D20086BCE00CFA685 /* Evening.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC8A20086BCE00CFA685 /* Evening.png */; };
+		B541EC8E20086BCE00CFA685 /* Morning.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC8B20086BCE00CFA685 /* Morning.png */; };
+		B541EC9020086E1500CFA685 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541EC8F20086E1500CFA685 /* DetailViewController.swift */; };
+		B541EC9320086FB600CFA685 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541EC9120086FB600CFA685 /* DetailTableViewCell.swift */; };
+		B541EC9420086FB600CFA685 /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B541EC9220086FB600CFA685 /* DetailTableViewCell.xib */; };
+		B541EC972008763500CFA685 /* BibleVersesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541EC952008763500CFA685 /* BibleVersesTableViewCell.swift */; };
+		B541EC982008763500CFA685 /* BibleVersesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B541EC962008763500CFA685 /* BibleVersesTableViewCell.xib */; };
+		B541EC9A20087D6500CFA685 /* Bible.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC9920087D6500CFA685 /* Bible.png */; };
+		B541EC9C2008923500CFA685 /* WriteMeditationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541EC9B2008923500CFA685 /* WriteMeditationViewController.swift */; };
 		B5F56AB52000FD8A00CCED3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F56AB42000FD8A00CCED3E /* AppDelegate.swift */; };
 		B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F56AB62000FD8A00CCED3E /* ViewController.swift */; };
 		B5F56ABA2000FD8A00CCED3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F56AB82000FD8A00CCED3E /* Main.storyboard */; };
@@ -21,6 +31,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B541EC8920086BCE00CFA685 /* Afternoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Afternoon.png; sourceTree = "<group>"; };
+		B541EC8A20086BCE00CFA685 /* Evening.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Evening.png; sourceTree = "<group>"; };
+		B541EC8B20086BCE00CFA685 /* Morning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Morning.png; sourceTree = "<group>"; };
+		B541EC8F20086E1500CFA685 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B541EC9120086FB600CFA685 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		B541EC9220086FB600CFA685 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
+		B541EC952008763500CFA685 /* BibleVersesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleVersesTableViewCell.swift; sourceTree = "<group>"; };
+		B541EC962008763500CFA685 /* BibleVersesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BibleVersesTableViewCell.xib; sourceTree = "<group>"; };
+		B541EC9920087D6500CFA685 /* Bible.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bible.png; sourceTree = "<group>"; };
+		B541EC9B2008923500CFA685 /* WriteMeditationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMeditationViewController.swift; sourceTree = "<group>"; };
 		B5F56AB12000FD8A00CCED3E /* Three_meditation_a_day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Three_meditation_a_day.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5F56AB42000FD8A00CCED3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5F56AB62000FD8A00CCED3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +95,12 @@
 				B5F56AC02000FD8A00CCED3E /* Info.plist */,
 				B5F56AD520047B1D00CCED3E /* SettingViewController.swift */,
 				B5F56ADA200741CA00CCED3E /* SelectDatePopupViewController.swift */,
+				B541EC8F20086E1500CFA685 /* DetailViewController.swift */,
+				B541EC9120086FB600CFA685 /* DetailTableViewCell.swift */,
+				B541EC9220086FB600CFA685 /* DetailTableViewCell.xib */,
+				B541EC952008763500CFA685 /* BibleVersesTableViewCell.swift */,
+				B541EC962008763500CFA685 /* BibleVersesTableViewCell.xib */,
+				B541EC9B2008923500CFA685 /* WriteMeditationViewController.swift */,
 			);
 			path = Three_meditation_a_day;
 			sourceTree = "<group>";
@@ -82,6 +108,10 @@
 		B5F56AC6200468DD00CCED3E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				B541EC9920087D6500CFA685 /* Bible.png */,
+				B541EC8920086BCE00CFA685 /* Afternoon.png */,
+				B541EC8A20086BCE00CFA685 /* Evening.png */,
+				B541EC8B20086BCE00CFA685 /* Morning.png */,
 				B5F56AD32004781500CCED3E /* Setting.png */,
 				B5F56AC7200468F200CCED3E /* Default.png */,
 				B5F56AC8200468F200CCED3E /* Default@2x.png */,
@@ -149,11 +179,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B541EC8E20086BCE00CFA685 /* Morning.png in Resources */,
 				B5F56ABF2000FD8A00CCED3E /* LaunchScreen.storyboard in Resources */,
+				B541EC982008763500CFA685 /* BibleVersesTableViewCell.xib in Resources */,
 				B5F56ACC200468F200CCED3E /* Default@3x.png in Resources */,
+				B541EC8D20086BCE00CFA685 /* Evening.png in Resources */,
 				B5F56ABC2000FD8A00CCED3E /* Assets.xcassets in Resources */,
 				B5F56ACB200468F200CCED3E /* Default@2x.png in Resources */,
+				B541EC9420086FB600CFA685 /* DetailTableViewCell.xib in Resources */,
+				B541EC8C20086BCE00CFA685 /* Afternoon.png in Resources */,
 				B5F56ABA2000FD8A00CCED3E /* Main.storyboard in Resources */,
+				B541EC9A20087D6500CFA685 /* Bible.png in Resources */,
 				B5F56AD42004781500CCED3E /* Setting.png in Resources */,
 				B5F56ACA200468F200CCED3E /* Default.png in Resources */,
 			);
@@ -166,9 +202,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B541EC9320086FB600CFA685 /* DetailTableViewCell.swift in Sources */,
 				B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */,
 				B5F56AB52000FD8A00CCED3E /* AppDelegate.swift in Sources */,
+				B541EC9020086E1500CFA685 /* DetailViewController.swift in Sources */,
 				B5F56AD620047B1D00CCED3E /* SettingViewController.swift in Sources */,
+				B541EC972008763500CFA685 /* BibleVersesTableViewCell.swift in Sources */,
+				B541EC9C2008923500CFA685 /* WriteMeditationViewController.swift in Sources */,
 				B5F56ADB200741CA00CCED3E /* SelectDatePopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
