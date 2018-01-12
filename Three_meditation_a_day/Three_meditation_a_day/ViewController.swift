@@ -85,16 +85,17 @@ class ViewController: UIViewController, SelectDateSendDelegate {
          
         let currentDate = Date.init()
         
-        UserDefaults.standard.set(currentDate, forKey: "selectDate")
+        UserDefaults.standard.set(currentDate, forKey: Define.forKeyStruct.selectDate)
         
         navigationTitleSetting(currentDate: currentDate)
         currentDateSetting(currentDate: currentDate)
     }
     
+    //navigation title 세팅
     func navigationTitleSetting(currentDate:Date) {
         let formatter = DateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale!
-        formatter.dateFormat = "YYYY. MM"
+        formatter.locale = NSLocale(localeIdentifier: Define.dateFormat.localeIdentifier) as Locale!
+        formatter.dateFormat = Define.dateFormat.yearMonth
         
         let dateString = formatter.string(from: currentDate)
         
@@ -103,6 +104,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         selectDate = currentDate
     }
     
+    //현재 날짜를 강조
     func currentDateSetting(currentDate:Date) {
         let calendar = Calendar(identifier: .gregorian)
         
@@ -117,14 +119,15 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         button.layer.cornerRadius = 10
         
         let formatter = DateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale!
-        formatter.dateFormat = "d"
+        formatter.locale = NSLocale(localeIdentifier: Define.dateFormat.localeIdentifier) as Locale!
+        formatter.dateFormat = Define.dateFormat.day
         
         let dayString = formatter.string(from: currentDate)
         
         button.setTitle(dayString, for: UIControlState.normal)
     }
 
+    //날짜를 선택하면 Detail page로 이동
     @IBAction func goDetailPage(_ sender: UIButton) {
         
         if sender.currentTitle != nil {
@@ -137,10 +140,12 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         }
     }
     
+    //월 선택 창에서 선택된 데이터로 타이틀 세팅
     func selectDateSend(selectDate: Date) {
         navigationTitleSetting(currentDate:selectDate)
     }
     
+    //월 선택창 열기
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectDatePopup" {
             

@@ -9,16 +9,6 @@
 import UIKit
 import UserNotifications
 
-struct forKeyStruct {
-    static let morningTime = "morningTime"
-    static let afternoonTime = "afternoonTime"
-    static let eveningTime = "eveningTime"
-    
-    static let morningSwitchIsOn = "morningSwitchIsOn"
-    static let afternoonSwitchIsOn = "afternoonSwitchIsOn"
-    static let eveningSwitchIsOn = "eveningSwitchIsOn"
-}
-
 class SettingViewController: UIViewController{
     
     @IBOutlet weak var morningButton: UIButton!
@@ -46,20 +36,20 @@ class SettingViewController: UIViewController{
         selectTimePicker.setValue(UIColor.white, forKeyPath: "textColor")
         selectTimePicker.backgroundColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 1)
         
-        setButtonTitleTime(forKey: forKeyStruct.morningTime, button: morningButton)
-        setButtonTitleTime(forKey: forKeyStruct.afternoonTime, button: afternoonButton)
-        setButtonTitleTime(forKey: forKeyStruct.eveningTime, button: eveningButton)
+        setButtonTitleTime(forKey: Define.forKeyStruct.morningTime, button: morningButton)
+        setButtonTitleTime(forKey: Define.forKeyStruct.afternoonTime, button: afternoonButton)
+        setButtonTitleTime(forKey: Define.forKeyStruct.eveningTime, button: eveningButton)
         
-        setSwitchOnOff(forKey: forKeyStruct.morningSwitchIsOn, switchControl: morningSwitch, button: morningButton)
-        setSwitchOnOff(forKey: forKeyStruct.afternoonSwitchIsOn, switchControl: afternoonSwitch, button: afternoonButton)
-        setSwitchOnOff(forKey: forKeyStruct.eveningSwitchIsOn, switchControl: eveningSwitch, button: eveningButton)
+        setSwitchOnOff(forKey: Define.forKeyStruct.morningSwitchIsOn, switchControl: morningSwitch, button: morningButton)
+        setSwitchOnOff(forKey: Define.forKeyStruct.afternoonSwitchIsOn, switchControl: afternoonSwitch, button: afternoonButton)
+        setSwitchOnOff(forKey: Define.forKeyStruct.eveningSwitchIsOn, switchControl: eveningSwitch, button: eveningButton)
     }
     
     //설정한 시간으로 버튼의 타이틀 변경
     func setButtonTitleTime(forKey:String, button:UIButton) {
         let formatter = DateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale!
-        formatter.dateFormat = "a hh:mm"
+        formatter.locale = NSLocale(localeIdentifier: Define.dateFormat.localeIdentifier) as Locale!
+        formatter.dateFormat = Define.dateFormat.time
         
         let time:Date? = UserDefaults.standard.object(forKey: forKey) as? Date
         
@@ -105,24 +95,24 @@ class SettingViewController: UIViewController{
     //시간 설정 창에서 선택된 시간을 버튼에 표시 및 값 저장
     @IBAction func selectTimeAction(_ sender: UIDatePicker) {
         let formatter = DateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "ko_KR") as Locale!
-        formatter.dateFormat = "a hh:mm"
+        formatter.locale = NSLocale(localeIdentifier: Define.dateFormat.localeIdentifier) as Locale!
+        formatter.dateFormat = Define.dateFormat.time
 
         let dateString = formatter.string(from: sender.date)
 
         switch buttonTag {
         case 1:
             morningButton.setTitle(dateString, for: UIControlState.normal)
-            UserDefaults.standard.set(sender.date, forKey: forKeyStruct.morningTime)
-            notificationSetting(date: sender.date, title: "아침묵상", body: "말씀과 함께 상쾌한 하루!", identifier: "morningNoti")
+            UserDefaults.standard.set(sender.date, forKey: Define.forKeyStruct.morningTime)
+            notificationSetting(date: sender.date, title: Define.notificationStruct.morningTitle, body: Define.notificationStruct.morningBody, identifier: Define.notificationStruct.morningNotiId)
         case 2:
             afternoonButton.setTitle(dateString, for: UIControlState.normal)
-            UserDefaults.standard.set(sender.date, forKey: forKeyStruct.afternoonTime)
-            notificationSetting(date: sender.date, title: "점심묵상", body: "졸린 시간 말씀으로 이겨내요!", identifier: "afternoonNoti")
+            UserDefaults.standard.set(sender.date, forKey: Define.forKeyStruct.afternoonTime)
+            notificationSetting(date: sender.date, title: Define.notificationStruct.afternoonTitle, body: Define.notificationStruct.afternoonBody, identifier: Define.notificationStruct.afternoonNotiId)
         default:
             eveningButton.setTitle(dateString, for: UIControlState.normal)
-            UserDefaults.standard.set(sender.date, forKey: forKeyStruct.eveningTime)
-            notificationSetting(date: sender.date, title: "저녁묵상", body: "하루의 마무리를 묵상과 함꼐", identifier: "eveningNoti")
+            UserDefaults.standard.set(sender.date, forKey: Define.forKeyStruct.eveningTime)
+            notificationSetting(date: sender.date, title: Define.notificationStruct.eveningTitle, body: Define.notificationStruct.eveningBody, identifier: Define.notificationStruct.eveningNotiId)
         }
     }
     
@@ -155,13 +145,13 @@ class SettingViewController: UIViewController{
         
         if sender.tag == 10 {
             button = morningButton
-            UserDefaults.standard.set(sender.isOn, forKey: forKeyStruct.morningSwitchIsOn)
+            UserDefaults.standard.set(sender.isOn, forKey: Define.forKeyStruct.morningSwitchIsOn)
         } else if sender.tag == 11 {
             button = afternoonButton
-            UserDefaults.standard.set(sender.isOn, forKey: forKeyStruct.afternoonSwitchIsOn)
+            UserDefaults.standard.set(sender.isOn, forKey: Define.forKeyStruct.afternoonSwitchIsOn)
         } else {
             button = eveningButton
-            UserDefaults.standard.set(sender.isOn, forKey: forKeyStruct.eveningSwitchIsOn)
+            UserDefaults.standard.set(sender.isOn, forKey: Define.forKeyStruct.eveningSwitchIsOn)
         }
         
         switchOnOffAction(switchControl: sender, button: button)
@@ -176,19 +166,19 @@ class SettingViewController: UIViewController{
             
             switch switchControl.tag {
             case 10 :
-                let time:Date? = UserDefaults.standard.object(forKey: forKeyStruct.morningTime) as? Date
+                let time:Date? = UserDefaults.standard.object(forKey: Define.forKeyStruct.morningTime) as? Date
                 if time != nil {
-                    notificationSetting(date: time!, title: "아침묵상", body: "말씀과 함께 상쾌한 하루!", identifier: "morningNoti")
+                    notificationSetting(date: time!, title: Define.notificationStruct.morningTitle, body: Define.notificationStruct.morningBody, identifier: Define.notificationStruct.morningNotiId)
                 }
             case 11:
-                let time:Date? = UserDefaults.standard.object(forKey: forKeyStruct.afternoonTime) as? Date
+                let time:Date? = UserDefaults.standard.object(forKey: Define.forKeyStruct.afternoonTime) as? Date
                 if time != nil {
-                    notificationSetting(date: time!, title: "점심묵상", body: "졸린 시간 말씀으로 이겨내요!", identifier: "afternoonNoti")
+                    notificationSetting(date: time!, title: Define.notificationStruct.afternoonTitle, body: Define.notificationStruct.afternoonBody, identifier: Define.notificationStruct.afternoonNotiId)
                 }
             default:
-                let time:Date? = UserDefaults.standard.object(forKey: forKeyStruct.eveningTime) as? Date
+                let time:Date? = UserDefaults.standard.object(forKey: Define.forKeyStruct.eveningTime) as? Date
                 if time != nil {
-                    notificationSetting(date: time!, title: "저녁묵상", body: "하루의 마무리를 묵상과 함꼐", identifier: "eveningNoti")
+                    notificationSetting(date: time!, title: Define.notificationStruct.eveningTitle, body: Define.notificationStruct.eveningBody, identifier: Define.notificationStruct.eveningNotiId)
                 }
             }
         } else {
@@ -197,11 +187,11 @@ class SettingViewController: UIViewController{
             
             switch switchControl.tag {
             case 10 :
-                notificationRemove(identifier: "morningNoti")
+                notificationRemove(identifier: Define.notificationStruct.morningNotiId)
             case 11:
-                notificationRemove(identifier: "afternoonNoti")
+                notificationRemove(identifier: Define.notificationStruct.afternoonNotiId)
             default:
-                notificationRemove(identifier: "eveningNoti")
+                notificationRemove(identifier: Define.notificationStruct.eveningNotiId)
             }
         }
     }

@@ -17,8 +17,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        detailTableView.register(UINib(nibName:"DetailTableViewCell", bundle:nil), forCellReuseIdentifier: "DetailCell")
-        detailTableView.register(UINib(nibName:"BibleVersesTableViewCell", bundle:nil), forCellReuseIdentifier: "BibleVersesCell")
+        detailTableView.register(UINib(nibName: Define.customCellStruct.detailCellNib, bundle:nil), forCellReuseIdentifier: Define.customCellStruct.detailCellId)
+        detailTableView.register(UINib(nibName: Define.customCellStruct.bibleVersesCellNib, bundle:nil), forCellReuseIdentifier: Define.customCellStruct.bibleVersesCellId)
         
         detailTableView.rowHeight = UITableViewAutomaticDimension
         
@@ -38,35 +38,35 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         let defaultCell:UITableViewCell
         
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BibleVersesCell", for: indexPath) as! BibleVersesTableViewCell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Define.customCellStruct.bibleVersesCellId, for: indexPath) as! BibleVersesTableViewCell
             cell.contentsLabel.text = "1. gkgkgkgkggk\n2.fjfjgjjsjsjgs\n3.dskfdfjlfjdsfjkfsl"
             if bibleVersesCellHeight == false {
-                cell.titleLabel.text = "오늘의 말씀 ▼"
+                cell.titleLabel.text = Define.customCellStruct.bibleVersesCellTitle1
                 cell.contentsLabel.numberOfLines = 1
             } else {
-                cell.titleLabel.text = "오늘의 말씀 ▲"
+                cell.titleLabel.text = Define.customCellStruct.bibleVersesCellTitle2
                 cell.contentsLabel.numberOfLines = 0
             }
             defaultCell = cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailTableViewCell
-            cell.imgView?.image = UIImage(named: "Morning.png")
-            cell.titleLabel.text = "아침묵상"
-            cell.contentsLabel.text = "aaaaaaaaaaa"
-            defaultCell = cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailTableViewCell
-            cell.imgView?.image = UIImage(named: "Afternoon.png")
-            cell.titleLabel.text = "점심묵상"
-            cell.contentsLabel.text = "long long long long long long long long long long long long long long long long long long long long"
-            defaultCell = cell
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailTableViewCell
-            cell.imgView?.image = UIImage(named: "Evening.png")
-            cell.titleLabel.text = "저녁묵상"
-            cell.contentsLabel.text = "long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long"
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Define.customCellStruct.detailCellId, for: indexPath) as! DetailTableViewCell
+            
+            switch indexPath.row {
+            case 1 :
+                cell.imgView?.image = UIImage(named: Define.customCellStruct.morningImg)
+                cell.titleLabel.text = Define.customCellStruct.morningTitle
+                cell.contentsLabel.text = "aaaaaaaaaaa"
+            case 2 :
+                cell.imgView?.image = UIImage(named: Define.customCellStruct.afternoonImg)
+                cell.titleLabel.text = Define.customCellStruct.afternoonTitle
+                cell.contentsLabel.text = "long long long long long long long long long long long long long long long long long long long long"
+            default :
+                cell.imgView?.image = UIImage(named: Define.customCellStruct.eveningImg)
+                cell.titleLabel.text = Define.customCellStruct.eveningTitle
+                cell.contentsLabel.text = "long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long"
+            }
+            
             defaultCell = cell
         }
         

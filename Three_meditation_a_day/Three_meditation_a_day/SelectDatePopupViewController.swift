@@ -19,7 +19,7 @@ class SelectDatePopupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let selectDate:Date? = UserDefaults.standard.object(forKey: "selectDate") as? Date
+        let selectDate:Date? = UserDefaults.standard.object(forKey: Define.forKeyStruct.selectDate) as? Date
         
         if selectDate != nil {
             selectDatePicker.date = selectDate!
@@ -42,7 +42,7 @@ class SelectDatePopupViewController: UIViewController {
 
         delegate?.selectDateSend(selectDate:selectDate)
         
-        UserDefaults.standard.set(selectDate, forKey: "selectDate")
+        UserDefaults.standard.set(selectDate, forKey: Define.forKeyStruct.selectDate)
         
         self.dismiss(animated: false, completion: nil)
     }

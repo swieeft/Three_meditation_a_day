@@ -21,13 +21,23 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default.png" translatesAutoresizingMaskIntoConstraints="NO" id="RAZ-O6-gMX">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2018년 ParkGilNam. All rights reserved." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52E-78-vLT">
+                                <rect key="frame" x="108" y="635" width="251" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="52E-78-vLT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="108" id="31e-uc-fvx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="52E-78-vLT" secondAttribute="bottom" constant="20" id="8H9-bH-Oi6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="52E-78-vLT" secondAttribute="trailing" constant="16" id="EIo-jm-9QY"/>
                             <constraint firstItem="RAZ-O6-gMX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bMZ-4B-FEa"/>
                             <constraint firstItem="RAZ-O6-gMX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="eT4-P2-YwI"/>
                             <constraint firstItem="RAZ-O6-gMX" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="wal-Lk-fIC"/>
                             <constraint firstItem="RAZ-O6-gMX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="x2y-zf-xlC"/>
+                            <constraint firstItem="52E-78-vLT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="615" id="y6s-Wz-RPL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
