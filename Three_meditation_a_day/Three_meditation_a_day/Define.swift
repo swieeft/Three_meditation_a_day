@@ -52,6 +52,7 @@ class Define: NSObject {
         
         static let bibleVersesCellTitle1 = "오늘의 말씀 ▼"
         static let bibleVersesCellTitle2 = "오늘의 말씀 ▲"
+        static let bibleVersesCellTitle3 = "오늘의 말씀"
         
         static let morningImg = "Morning.png"
         static let afternoonImg = "Afternoon.png"
