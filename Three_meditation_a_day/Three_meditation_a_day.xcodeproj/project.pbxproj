@@ -22,6 +22,11 @@
 		B51E1CA62009CC63002B7400 /* Icon-App-83.5x83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1C982009CC63002B7400 /* Icon-App-83.5x83.5@2x.png */; };
 		B51E1CA72009CC63002B7400 /* Icon-App-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1C992009CC63002B7400 /* Icon-App-60x60@2x.png */; };
 		B51E1CA82009CC63002B7400 /* Icon-App-40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1C9A2009CC63002B7400 /* Icon-App-40x40@2x.png */; };
+		B51E1CB22009EFAF002B7400 /* MorningAlarm.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1CAF2009EFAE002B7400 /* MorningAlarm.png */; };
+		B51E1CB32009EFAF002B7400 /* AfternoonAlarm.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1CB02009EFAE002B7400 /* AfternoonAlarm.png */; };
+		B51E1CB42009EFAF002B7400 /* EveningAlarm.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1CB12009EFAF002B7400 /* EveningAlarm.png */; };
+		B51E1CB6200D9621002B7400 /* SelectTimePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E1CB5200D9621002B7400 /* SelectTimePopupViewController.swift */; };
+		B51E1CB8200DA6A2002B7400 /* AlarmCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E1CB7200DA6A2002B7400 /* AlarmCellTableViewCell.swift */; };
 		B541EC8C20086BCE00CFA685 /* Afternoon.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC8920086BCE00CFA685 /* Afternoon.png */; };
 		B541EC8D20086BCE00CFA685 /* Evening.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC8A20086BCE00CFA685 /* Evening.png */; };
 		B541EC8E20086BCE00CFA685 /* Morning.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC8B20086BCE00CFA685 /* Morning.png */; };
@@ -62,6 +67,11 @@
 		B51E1C982009CC63002B7400 /* Icon-App-83.5x83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-83.5x83.5@2x.png"; sourceTree = "<group>"; };
 		B51E1C992009CC63002B7400 /* Icon-App-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@2x.png"; sourceTree = "<group>"; };
 		B51E1C9A2009CC63002B7400 /* Icon-App-40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@2x.png"; sourceTree = "<group>"; };
+		B51E1CAF2009EFAE002B7400 /* MorningAlarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MorningAlarm.png; sourceTree = "<group>"; };
+		B51E1CB02009EFAE002B7400 /* AfternoonAlarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AfternoonAlarm.png; sourceTree = "<group>"; };
+		B51E1CB12009EFAF002B7400 /* EveningAlarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EveningAlarm.png; sourceTree = "<group>"; };
+		B51E1CB5200D9621002B7400 /* SelectTimePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimePopupViewController.swift; sourceTree = "<group>"; };
+		B51E1CB7200DA6A2002B7400 /* AlarmCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCellTableViewCell.swift; sourceTree = "<group>"; };
 		B541EC8920086BCE00CFA685 /* Afternoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Afternoon.png; sourceTree = "<group>"; };
 		B541EC8A20086BCE00CFA685 /* Evening.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Evening.png; sourceTree = "<group>"; };
 		B541EC8B20086BCE00CFA685 /* Morning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Morning.png; sourceTree = "<group>"; };
@@ -134,6 +144,8 @@
 				B541EC962008763500CFA685 /* BibleVersesTableViewCell.xib */,
 				B541EC9B2008923500CFA685 /* WriteMeditationViewController.swift */,
 				B541EC9F2008B15500CFA685 /* Define.swift */,
+				B51E1CB5200D9621002B7400 /* SelectTimePopupViewController.swift */,
+				B51E1CB7200DA6A2002B7400 /* AlarmCellTableViewCell.swift */,
 			);
 			path = Three_meditation_a_day;
 			sourceTree = "<group>";
@@ -141,6 +153,9 @@
 		B5F56AC6200468DD00CCED3E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				B51E1CB02009EFAE002B7400 /* AfternoonAlarm.png */,
+				B51E1CB12009EFAF002B7400 /* EveningAlarm.png */,
+				B51E1CAF2009EFAE002B7400 /* MorningAlarm.png */,
 				B51E1C952009CC63002B7400 /* Icon-App-20x20@1x.png */,
 				B51E1C962009CC63002B7400 /* Icon-App-20x20@2x.png */,
 				B51E1C8D2009CC62002B7400 /* Icon-App-20x20@3x.png */,
@@ -228,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B51E1CA52009CC63002B7400 /* Icon-App-40x40@1x.png in Resources */,
+				B51E1CB42009EFAF002B7400 /* EveningAlarm.png in Resources */,
 				B541EC8E20086BCE00CFA685 /* Morning.png in Resources */,
 				B5F56ABF2000FD8A00CCED3E /* LaunchScreen.storyboard in Resources */,
 				B51E1CA42009CC63002B7400 /* Icon-App-20x20@2x.png in Resources */,
@@ -237,6 +253,7 @@
 				B51E1C9C2009CC63002B7400 /* Icon-App-29x29@1x.png in Resources */,
 				B51E1CA62009CC63002B7400 /* Icon-App-83.5x83.5@2x.png in Resources */,
 				B51E1CA22009CC63002B7400 /* Icon-App-60x60@3x.png in Resources */,
+				B51E1CB22009EFAF002B7400 /* MorningAlarm.png in Resources */,
 				B51E1CA82009CC63002B7400 /* Icon-App-40x40@2x.png in Resources */,
 				B541EC982008763500CFA685 /* BibleVersesTableViewCell.xib in Resources */,
 				B5F56ACC200468F200CCED3E /* Default@3x.png in Resources */,
@@ -254,6 +271,7 @@
 				B51E1CA12009CC63002B7400 /* Icon-App-76x76@2x.png in Resources */,
 				B541EC9A20087D6500CFA685 /* Bible.png in Resources */,
 				B5F56AD42004781500CCED3E /* Setting.png in Resources */,
+				B51E1CB32009EFAF002B7400 /* AfternoonAlarm.png in Resources */,
 				B5F56ACA200468F200CCED3E /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,11 +285,13 @@
 			files = (
 				B541EC9320086FB600CFA685 /* DetailTableViewCell.swift in Sources */,
 				B541ECA02008B15500CFA685 /* Define.swift in Sources */,
+				B51E1CB6200D9621002B7400 /* SelectTimePopupViewController.swift in Sources */,
 				B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */,
 				B5F56AB52000FD8A00CCED3E /* AppDelegate.swift in Sources */,
 				B541EC9020086E1500CFA685 /* DetailViewController.swift in Sources */,
 				B5F56AD620047B1D00CCED3E /* SettingViewController.swift in Sources */,
 				B541EC972008763500CFA685 /* BibleVersesTableViewCell.swift in Sources */,
+				B51E1CB8200DA6A2002B7400 /* AlarmCellTableViewCell.swift in Sources */,
 				B541EC9C2008923500CFA685 /* WriteMeditationViewController.swift in Sources */,
 				B5F56ADB200741CA00CCED3E /* SelectDatePopupViewController.swift in Sources */,
 			);

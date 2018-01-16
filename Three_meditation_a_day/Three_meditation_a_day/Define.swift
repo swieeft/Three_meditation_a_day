@@ -61,5 +61,13 @@ class Define: NSObject {
         static let morningTitle = "아침묵상"
         static let afternoonTitle = "점심묵상"
         static let eveningTitle = "저녁묵상"
+        
+        static let morningAlarmImg = "MorningAlarm.png"
+        static let afternoonAlarmImg = "AfternoonAlarm.png"
+        static let eveningAlarmImg = "EveningAlarm.png"
+        
+        static let morningAlarmTitle = "아침묵상 알림"
+        static let afternoonAlarmTitle = "점심묵상 알림"
+        static let eveningAlarmTitle = "저녁묵상 알림"
     }
 }

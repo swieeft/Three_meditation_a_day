@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -816,167 +817,78 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWm-12-WJv">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Mwx-o7-o1b">
-                                        <rect key="frame" x="0.0" y="455" width="375" height="148"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="148" id="CWW-2e-ZNo"/>
-                                        </constraints>
-                                        <date key="date" timeIntervalSinceReferenceDate="537166419.13571">
-                                            <!--2018-01-09 04:53:39 +0000-->
-                                        </date>
-                                        <locale key="locale" localeIdentifier="ko_KR"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O5Y-DE-uMh">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AlarmCell" rowHeight="126" id="PGL-lh-SH6" customClass="AlarmCellTableViewCell" customModule="Three_meditation_a_day" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="126"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PGL-lh-SH6" id="UIz-7V-ML1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="125.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00묵상" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeK-GP-ORI">
+                                                            <rect key="frame" x="73" y="11" width="50.5" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AfternoonAlarm.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vja-d1-n7F">
+                                                            <rect key="frame" x="15" y="11" width="50" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="50" id="0M4-sw-9p4"/>
+                                                                <constraint firstAttribute="height" constant="50" id="wnf-Jw-cXc"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42G-NQ-2pq">
+                                                            <rect key="frame" x="277" y="47" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="switchOnOffAction:" destination="PGL-lh-SH6" eventType="valueChanged" id="qsG-3G-9QZ"/>
+                                                            </connections>
+                                                        </switch>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오전 00시 00분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUe-kE-klY">
+                                                            <rect key="frame" x="73" y="44" width="196" height="36"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="RUe-kE-klY" firstAttribute="leading" secondItem="Vja-d1-n7F" secondAttribute="trailing" constant="8" id="5iU-cN-Yh0"/>
+                                                        <constraint firstItem="SeK-GP-ORI" firstAttribute="top" secondItem="UIz-7V-ML1" secondAttribute="topMargin" id="9qc-YL-bsW"/>
+                                                        <constraint firstItem="42G-NQ-2pq" firstAttribute="leading" secondItem="RUe-kE-klY" secondAttribute="trailing" constant="8" id="DgB-xv-Zob"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Vja-d1-n7F" secondAttribute="bottom" constant="64.5" id="ED6-5a-8yX"/>
+                                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="SeK-GP-ORI" secondAttribute="trailing" constant="15" id="Fm5-h6-atY"/>
+                                                        <constraint firstItem="RUe-kE-klY" firstAttribute="top" secondItem="SeK-GP-ORI" secondAttribute="bottom" constant="12" id="TCF-XW-Kpg"/>
+                                                        <constraint firstItem="Vja-d1-n7F" firstAttribute="leading" secondItem="UIz-7V-ML1" secondAttribute="leading" constant="15" id="TJq-Gn-bqY"/>
+                                                        <constraint firstItem="42G-NQ-2pq" firstAttribute="top" secondItem="UIz-7V-ML1" secondAttribute="topMargin" constant="36" id="XXk-W8-Ah5"/>
+                                                        <constraint firstItem="SeK-GP-ORI" firstAttribute="leading" secondItem="Vja-d1-n7F" secondAttribute="trailing" constant="8" id="byf-Cs-dDa"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="42G-NQ-2pq" secondAttribute="bottom" constant="37" id="msT-FP-TbD"/>
+                                                        <constraint firstItem="Vja-d1-n7F" firstAttribute="top" secondItem="UIz-7V-ML1" secondAttribute="top" constant="11" id="r0p-8p-IjZ"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="42G-NQ-2pq" secondAttribute="trailing" constant="8" id="wVC-9L-GFD"/>
+                                                        <constraint firstAttribute="bottom" secondItem="RUe-kE-klY" secondAttribute="bottom" constant="45.5" id="wvx-pg-xSz"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="alarmLabel" destination="RUe-kE-klY" id="LWw-fg-RkN"/>
+                                                    <outlet property="imgView" destination="Vja-d1-n7F" id="jqT-ao-gcX"/>
+                                                    <outlet property="onoffSwitch" destination="42G-NQ-2pq" id="kAA-YT-LCU"/>
+                                                    <outlet property="titleLabel" destination="SeK-GP-ORI" id="Ldc-Lf-ay8"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
                                         <connections>
-                                            <action selector="selectTimeAction:" destination="Clb-ll-UXA" eventType="valueChanged" id="zWO-5K-20P"/>
+                                            <outlet property="dataSource" destination="Clb-ll-UXA" id="r8J-hO-rnu"/>
+                                            <outlet property="delegate" destination="Clb-ll-UXA" id="j99-Gv-moy"/>
                                         </connections>
-                                    </datePicker>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hv-9q-DFt">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="455"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4X-SV-20j">
-                                                <rect key="frame" x="0.0" y="304.5" width="375" height="150.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="저녁알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9M-Y9-YEP">
-                                                        <rect key="frame" x="8" y="8" width="59" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <switch opaque="NO" tag="12" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1eF-Q9-g8Z">
-                                                        <rect key="frame" x="306" y="59" width="51" height="31"/>
-                                                        <connections>
-                                                            <action selector="switchAction:" destination="Clb-ll-UXA" eventType="valueChanged" id="yRi-lc-URm"/>
-                                                        </connections>
-                                                    </switch>
-                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRt-ni-vnu">
-                                                        <rect key="frame" x="8" y="51" width="288" height="48"/>
-                                                        <color key="backgroundColor" red="0.57191377880000005" green="0.18910209829999999" blue="0.16870631280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <state key="normal" title="시간설정">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="showTimePickerAction:" destination="Clb-ll-UXA" eventType="touchUpInside" id="5rF-hd-vsg"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="bRt-ni-vnu" firstAttribute="leading" secondItem="a4X-SV-20j" secondAttribute="leading" constant="8" id="0rJ-Ls-daa"/>
-                                                    <constraint firstAttribute="bottom" secondItem="1eF-Q9-g8Z" secondAttribute="bottom" constant="60.5" id="58V-IB-meI"/>
-                                                    <constraint firstAttribute="bottom" secondItem="bRt-ni-vnu" secondAttribute="bottom" constant="51.5" id="EaF-NC-bwk"/>
-                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f9M-Y9-YEP" secondAttribute="trailing" id="Kxw-3i-jU7"/>
-                                                    <constraint firstItem="f9M-Y9-YEP" firstAttribute="leading" secondItem="a4X-SV-20j" secondAttribute="leading" constant="8" id="MzA-CI-Z7m"/>
-                                                    <constraint firstItem="1eF-Q9-g8Z" firstAttribute="top" secondItem="a4X-SV-20j" secondAttribute="top" constant="59" id="OKc-Xe-hs0"/>
-                                                    <constraint firstAttribute="trailing" secondItem="1eF-Q9-g8Z" secondAttribute="trailing" constant="20" id="QPO-Xf-PGo"/>
-                                                    <constraint firstItem="1eF-Q9-g8Z" firstAttribute="leading" secondItem="bRt-ni-vnu" secondAttribute="trailing" constant="10" id="cic-gC-51S"/>
-                                                    <constraint firstItem="bRt-ni-vnu" firstAttribute="top" secondItem="f9M-Y9-YEP" secondAttribute="bottom" constant="22" id="fe4-oK-DT3"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-La-cig">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="150.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아침알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIj-rA-yGY">
-                                                        <rect key="frame" x="8" y="8" width="59" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <switch opaque="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A1I-Jq-8uz">
-                                                        <rect key="frame" x="306" y="60" width="51" height="31"/>
-                                                        <connections>
-                                                            <action selector="switchAction:" destination="Clb-ll-UXA" eventType="valueChanged" id="k2h-5J-0X9"/>
-                                                        </connections>
-                                                    </switch>
-                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qY5-Qu-FoK">
-                                                        <rect key="frame" x="8" y="51" width="288" height="48"/>
-                                                        <color key="backgroundColor" red="0.57191377880000005" green="0.18910209829999999" blue="0.16870631280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <state key="normal" title="시간설정">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="showTimePickerAction:" destination="Clb-ll-UXA" eventType="touchUpInside" id="5Mh-Hx-QIv"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="A1I-Jq-8uz" firstAttribute="leading" secondItem="qY5-Qu-FoK" secondAttribute="trailing" constant="10" id="0IJ-9n-HKh"/>
-                                                    <constraint firstItem="qY5-Qu-FoK" firstAttribute="top" secondItem="MIj-rA-yGY" secondAttribute="bottom" constant="22" id="1cL-Oy-NYK"/>
-                                                    <constraint firstAttribute="trailing" secondItem="A1I-Jq-8uz" secondAttribute="trailing" constant="20" id="3U0-B6-UaO"/>
-                                                    <constraint firstAttribute="bottom" secondItem="qY5-Qu-FoK" secondAttribute="bottom" constant="51.5" id="ExH-eH-ykw"/>
-                                                    <constraint firstItem="qY5-Qu-FoK" firstAttribute="leading" secondItem="5e1-La-cig" secondAttribute="leading" constant="8" id="Gxe-rb-LzP"/>
-                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MIj-rA-yGY" secondAttribute="trailing" id="Hyy-tA-rbq"/>
-                                                    <constraint firstItem="MIj-rA-yGY" firstAttribute="leading" secondItem="5e1-La-cig" secondAttribute="leading" constant="8" id="Q7c-rn-uHi"/>
-                                                    <constraint firstItem="A1I-Jq-8uz" firstAttribute="top" secondItem="5e1-La-cig" secondAttribute="top" constant="60" id="p9G-9s-QoQ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="A1I-Jq-8uz" secondAttribute="bottom" constant="59.5" id="zb8-ZC-S2n"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yX1-xA-fN0">
-                                                <rect key="frame" x="0.0" y="152.5" width="375" height="150"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="점심알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlC-jW-z4v">
-                                                        <rect key="frame" x="8" y="8" width="59" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <switch opaque="NO" tag="11" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7av-9h-Ssa">
-                                                        <rect key="frame" x="306" y="59" width="51" height="31"/>
-                                                        <connections>
-                                                            <action selector="switchAction:" destination="Clb-ll-UXA" eventType="valueChanged" id="vwl-0g-pf0"/>
-                                                        </connections>
-                                                    </switch>
-                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbu-wu-qCJ">
-                                                        <rect key="frame" x="8" y="51" width="288" height="48"/>
-                                                        <color key="backgroundColor" red="0.57191377880000005" green="0.18910209829999999" blue="0.16870631280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <state key="normal" title="시간설정">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="showTimePickerAction:" destination="Clb-ll-UXA" eventType="touchUpInside" id="gdO-NZ-0cD"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="lbu-wu-qCJ" firstAttribute="leading" secondItem="yX1-xA-fN0" secondAttribute="leading" constant="8" id="77Y-9s-9pC"/>
-                                                    <constraint firstAttribute="bottom" secondItem="7av-9h-Ssa" secondAttribute="bottom" constant="60" id="Cud-q6-c3s"/>
-                                                    <constraint firstItem="7av-9h-Ssa" firstAttribute="leading" secondItem="lbu-wu-qCJ" secondAttribute="trailing" constant="10" id="H76-UQ-rJF"/>
-                                                    <constraint firstItem="lbu-wu-qCJ" firstAttribute="top" secondItem="qlC-jW-z4v" secondAttribute="bottom" constant="22" id="LSl-7S-TYq"/>
-                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qlC-jW-z4v" secondAttribute="trailing" id="Q92-Mc-3qt"/>
-                                                    <constraint firstAttribute="trailing" secondItem="7av-9h-Ssa" secondAttribute="trailing" constant="20" id="TzE-oC-nyc"/>
-                                                    <constraint firstItem="qlC-jW-z4v" firstAttribute="leading" secondItem="yX1-xA-fN0" secondAttribute="leading" constant="8" id="kHw-Yo-dYp"/>
-                                                    <constraint firstItem="7av-9h-Ssa" firstAttribute="top" secondItem="yX1-xA-fN0" secondAttribute="top" constant="59" id="pLh-SG-jXV"/>
-                                                    <constraint firstAttribute="bottom" secondItem="lbu-wu-qCJ" secondAttribute="bottom" constant="51" id="yTP-ty-nzb"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.57191377878189087" green="0.18910209834575653" blue="0.16870631277561188" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="5e1-La-cig" secondAttribute="trailing" id="7Cf-wD-AID"/>
-                                            <constraint firstItem="a4X-SV-20j" firstAttribute="height" secondItem="5e1-La-cig" secondAttribute="height" id="ExD-cT-pXP"/>
-                                            <constraint firstItem="yX1-xA-fN0" firstAttribute="leading" secondItem="1hv-9q-DFt" secondAttribute="leading" id="L70-5b-I9L"/>
-                                            <constraint firstAttribute="trailing" secondItem="yX1-xA-fN0" secondAttribute="trailing" id="O37-LR-hP6"/>
-                                            <constraint firstItem="a4X-SV-20j" firstAttribute="top" secondItem="yX1-xA-fN0" secondAttribute="bottom" constant="2" id="Ys8-6O-xkS"/>
-                                            <constraint firstItem="a4X-SV-20j" firstAttribute="leading" secondItem="1hv-9q-DFt" secondAttribute="leading" id="bff-b3-yf4"/>
-                                            <constraint firstAttribute="trailing" secondItem="a4X-SV-20j" secondAttribute="trailing" id="d5F-M0-WMs"/>
-                                            <constraint firstItem="5e1-La-cig" firstAttribute="leading" secondItem="1hv-9q-DFt" secondAttribute="leading" id="hhH-n5-AGn"/>
-                                            <constraint firstItem="5e1-La-cig" firstAttribute="top" secondItem="1hv-9q-DFt" secondAttribute="top" id="iDQ-Cn-25M"/>
-                                            <constraint firstAttribute="bottom" secondItem="a4X-SV-20j" secondAttribute="bottom" id="lcY-k5-wpU"/>
-                                            <constraint firstItem="a4X-SV-20j" firstAttribute="height" secondItem="yX1-xA-fN0" secondAttribute="height" id="xqF-pZ-jqd"/>
-                                            <constraint firstItem="yX1-xA-fN0" firstAttribute="top" secondItem="5e1-La-cig" secondAttribute="bottom" constant="2" id="zbC-3F-9Gx"/>
-                                        </constraints>
-                                    </view>
+                                    </tableView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="1hv-9q-DFt" firstAttribute="leading" secondItem="xWm-12-WJv" secondAttribute="leading" id="0wr-ti-nL9"/>
-                                    <constraint firstItem="Mwx-o7-o1b" firstAttribute="leading" secondItem="xWm-12-WJv" secondAttribute="leading" id="KDz-ie-SX0"/>
-                                    <constraint firstAttribute="bottom" secondItem="Mwx-o7-o1b" secondAttribute="bottom" id="W4T-YF-0N9"/>
-                                    <constraint firstItem="1hv-9q-DFt" firstAttribute="top" secondItem="xWm-12-WJv" secondAttribute="top" id="XPK-Br-lIt"/>
-                                    <constraint firstAttribute="trailing" secondItem="Mwx-o7-o1b" secondAttribute="trailing" id="fBw-Wt-1bf"/>
-                                    <constraint firstAttribute="trailing" secondItem="1hv-9q-DFt" secondAttribute="trailing" id="g2I-MP-DDW"/>
-                                    <constraint firstItem="Mwx-o7-o1b" firstAttribute="top" secondItem="1hv-9q-DFt" secondAttribute="bottom" id="q0W-iK-Nyc"/>
+                                    <constraint firstItem="O5Y-DE-uMh" firstAttribute="leading" secondItem="xWm-12-WJv" secondAttribute="leading" id="Cds-Sa-5hE"/>
+                                    <constraint firstAttribute="trailing" secondItem="O5Y-DE-uMh" secondAttribute="trailing" id="Dog-8E-BMA"/>
+                                    <constraint firstItem="O5Y-DE-uMh" firstAttribute="top" secondItem="xWm-12-WJv" secondAttribute="top" id="Vs7-Dc-IL7"/>
+                                    <constraint firstAttribute="bottom" secondItem="O5Y-DE-uMh" secondAttribute="bottom" id="mSB-PS-b4j"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -990,18 +902,57 @@
                         <viewLayoutGuide key="safeArea" id="9GB-nj-BP9"/>
                     </view>
                     <connections>
-                        <outlet property="afternoonButton" destination="lbu-wu-qCJ" id="27N-Sl-Hwu"/>
-                        <outlet property="afternoonSwitch" destination="7av-9h-Ssa" id="mga-0V-hAe"/>
-                        <outlet property="eveningButton" destination="bRt-ni-vnu" id="p0V-eq-kBY"/>
-                        <outlet property="eveningSwitch" destination="1eF-Q9-g8Z" id="eZs-Rj-4vk"/>
-                        <outlet property="morningButton" destination="qY5-Qu-FoK" id="iG4-Dn-aFG"/>
-                        <outlet property="morningSwitch" destination="A1I-Jq-8uz" id="CfS-6f-RP2"/>
-                        <outlet property="selectTimePicker" destination="Mwx-o7-o1b" id="bDJ-zl-mK4"/>
+                        <outlet property="settingTableView" destination="O5Y-DE-uMh" id="nD7-4T-K8r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACV-oK-uJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="904.79999999999995" y="133.5832083958021"/>
+        </scene>
+        <!--Select Time Popup View Controller-->
+        <scene sceneID="5TG-k5-UaJ">
+            <objects>
+                <viewController storyboardIdentifier="SelectTimePopup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cYk-hh-Cjh" customClass="SelectTimePopupViewController" customModule="Three_meditation_a_day" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NdM-NZ-pc9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50l-Hn-bFr">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="N2p-Fx-wBh">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="537763891.97889602">
+                                            <!--2018-01-16 02:51:31 +0000-->
+                                        </date>
+                                        <locale key="locale" localeIdentifier="ko_KR"/>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" red="0.57191377880000005" green="0.18910209829999999" blue="0.16870631280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="N2p-Fx-wBh" secondAttribute="trailing" id="84A-on-chP"/>
+                                    <constraint firstItem="N2p-Fx-wBh" firstAttribute="top" secondItem="50l-Hn-bFr" secondAttribute="top" id="iOF-2O-sp6"/>
+                                    <constraint firstItem="N2p-Fx-wBh" firstAttribute="leading" secondItem="50l-Hn-bFr" secondAttribute="leading" id="jGs-2O-dmN"/>
+                                    <constraint firstAttribute="bottom" secondItem="N2p-Fx-wBh" secondAttribute="bottom" constant="400" id="zuw-6M-OPh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="50l-Hn-bFr" firstAttribute="top" secondItem="xAp-4X-6oa" secondAttribute="top" id="VOE-59-bHR"/>
+                            <constraint firstItem="xAp-4X-6oa" firstAttribute="trailing" secondItem="50l-Hn-bFr" secondAttribute="trailing" id="l3S-IN-cB5"/>
+                            <constraint firstItem="xAp-4X-6oa" firstAttribute="bottom" secondItem="50l-Hn-bFr" secondAttribute="bottom" id="ogX-iI-sf0"/>
+                            <constraint firstItem="50l-Hn-bFr" firstAttribute="leading" secondItem="xAp-4X-6oa" secondAttribute="leading" id="zaK-Tf-Ff7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xAp-4X-6oa"/>
+                    </view>
+                    <connections>
+                        <outlet property="selectTimePicker" destination="N2p-Fx-wBh" id="6v3-dF-HbX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fBC-va-pOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1692" y="126"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5Bf-g3-c88">
@@ -1118,6 +1069,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AfternoonAlarm.png" width="100" height="100"/>
         <image name="Setting.png" width="44" height="44"/>
     </resources>
 </document>
