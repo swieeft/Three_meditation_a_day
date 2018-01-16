@@ -27,6 +27,10 @@
 		B51E1CB42009EFAF002B7400 /* EveningAlarm.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1CB12009EFAF002B7400 /* EveningAlarm.png */; };
 		B51E1CB6200D9621002B7400 /* SelectTimePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E1CB5200D9621002B7400 /* SelectTimePopupViewController.swift */; };
 		B51E1CB8200DA6A2002B7400 /* AlarmCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E1CB7200DA6A2002B7400 /* AlarmCellTableViewCell.swift */; };
+		B51E1CBD200DAB1C002B7400 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51E1CBC200DAB1C002B7400 /* KakaoOpenSDK.framework */; };
+		B51E1CC2200DB7A8002B7400 /* ConfigConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E1CC1200DB7A8002B7400 /* ConfigConstants.swift */; };
+		B51E1CC4200DBD95002B7400 /* kakaoLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1CC3200DBD95002B7400 /* kakaoLogin.png */; };
+		B51E1CC6200DBE50002B7400 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E1CC5200DBE50002B7400 /* LoginViewController.swift */; };
 		B541EC8C20086BCE00CFA685 /* Afternoon.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC8920086BCE00CFA685 /* Afternoon.png */; };
 		B541EC8D20086BCE00CFA685 /* Evening.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC8A20086BCE00CFA685 /* Evening.png */; };
 		B541EC8E20086BCE00CFA685 /* Morning.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC8B20086BCE00CFA685 /* Morning.png */; };
@@ -72,6 +76,11 @@
 		B51E1CB12009EFAF002B7400 /* EveningAlarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EveningAlarm.png; sourceTree = "<group>"; };
 		B51E1CB5200D9621002B7400 /* SelectTimePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimePopupViewController.swift; sourceTree = "<group>"; };
 		B51E1CB7200DA6A2002B7400 /* AlarmCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCellTableViewCell.swift; sourceTree = "<group>"; };
+		B51E1CBC200DAB1C002B7400 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		B51E1CBE200DADB2002B7400 /* Briging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Briging-Header.h"; sourceTree = "<group>"; };
+		B51E1CC1200DB7A8002B7400 /* ConfigConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigConstants.swift; sourceTree = "<group>"; };
+		B51E1CC3200DBD95002B7400 /* kakaoLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakaoLogin.png; sourceTree = "<group>"; };
+		B51E1CC5200DBE50002B7400 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B541EC8920086BCE00CFA685 /* Afternoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Afternoon.png; sourceTree = "<group>"; };
 		B541EC8A20086BCE00CFA685 /* Evening.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Evening.png; sourceTree = "<group>"; };
 		B541EC8B20086BCE00CFA685 /* Morning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Morning.png; sourceTree = "<group>"; };
@@ -103,15 +112,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B51E1CBD200DAB1C002B7400 /* KakaoOpenSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B51E1CBB200DAAC9002B7400 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B51E1CBC200DAB1C002B7400 /* KakaoOpenSDK.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		B5F56AA82000FD8A00CCED3E = {
 			isa = PBXGroup;
 			children = (
+				B51E1CBB200DAAC9002B7400 /* Frameworks */,
 				B5F56AB32000FD8A00CCED3E /* Three_meditation_a_day */,
 				B5F56AB22000FD8A00CCED3E /* Products */,
 			);
@@ -146,6 +165,9 @@
 				B541EC9F2008B15500CFA685 /* Define.swift */,
 				B51E1CB5200D9621002B7400 /* SelectTimePopupViewController.swift */,
 				B51E1CB7200DA6A2002B7400 /* AlarmCellTableViewCell.swift */,
+				B51E1CBE200DADB2002B7400 /* Briging-Header.h */,
+				B51E1CC1200DB7A8002B7400 /* ConfigConstants.swift */,
+				B51E1CC5200DBE50002B7400 /* LoginViewController.swift */,
 			);
 			path = Three_meditation_a_day;
 			sourceTree = "<group>";
@@ -153,6 +175,7 @@
 		B5F56AC6200468DD00CCED3E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				B51E1CC3200DBD95002B7400 /* kakaoLogin.png */,
 				B51E1CB02009EFAE002B7400 /* AfternoonAlarm.png */,
 				B51E1CB12009EFAF002B7400 /* EveningAlarm.png */,
 				B51E1CAF2009EFAE002B7400 /* MorningAlarm.png */,
@@ -243,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B51E1CA52009CC63002B7400 /* Icon-App-40x40@1x.png in Resources */,
+				B51E1CC4200DBD95002B7400 /* kakaoLogin.png in Resources */,
 				B51E1CB42009EFAF002B7400 /* EveningAlarm.png in Resources */,
 				B541EC8E20086BCE00CFA685 /* Morning.png in Resources */,
 				B5F56ABF2000FD8A00CCED3E /* LaunchScreen.storyboard in Resources */,
@@ -286,6 +310,7 @@
 				B541EC9320086FB600CFA685 /* DetailTableViewCell.swift in Sources */,
 				B541ECA02008B15500CFA685 /* Define.swift in Sources */,
 				B51E1CB6200D9621002B7400 /* SelectTimePopupViewController.swift in Sources */,
+				B51E1CC2200DB7A8002B7400 /* ConfigConstants.swift in Sources */,
 				B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */,
 				B5F56AB52000FD8A00CCED3E /* AppDelegate.swift in Sources */,
 				B541EC9020086E1500CFA685 /* DetailViewController.swift in Sources */,
@@ -293,6 +318,7 @@
 				B541EC972008763500CFA685 /* BibleVersesTableViewCell.swift in Sources */,
 				B51E1CB8200DA6A2002B7400 /* AlarmCellTableViewCell.swift in Sources */,
 				B541EC9C2008923500CFA685 /* WriteMeditationViewController.swift in Sources */,
+				B51E1CC6200DBE50002B7400 /* LoginViewController.swift in Sources */,
 				B5F56ADB200741CA00CCED3E /* SelectDatePopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,8 +396,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Three_meditation_a_day/Briging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -420,7 +448,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Three_meditation_a_day/Briging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -432,6 +462,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AYUBF3UYBE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Three_meditation_a_day",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = Three_meditation_a_day/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GilNam.Three-meditation-a-day";
@@ -447,6 +482,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AYUBF3UYBE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Three_meditation_a_day",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = Three_meditation_a_day/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GilNam.Three-meditation-a-day";

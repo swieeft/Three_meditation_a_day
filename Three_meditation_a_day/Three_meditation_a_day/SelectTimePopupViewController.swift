@@ -26,12 +26,6 @@ class SelectTimePopupViewController: UIViewController {
         let cancelButton = UIBarButtonItem(title: "취소", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelAction(sender:)))
         self.navigationItem.leftBarButtonItem = cancelButton
         
-//        let selectDate:Date? = UserDefaults.standard.object(forKey: Define.forKeyStruct.selectDate) as? Date
-//
-//        if selectDate != nil {
-//            selectDatePicker.date = selectDate!
-//        }
-        
         selectTimePicker.backgroundColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 1)
         selectTimePicker.setValue(UIColor.white, forKeyPath: "textColor")
     }
@@ -71,7 +65,6 @@ class SelectTimePopupViewController: UIViewController {
     }
     
     @objc func cancelAction(sender:UIBarButtonItem) {
-        print("cancel")
         self.navigationController!.popViewController(animated: true)
     }
 

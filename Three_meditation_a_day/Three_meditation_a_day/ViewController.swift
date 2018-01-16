@@ -73,6 +73,10 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     var daysButtons:[[UIButton]] = [[UIButton]]()
     var selectDate:Date = Date.init()
     
+    fileprivate var user:KOUser? = nil
+    fileprivate var doneSignup:Bool = false
+    fileprivate var singleTapGesture: UITapGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -89,6 +93,38 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         
         navigationTitleSetting(currentDate: currentDate)
         currentDateSetting(currentDate: currentDate)
+        
+        let logoutButton = UIBarButtonItem(title: "로그아웃", style: UIBarButtonItemStyle.plain, target: self, action: #selector(logoutAction(sender:)))
+        self.navigationItem.leftBarButtonItem = logoutButton
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        requestMe()
+    }
+    
+    fileprivate func requestMe(_ displayResult: Bool = false) {
+        KOSessionTask.meTask { [weak self] (user, error) -> Void in
+            if let error = error as NSError? {
+                print(error)
+                self?.doneSignup = false
+            } else {
+                if displayResult {
+                    print((user as! KOUser).description)
+
+                }
+                
+                self?.doneSignup = true
+                self?.user = (user as! KOUser)
+                
+                print(self?.user?.email ?? "--")
+            }
+        }
+    }
+    
+    @objc func logoutAction(sender:UIBarButtonItem) {
+        KOSession.shared().logoutAndClose { [weak self] (success, error) -> Void in
+            _ = self?.navigationController?.popViewController(animated: true)
+        }
     }
     
     //navigation title 세팅

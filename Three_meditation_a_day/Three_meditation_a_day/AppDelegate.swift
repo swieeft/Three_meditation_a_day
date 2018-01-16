@@ -13,14 +13,37 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var deviceToken: Data? = nil
+    
+    var loginViewController: UIViewController?
+    var mainViewController: UIViewController?
 
-
+    fileprivate func setupEntryController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = storyboard.instantiateViewController(withIdentifier: "navigator") as! UINavigationController
+        let navigationController2 = storyboard.instantiateViewController(withIdentifier: "navigator") as! UINavigationController
+        
+        let viewController = storyboard.instantiateViewController(withIdentifier: "login") as UIViewController
+        navigationController.pushViewController(viewController, animated: true)
+        self.loginViewController = navigationController
+        
+        let viewController2 = storyboard.instantiateViewController(withIdentifier: "Main") as UIViewController
+        navigationController2.pushViewController(viewController2, animated: true)
+        self.mainViewController = navigationController2
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-//        Thread.sleep(forTimeInterval: 3)
+        setupEntryController()
+        
         initNotificationSetupCheck()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.kakaoSessionDidChangeWithNotification), name: NSNotification.Name.KOSessionDidChange, object: nil)
+        
+        reloadRootViewController()
+        
+        KOSession.shared().clientSecret = SessionConstants.clientSecret;
         return true
     }
 
@@ -29,6 +52,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         { (success, error) in
             
         }
+    }
+    
+    fileprivate func reloadRootViewController() {
+        let isOpened = KOSession.shared().isOpen()
+        if !isOpened {
+            let mainViewController = self.mainViewController as! UINavigationController
+            
+            let stack = mainViewController.viewControllers
+            for i in 0 ..< stack.count {
+                print(NSString(format: "[%d]: %@", i, stack[i] as UIViewController))
+            }
+            mainViewController.popToRootViewController(animated: true)
+        }
+        
+        self.window?.rootViewController = isOpened ? self.mainViewController : self.loginViewController
+        self.window?.makeKeyAndVisible()
+    }
+    
+    @objc func kakaoSessionDidChangeWithNotification() {
+        reloadRootViewController()
+    }
+    
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        if KOSession.handleOpen(url) {
+            return true
+        }
+        return false
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        if KOSession.handleOpen(url) {
+            return true
+        }
+        return false
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        if KOSession.handleOpen(url) {
+            return true
+        }
+        return false
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -51,6 +115,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        if let dic = userInfo["aps"] as? NSDictionary {
+            let message: String = dic["alert"] as! String
+            print("message=\(message)")
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        self.deviceToken = deviceToken
+        print("didRegisterForRemoteNotificationsWithDeviceToken=\(deviceToken)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("didFailToRegisterForRemoteNotificationsWithError=\(error.localizedDescription)")
     }
 
 
