@@ -20,11 +20,13 @@ class Define: NSObject {
         static let morningSwitchIsOn = "morningSwitchIsOn"
         static let afternoonSwitchIsOn = "afternoonSwitchIsOn"
         static let eveningSwitchIsOn = "eveningSwitchIsOn"
+        
+        static let kakaoEmail = "kakaoEmail"
     }
     
     struct dateFormat {
         static let localeIdentifier = "ko_KR"
-        static let yearMonth = "YYYY. MM"
+        static let yearMonth = "yyyy. MM"
         static let day = "d"
         static let time = "a hh:mm"
     }

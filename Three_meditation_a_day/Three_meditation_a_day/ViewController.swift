@@ -91,18 +91,16 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         
         UserDefaults.standard.set(currentDate, forKey: Define.forKeyStruct.selectDate)
         
-        navigationTitleSetting(currentDate: currentDate)
-        currentDateSetting(currentDate: currentDate)
+        navigationTitleSetting(date: currentDate)
         
         let logoutButton = UIBarButtonItem(title: "로그아웃", style: UIBarButtonItemStyle.plain, target: self, action: #selector(logoutAction(sender:)))
         self.navigationItem.leftBarButtonItem = logoutButton
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         requestMe()
     }
     
     fileprivate func requestMe(_ displayResult: Bool = false) {
+        
         KOSessionTask.meTask { [weak self] (user, error) -> Void in
             if let error = error as NSError? {
                 print(error)
@@ -110,13 +108,12 @@ class ViewController: UIViewController, SelectDateSendDelegate {
             } else {
                 if displayResult {
                     print((user as! KOUser).description)
-
                 }
-                
+
                 self?.doneSignup = true
                 self?.user = (user as! KOUser)
-                
-                print(self?.user?.email ?? "--")
+
+                UserDefaults.standard.set(self?.user?.email ?? "--", forKey: Define.forKeyStruct.kakaoEmail)
             }
         }
     }
@@ -128,45 +125,123 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     }
     
     //navigation title 세팅
-    func navigationTitleSetting(currentDate:Date) {
+    func navigationTitleSetting(date:Date) {
         let formatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: Define.dateFormat.localeIdentifier) as Locale!
         formatter.dateFormat = Define.dateFormat.yearMonth
         
-        let dateString = formatter.string(from: currentDate)
+        let dateString = formatter.string(from: date)
         
         navigationTitleButton.setTitle("\(dateString)", for: UIControlState.normal)
         
-        selectDate = currentDate
+        selectDate = date
+        
+        setViewCalender()
     }
     
-    //현재 날짜를 강조
-    func currentDateSetting(currentDate:Date) {
+    func setViewCalender() {
+        
         let calendar = Calendar(identifier: .gregorian)
+        let date = calendar.dateComponents([.year, .month], from: self.selectDate)
         
-        let weekDay = calendar.dateComponents([.weekday], from: currentDate)
-        let weekOfMonth = calendar.dateComponents([.weekOfMonth], from: currentDate)
+        if date.year == nil || date.month == nil {
+            return
+        }
         
-        let weekOfMonthButtons = daysButtons[weekOfMonth.weekOfMonth! - 1]
-        let button = weekOfMonthButtons[weekDay.weekday! - 1]
-    
-        button.backgroundColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 1)
-        button.setTitleColor(UIColor.white, for: UIControlState.normal)
-        button.layer.cornerRadius = 10
+        var lastDay:Int = 0
+        
+        switch date.month! {
+        case 1, 3, 5, 7, 8, 10, 12:
+            lastDay = 31
+        case 4, 6, 9, 11:
+            lastDay = 30
+        default:
+            if  date.year! % 400 == 0 || date.year! % 4 == 0 && date.year! % 100 != 0 {
+                lastDay = 29
+            } else {
+                lastDay = 28
+            }
+        }
         
         let formatter = DateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: Define.dateFormat.localeIdentifier) as Locale!
-        formatter.dateFormat = Define.dateFormat.day
+        formatter.dateFormat = "yyyy-MM-dd"
         
-        let dayString = formatter.string(from: currentDate)
+        let firstDay:Int = 1
         
-        button.setTitle(dayString, for: UIControlState.normal)
+        let startDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(firstDay)")
+        let endDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(lastDay)")
+        
+        if startDate != nil && endDate != nil {
+            let startDateWeek = calendar.dateComponents([.weekOfMonth, .weekday], from: startDate!)
+            let endDateWeek = calendar.dateComponents([.weekOfMonth, .weekday], from: endDate!)
+            
+            let currentWeek = calendar.dateComponents([.weekOfMonth, .weekday], from: Date.init())
+            let currentDate = calendar.dateComponents([.year, .month], from: Date.init())
+            
+            let startDateWeekOfMonth = startDateWeek.weekOfMonth! - 1
+            let startDateWeekDay = startDateWeek.weekday! - 1
+            let endDateWeekOfMonth = endDateWeek.weekOfMonth! - 1
+            let endDateWeekDay = endDateWeek.weekday! - 1
+            let currentDateWeekOfMonth = currentWeek.weekOfMonth! - 1
+            let currentDateWeekDay = currentWeek.weekday! - 1
+            
+            var day:Int = 1
+            
+            for weekOfMonth in 0..<daysButtons.count {
+                let weekOfMonthButtons = daysButtons[weekOfMonth]
+                
+                if weekOfMonth < startDateWeekOfMonth || weekOfMonth > endDateWeekOfMonth {
+                    continue
+                }
+                
+                for weekDay in 0..<weekOfMonthButtons.count {
+                    
+                    let button = weekOfMonthButtons[weekDay]
+                    
+                    if currentDateWeekOfMonth == weekOfMonth && currentDateWeekDay == weekDay && currentDate.year == date.year && currentDate.month == date.month{
+                        button.backgroundColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 1)
+                        button.setTitleColor(UIColor.white, for: UIControlState.normal)
+                        button.layer.cornerRadius = 10
+                    } else {
+                        button.backgroundColor = UIColor.white
+                        
+                        switch weekDay {
+                        case 0 :
+                            button.setTitleColor(UIColor.red, for: UIControlState.normal)
+                        case 6:
+                            button.setTitleColor(UIColor.blue, for: UIControlState.normal)
+                        default :
+                            button.setTitleColor(UIColor.black, for: UIControlState.normal)
+                        }
+                        
+                        button.layer.cornerRadius = 0
+                    }
+                    
+                    if weekDay < startDateWeekDay && weekOfMonth == startDateWeekOfMonth {
+                        button.setTitle(nil, for: UIControlState.normal)
+                    } else if weekDay > endDateWeekDay && weekOfMonth == endDateWeekOfMonth {
+                        button.setTitle(nil, for: UIControlState.normal)
+                    } else {
+                        button.setTitle("\(day)", for: UIControlState.normal)
+                        day += 1
+                    }
+                }
+            }
+        }
     }
 
     //날짜를 선택하면 Detail page로 이동
     @IBAction func goDetailPage(_ sender: UIButton) {
         
-        if sender.currentTitle != nil {
+        let calendar = Calendar(identifier: .gregorian)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        let date = calendar.dateComponents([.year, .month], from: self.selectDate)
+        let clickDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(sender.currentTitle!)")
+        let currentDate = Date.init()
+        
+        if sender.currentTitle != nil && clickDate! <= currentDate{
             let storyboard  = UIStoryboard(name: "Main", bundle: nil)
             
             let vc = storyboard.instantiateViewController(withIdentifier: "Detail")
@@ -178,7 +253,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     
     //월 선택 창에서 선택된 데이터로 타이틀 세팅
     func selectDateSend(selectDate: Date) {
-        navigationTitleSetting(currentDate:selectDate)
+        navigationTitleSetting(date:selectDate)
     }
     
     //월 선택창 열기

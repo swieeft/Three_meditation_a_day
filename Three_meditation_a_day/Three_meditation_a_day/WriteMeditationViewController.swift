@@ -55,6 +55,8 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
         cell.contentsLabel.text = "1. gkgkgkgkggk\n2.fjfjgjjsjsjgs\n3.dskfdfjlfjdsfjkfsl\n3.dskfdfjlfjdsfjkfsl\n3.dskfdfjlfjdsfjkfsl\n3.dskfdfjlfjdsfjkfsl"
         cell.contentsLabel.numberOfLines = 0
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
         return cell
     }
     
