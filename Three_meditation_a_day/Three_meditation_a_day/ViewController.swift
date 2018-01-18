@@ -234,21 +234,23 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     //날짜를 선택하면 Detail page로 이동
     @IBAction func goDetailPage(_ sender: UIButton) {
         
-        let calendar = Calendar(identifier: .gregorian)
-        let formatter = DateFormatter()
-        formatter.dateFormat = Define.dateFormat.yearMonthDay
+        if sender.currentTitle != nil {
+            let calendar = Calendar(identifier: .gregorian)
+            let formatter = DateFormatter()
+            formatter.dateFormat = Define.dateFormat.yearMonthDay
         
-        let date = calendar.dateComponents([.year, .month], from: self.selectDate)
-        let clickDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(sender.currentTitle!)")
-        let currentDate = Date.init()
+            let date = calendar.dateComponents([.year, .month], from: self.selectDate)
+            let clickDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(sender.currentTitle!)")
+            let currentDate = Date.init()
         
-        if sender.currentTitle != nil && clickDate! <= currentDate{
-            let storyboard  = UIStoryboard(name: "Main", bundle: nil)
+            if clickDate! <= currentDate{
+                let storyboard  = UIStoryboard(name: "Main", bundle: nil)
             
-            let vc = storyboard.instantiateViewController(withIdentifier: "Detail")
-            vc.navigationItem.title = "\(navigationTitleButton.title(for: UIControlState.normal)!). \(sender.currentTitle!)"
+                let vc = storyboard.instantiateViewController(withIdentifier: "Detail")
+                vc.navigationItem.title = "\(navigationTitleButton.currentTitle!). \(sender.currentTitle!)"
             
-            self.navigationController!.pushViewController(vc, animated: true)
+                self.navigationController!.pushViewController(vc, animated: true)
+            }
         }
     }
     
