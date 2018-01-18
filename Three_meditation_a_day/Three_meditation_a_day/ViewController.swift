@@ -139,6 +139,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         setViewCalender()
     }
     
+    //캘린더 생성
     func setViewCalender() {
         
         let calendar = Calendar(identifier: .gregorian)
@@ -164,7 +165,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         }
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = Define.dateFormat.yearMonthDay
         
         let firstDay:Int = 1
         
@@ -235,7 +236,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         
         let calendar = Calendar(identifier: .gregorian)
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = Define.dateFormat.yearMonthDay
         
         let date = calendar.dateComponents([.year, .month], from: self.selectDate)
         let clickDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(sender.currentTitle!)")

@@ -29,6 +29,7 @@ class Define: NSObject {
         static let yearMonth = "yyyy. MM"
         static let day = "d"
         static let time = "a hh:mm"
+        static let yearMonthDay = "yyyy-MM-dd"
     }
     
     struct notificationStruct {
@@ -36,7 +37,7 @@ class Define: NSObject {
         static let afternoonNotiId = "afternoonNoti"
         static let eveningNotiId = "eveningNoti"
         
-        static let morningTitle = "하루를 꺠우는 아침묵상 한끼"
+        static let morningTitle = "하루를 깨우는 아침묵상 한끼"
         static let afternoonTitle = "졸린 오후의 점심묵상 한잔"
         static let eveningTitle = "하루를 되돌아 보며 저녁묵상 만찬"
         
