@@ -196,6 +196,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                 self.todayBibleVersesData = try JSONDecoder().decode(TodayBibleVersesStruct.self, from: data)
                 DispatchQueue.main.async(execute: {
                     self.detailTableView.reloadData()
+                    self.activityIndicator.stopAnimating()
                 })
             } catch {
                 print("Parsing error \(error)")
