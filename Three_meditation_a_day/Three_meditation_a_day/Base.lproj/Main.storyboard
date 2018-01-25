@@ -1055,6 +1055,9 @@
                                         <date key="date" timeIntervalSinceReferenceDate="537346911.00223804">
                                             <!--2018-01-11 07:01:51 +0000-->
                                         </date>
+                                        <date key="minimumDate" timeIntervalSinceReferenceDate="536425200">
+                                            <!--2017-12-31 15:00:00 +0000-->
+                                        </date>
                                         <locale key="locale" localeIdentifier="ko_KR"/>
                                     </datePicker>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aZO-wk-ifT">

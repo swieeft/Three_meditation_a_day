@@ -237,7 +237,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         if sender.currentTitle != nil {
             let calendar = Calendar(identifier: .gregorian)
             let formatter = DateFormatter()
-            formatter.dateFormat = Define.dateFormat.yearMonthDay
+            formatter.dateFormat = Define.dateFormat.yearMonthDayDat
         
             let date = calendar.dateComponents([.year, .month], from: self.selectDate)
             let clickDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(sender.currentTitle!)")
@@ -246,8 +246,10 @@ class ViewController: UIViewController, SelectDateSendDelegate {
             if clickDate! <= currentDate{
                 let storyboard  = UIStoryboard(name: "Main", bundle: nil)
             
+                let dateString = formatter.string(from: clickDate!)
+                
                 let vc = storyboard.instantiateViewController(withIdentifier: "Detail")
-                vc.navigationItem.title = "\(navigationTitleButton.currentTitle!). \(sender.currentTitle!)"
+                vc.navigationItem.title = dateString
             
                 self.navigationController!.pushViewController(vc, animated: true)
             }

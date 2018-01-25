@@ -30,6 +30,7 @@ class Define: NSObject {
         static let day = "d"
         static let time = "a hh:mm"
         static let yearMonthDay = "yyyy-MM-dd"
+        static let yearMonthDayDat = "yyyy. MM. dd"
     }
     
     struct notificationStruct {
@@ -72,5 +73,32 @@ class Define: NSObject {
         static let morningAlarmTitle = "아침묵상 알림"
         static let afternoonAlarmTitle = "점심묵상 알림"
         static let eveningAlarmTitle = "저녁묵상 알림"
+    }
+    
+    struct webServer {
+        static let url = "http://127.0.0.1:3000/"
+        static let post = "POST"
+        static let get = "GET"
+        static let searchTodayBibleVerses = url + "searchTodayBibleVerses"
+        static let searchTodayMeditation = url + "searchTodayMeditation"
+        static let saveMorningMeditation = url + "saveMorningMeditation"
+        static let saveAfternoonMeditation = url + "saveAfternoonMeditation"
+        static let saveEveningMeditation = url + "saveEveningMeditation"
+    }
+    
+    struct jsonKey {
+        static let userid = "userid"
+        static let year = "year"
+        static let month = "month"
+        static let day = "day"
+        static let morning = "morning"
+        static let afternoon = "afternoon"
+        static let evening = "evening"
+    }
+    
+    struct currentTime {
+        static let morning = 0
+        static let afternoon = 1
+        static let evening = 2
     }
 }
