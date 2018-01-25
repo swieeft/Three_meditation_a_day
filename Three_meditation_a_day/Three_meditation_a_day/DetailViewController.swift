@@ -32,6 +32,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var delegate:SaveDataSendDelegate?
     
     @IBOutlet weak var detailTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var bibleVersesCellHeight:Bool = false
     
@@ -48,9 +49,13 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         detailTableView.delegate = self
         detailTableView.dataSource = self
+        
+        activityIndicator.startAnimating()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         getTodayBibleVersesWebResponse()
         getTodayMeditationWebResponse()
     }
@@ -231,6 +236,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                 self.meditationData = try JSONDecoder().decode(MeditationStruct.self, from: data)
                 DispatchQueue.main.async(execute: {
                     self.detailTableView.reloadData()
+                    self.activityIndicator.stopAnimating()
                 })
             } catch {
                 print("Parsing error \(error)")
