@@ -74,7 +74,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Define.customCellStruct.bibleVersesCellId, for: indexPath) as! BibleVersesTableViewCell
-            cell.contentsLableHeight?.isActive = false
             
             if todayBibleVersesData == nil {
                 cell.contentsLabel.text = ""

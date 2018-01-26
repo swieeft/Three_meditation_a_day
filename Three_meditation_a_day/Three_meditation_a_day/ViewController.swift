@@ -192,6 +192,10 @@ class ViewController: UIViewController, SelectDateSendDelegate {
                 let weekOfMonthButtons = daysButtons[weekOfMonth]
                 
                 if weekOfMonth < startDateWeekOfMonth || weekOfMonth > endDateWeekOfMonth {
+                    for weekDay in 0..<weekOfMonthButtons.count {
+                        let button = weekOfMonthButtons[weekDay]
+                        button.setTitle(nil, for: UIControlState.normal)
+                    }
                     continue
                 }
                 
@@ -237,15 +241,20 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         if sender.currentTitle != nil {
             let calendar = Calendar(identifier: .gregorian)
             let formatter = DateFormatter()
-            formatter.dateFormat = Define.dateFormat.yearMonthDayDat
+            formatter.dateFormat = Define.dateFormat.yearMonthDay
         
             let date = calendar.dateComponents([.year, .month], from: self.selectDate)
             let clickDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(sender.currentTitle!)")
             let currentDate = Date.init()
         
+            if clickDate == nil {
+                return
+            }
+            
             if clickDate! <= currentDate{
                 let storyboard  = UIStoryboard(name: "Main", bundle: nil)
             
+                formatter.dateFormat = Define.dateFormat.yearMonthDayDat
                 let dateString = formatter.string(from: clickDate!)
                 
                 let vc = storyboard.instantiateViewController(withIdentifier: "Detail")
@@ -271,11 +280,62 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         }
     }
     
+    //손가락 왼쪽 -> 오른쪽 드래그 시 이전 달로 캘린더 변경
+    @IBAction func swipeGestureRightAction(_ sender: UISwipeGestureRecognizer) {
+
+        let lastDate = getSwipeGestureActionDate(isRight: true)
+        
+        if lastDate != nil {
+            navigationTitleSetting(date:lastDate!)
+        }
+    }
+    
+    //손가락 오른쪽 -> 왼쪽 드래그 시 다음 달로 캘린더 변경
+    @IBAction func swipeGestureLeftAction(_ sender: UISwipeGestureRecognizer) {
+        
+        let nextDate = getSwipeGestureActionDate(isRight: false)
+        
+        if nextDate != nil {
+            navigationTitleSetting(date:nextDate!)
+        }
+    }
+    
+    func getSwipeGestureActionDate(isRight:Bool) -> Date? {
+        
+        let calendar = Calendar(identifier: .gregorian)
+        let formatter = DateFormatter()
+        formatter.dateFormat = Define.dateFormat.yearMonthDay
+        
+        let date = calendar.dateComponents([.year, .month, .day], from: self.selectDate)
+        
+        var year = 0
+        var month = 0
+        
+        if isRight {
+            if date.month! == 1 {
+                year = date.year! - 1
+                month = 12
+            } else {
+                year = date.year!
+                month = date.month! - 1
+            }
+        } else {
+            if date.month! == 12 {
+                year = date.year! + 1
+                month = 1
+            } else {
+                year = date.year!
+                month = date.month! + 1
+            }
+        }
+        
+        let swipeDate = formatter.date(from: "\(year)-\(month)-\(date.day!)")
+        
+        return swipeDate
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-

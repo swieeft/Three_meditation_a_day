@@ -34,9 +34,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="om5-Qu-CTC">
                         <rect key="frame" x="15" y="73" width="320" height="111.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="111.5" id="Hkg-OL-Sl0"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -58,7 +55,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="contentsLabel" destination="om5-Qu-CTC" id="2hs-9K-rde"/>
-                <outlet property="contentsLableHeight" destination="Hkg-OL-Sl0" id="Q3h-z5-b16"/>
                 <outlet property="imgView" destination="Qsv-rQ-N5H" id="8Xc-1j-amu"/>
                 <outlet property="titleLabel" destination="TbS-FR-V9R" id="l0r-Bl-je4"/>
             </connections>
