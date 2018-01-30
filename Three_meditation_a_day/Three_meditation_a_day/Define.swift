@@ -76,7 +76,7 @@ class Define: NSObject {
     }
     
     struct webServer {
-        static let url = "http://127.0.0.1:3000/"
+        static let url = "http://13.124.215.178:80/"
         static let post = "POST"
         static let get = "GET"
         static let searchTodayBibleVerses = url + "searchTodayBibleVerses"

@@ -193,10 +193,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             
             do {
                 self.todayBibleVersesData = try JSONDecoder().decode(TodayBibleVersesStruct.self, from: data)
-                DispatchQueue.main.async(execute: {
-                    self.detailTableView.reloadData()
-                    self.activityIndicator.stopAnimating()
-                })
             } catch {
                 print("Parsing error \(error)")
             }
@@ -234,13 +230,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             
             do {
                 self.meditationData = try JSONDecoder().decode(MeditationStruct.self, from: data)
-                DispatchQueue.main.async(execute: {
-                    self.detailTableView.reloadData()
-                    self.activityIndicator.stopAnimating()
-                })
             } catch {
                 print("Parsing error \(error)")
             }
+            
+            DispatchQueue.main.async(execute: {
+                self.detailTableView.reloadData()
+                self.activityIndicator.stopAnimating()
+            })
         });
         task.resume()
     }
