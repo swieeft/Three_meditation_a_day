@@ -141,48 +141,54 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
             return
         }
         
-        let urlComponents = NSURLComponents(string: urlString)!
+        var json = [String:Any]()
+        json[Define.jsonKey.userid] = userid
+        json[Define.jsonKey.year] = String(describing: (dateComponents?.year!)!)
+        json[Define.jsonKey.month] = String(describing: (dateComponents?.month!)!)
+        json[Define.jsonKey.day] = String(describing: (dateComponents?.day!)!)
+        json[queryItemName] = contentsTextView.text
         
-        urlComponents.queryItems = [
-            URLQueryItem(name: Define.jsonKey.userid, value: userid),
-            URLQueryItem(name: Define.jsonKey.year, value: String(describing: (dateComponents?.year!)!)),
-            URLQueryItem(name: Define.jsonKey.month, value: String(describing: (dateComponents?.month!)!)),
-            URLQueryItem(name: Define.jsonKey.day, value: String(describing: (dateComponents?.day!)!)),
-            URLQueryItem(name: queryItemName, value: contentsTextView.text)
-        ]
-        
-        var request = URLRequest(url: urlComponents.url!)
-        request.httpMethod = Define.webServer.get
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-            guard let data = data else { return }
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json, options: [])
+
+            var request = URLRequest(url: URL(string: urlString)!)
+            request.httpMethod = Define.webServer.post
+            request.httpBody = data
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
             
-            do {
-                let result:resultStruct = try JSONDecoder().decode(resultStruct.self, from: data)
+            print(json)
+        
+            let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
+                guard let data = data else { return }
+            
+                do {
+                    let result:resultStruct = try JSONDecoder().decode(resultStruct.self, from: data)
                 
-                var title = ""
-                var message = ""
-                if result.result == 0 {
-                    title = "저장실패"
-                    message = "묵상 저장을 실패하였습니다.\n잠시 후 다시 시도해주세요."
-                } else {
-                    title = "저장성공"
-                    message = "묵상 내용을 저장하였습니다."
+                    var title = ""
+                    var message = ""
+                    if result.result == 0 {
+                        title = "저장실패"
+                        message = "묵상 저장을 실패하였습니다.\n잠시 후 다시 시도해주세요."
+                    } else {
+                        title = "저장성공"
+                        message = "묵상 내용을 저장하였습니다."
+                    }
+                    
+                    let dialog = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    let action = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
+                    
+                    dialog.addAction(action)
+                    
+                    self.present(dialog, animated: true, completion: nil)
+                } catch {
+                    print("Parsing error \(error)")
                 }
-                
-                let dialog = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                let action = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
-                
-                dialog.addAction(action)
-                
-                self.present(dialog, animated: true, completion: nil)
-            } catch {
-                print("Parsing error \(error)")
-            }
-        });
-        task.resume()
+            });
+            task.resume()
+        } catch {
+            
+        }
     }
     
     @objc func viewBibleVersesAction(sender:UIBarButtonItem) {

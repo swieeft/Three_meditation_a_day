@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Define: NSObject {
+internal class Define: NSObject {
     
     struct forKeyStruct {
         static let selectDate = "selectDate"

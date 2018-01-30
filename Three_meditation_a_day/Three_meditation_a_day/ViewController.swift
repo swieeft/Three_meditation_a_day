@@ -122,7 +122,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         KOSession.shared().logoutAndClose { [weak self] (success, error) -> Void in
             _ = self?.navigationController?.popViewController(animated: true)
         }
-    }
+    } 
     
     //navigation title 세팅
     func navigationTitleSetting(date:Date) {
