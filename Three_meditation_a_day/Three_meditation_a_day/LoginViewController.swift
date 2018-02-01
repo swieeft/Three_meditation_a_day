@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func kakaoLoginAction(_ sender: Any) {
+        
         let session: KOSession = KOSession.shared();
         
         if session.isOpen() {
@@ -34,7 +35,82 @@ class LoginViewController: UIViewController {
                     break;
                 }
             }
+            
+            self.accessTokenCheck()
+            
         }, authTypes: [NSNumber(value: KOAuthType.talk.rawValue), NSNumber(value: KOAuthType.account.rawValue)])
+    }
+    
+    func register(userid:String?, accessToken:NSNumber?) {
+
+        if userid == nil || accessToken == nil {
+            return
+        }
+        
+        var json = [String:Any]()
+        json[Define.jsonKey.userid] = userid
+        json[Define.jsonKey.accesstoken] = String(describing: accessToken!)
+
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json, options: [])
+
+            var request = URLRequest(url: URL(string: Define.webServer.userRegister)!)
+            request.httpMethod = Define.webServer.post
+            request.httpBody = data
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+
+            print(json)
+
+            let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
+                guard let data = data else { return }
+
+                do {
+                    let result:resultStruct = try JSONDecoder().decode(resultStruct.self, from: data)
+                    print(result.result)
+                } catch {
+                    print("Parsing error \(error)")
+                }
+            });
+            task.resume()
+        } catch {
+
+        }
+    }
+    
+    fileprivate func accessTokenCheck() {
+        
+        KOSessionTask.accessTokenInfoTask(completionHandler: {(accessTokenInfo, error) -> Void in
+            if let error = error as NSError? {
+                print(error)
+                return
+            } else {
+                if accessTokenInfo == nil {
+                    return
+                }
+                
+                //UserDefaults.standard.set(accessTokenInfo?.id, forKey: Define.forKeyStruct.accessToken)
+                self.requestMe(accessToken: accessTokenInfo?.id)
+            }
+        })
+    }
+    
+    fileprivate func requestMe(_ displayResult: Bool = false, accessToken:NSNumber?) {
+        
+        KOSessionTask.meTask { [weak self] (user, error) -> Void in
+            if let error = error as NSError? {
+                print(error)
+            } else {
+                if displayResult {
+                    print((user as! KOUser).description)
+                }
+                
+                let koUser = user as! KOUser
+                
+                UserDefaults.standard.set(koUser.email ?? "--", forKey: Define.forKeyStruct.kakaoEmail)
+                self?.register(userid: koUser.email, accessToken: accessToken)
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

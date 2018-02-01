@@ -22,6 +22,7 @@ internal class Define: NSObject {
         static let eveningSwitchIsOn = "eveningSwitchIsOn"
         
         static let kakaoEmail = "kakaoEmail"
+        static let accessToken = "accessToken"
     }
     
     struct dateFormat {
@@ -79,11 +80,12 @@ internal class Define: NSObject {
         static let url = "http://13.124.215.178:80/"
         static let post = "POST"
         static let get = "GET"
-        static let searchTodayBibleVerses = url + "searchTodayBibleVerses"
-        static let searchTodayMeditation = url + "searchTodayMeditation"
-        static let saveMorningMeditation = url + "saveMorningMeditation"
-        static let saveAfternoonMeditation = url + "saveAfternoonMeditation"
-        static let saveEveningMeditation = url + "saveEveningMeditation"
+        static let searchTodayBibleVerses = url + "search/todaybibleverses"
+        static let searchTodayMeditation = url + "search/todaymeditation"
+        static let saveMorningMeditation = url + "save/morningmeditation"
+        static let saveAfternoonMeditation = url + "save/afternoonmeditation"
+        static let saveEveningMeditation = url + "save/eveningmeditation"
+        static let userRegister = url + "user/register"
     }
     
     struct jsonKey {
@@ -94,6 +96,8 @@ internal class Define: NSObject {
         static let morning = "morning"
         static let afternoon = "afternoon"
         static let evening = "evening"
+        static let accesstoken = "accesstoken"
+        static let pass = "pass"
     }
     
     struct currentTime {

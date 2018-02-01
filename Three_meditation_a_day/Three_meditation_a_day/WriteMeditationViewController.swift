@@ -31,15 +31,23 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let saveButton = UIBarButtonItem(title: "저장", style: UIBarButtonItemStyle.plain, target: self, action: #selector(saveAction(sender:)))
-        let separatorButton = UIBarButtonItem(title: "|", style: UIBarButtonItemStyle.plain, target: self, action: nil )
+        let saveButton = UIBarButtonItem(title: " 저장", style: UIBarButtonItemStyle.plain, target: self, action: #selector(saveAction(sender:)))
         let bibleVersesButton = UIBarButtonItem(title: "말씀보기 ▼", style: UIBarButtonItemStyle.plain, target: self, action: #selector(viewBibleVersesAction(sender:)))
         
-        self.navigationItem.rightBarButtonItems = [saveButton, separatorButton, bibleVersesButton]
+        self.navigationItem.rightBarButtonItems = [saveButton, bibleVersesButton]
         
         writeMeditationTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
+        var naviHeight:CGFloat = UIApplication.shared.statusBarFrame.size.height //statusBar 높이
+        if(self.navigationController != nil){
+            naviHeight += (self.navigationController?.navigationBar.frame.size.height)!//네비게이션바 높이
+        }
+            
+        bibleVersesCellHeight.constant = naviHeight
+        
         contentsTextView.delegate = self
+        contentsTextView.layer.borderWidth = 5
+        contentsTextView.layer.borderColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 1).cgColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(noti:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(noti:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -107,12 +115,28 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
     
     @objc func saveAction(sender:UIBarButtonItem) {
 
-        saveMeditation()
+        accessTokenCheck()
         
         endEditing()
     }
     
-    func saveMeditation() {
+    fileprivate func accessTokenCheck() {
+        
+        KOSessionTask.accessTokenInfoTask(completionHandler: {(accessTokenInfo, error) -> Void in
+            if let error = error as NSError? {
+                print(error)
+                return
+            } else {
+                if accessTokenInfo == nil {
+                    return
+                }
+                
+                self.saveMeditation(accessToken: (accessTokenInfo?.id!)!)
+            }
+        })
+    }
+    
+    func saveMeditation(accessToken:NSNumber) {
         if dateComponents == nil {
             return
         }
@@ -141,8 +165,11 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
             return
         }
         
+        let pass = userid! + "token" + String(describing: accessToken)
+        
         var json = [String:Any]()
         json[Define.jsonKey.userid] = userid
+        json[Define.jsonKey.pass] = pass
         json[Define.jsonKey.year] = String(describing: (dateComponents?.year!)!)
         json[Define.jsonKey.month] = String(describing: (dateComponents?.month!)!)
         json[Define.jsonKey.day] = String(describing: (dateComponents?.day!)!)
@@ -156,8 +183,6 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
             request.httpBody = data
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
-            
-            print(json)
         
             let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
                 guard let data = data else { return }
@@ -192,12 +217,18 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
     }
     
     @objc func viewBibleVersesAction(sender:UIBarButtonItem) {
-        if bibleVersesCellHeight.constant == 0 {
+        
+        var naviHeight:CGFloat = UIApplication.shared.statusBarFrame.size.height //statusBar 높이
+        if(self.navigationController != nil){
+            naviHeight += (self.navigationController?.navigationBar.frame.size.height)!//네비게이션바 높이
+        }
+        
+        if bibleVersesCellHeight.constant == naviHeight {
             sender.title = "말씀보기 ▲"
-            bibleVersesCellHeight.constant = 200
+            bibleVersesCellHeight.constant = 300
         } else {
             sender.title = "말씀보기 ▼"
-            bibleVersesCellHeight.constant = 0
+            bibleVersesCellHeight.constant = naviHeight
         }
         
         UIView.animate(withDuration: 0.5) {
@@ -214,8 +245,6 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
         self.meditation = meditation
         self.dateComponents = date
         self.currentTime = currentTime
-        
-        print("test")
     }
     
     override func didReceiveMemoryWarning() {

@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         setupEntryController()
         
         initNotificationSetupCheck()
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func initNotificationSetupCheck() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert])
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
         { (success, error) in
             
         }

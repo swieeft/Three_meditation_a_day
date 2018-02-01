@@ -76,17 +76,18 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     fileprivate var user:KOUser? = nil
     fileprivate var doneSignup:Bool = false
     fileprivate var singleTapGesture: UITapGestureRecognizer!
+    fileprivate var accessToken:NSNumber?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         daysButtons = [[sunday1Weeks, monday1Weeks, tuesday1Weeks, wednesday1Weeks, thursday1Weeks, firday1Weeks, saturday1Weeks],
         [sunday2Weeks, monday2Weeks, tuesday2Weeks, wednesday2Weeks, thursday2Weeks, firday2Weeks, saturday2Weeks],
         [sunday3Weeks, monday3Weeks, tuesday3Weeks, wednesday3Weeks, thursday3Weeks, firday3Weeks, saturday3Weeks],
         [sunday4Weeks, monday4Weeks, tuesday4Weeks, wednesday4Weeks, thursday4Weeks, firday4Weeks, saturday4Weeks],
         [sunday5Weeks, monday5Weeks, tuesday5Weeks, wednesday5Weeks, thursday5Weeks, firday5Weeks, saturday5Weeks],
         [sunday6Weeks, monday6Weeks, tuesday6Weeks, wednesday6Weeks, thursday6Weeks, firday6Weeks, saturday6Weeks]]
-         
+        
         let currentDate = Date.init()
         
         UserDefaults.standard.set(currentDate, forKey: Define.forKeyStruct.selectDate)
@@ -95,34 +96,29 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         
         let logoutButton = UIBarButtonItem(title: "로그아웃", style: UIBarButtonItemStyle.plain, target: self, action: #selector(logoutAction(sender:)))
         self.navigationItem.leftBarButtonItem = logoutButton
-        
-        requestMe()
-    }
-    
-    fileprivate func requestMe(_ displayResult: Bool = false) {
-        
-        KOSessionTask.meTask { [weak self] (user, error) -> Void in
-            if let error = error as NSError? {
-                print(error)
-                self?.doneSignup = false
-            } else {
-                if displayResult {
-                    print((user as! KOUser).description)
-                }
-
-                self?.doneSignup = true
-                self?.user = (user as! KOUser)
-
-                UserDefaults.standard.set(self?.user?.email ?? "--", forKey: Define.forKeyStruct.kakaoEmail)
-            }
-        }
     }
     
     @objc func logoutAction(sender:UIBarButtonItem) {
+        
+        let refreshAlert = UIAlertController(title: "로그아웃", message: "로그아웃을 하시겠습니까?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "예", style: .default, handler: { (action: UIAlertAction!) in
+            print("ok")
+            self.logout()
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "아니요", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("no")
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
+    }
+    
+    func logout() {
         KOSession.shared().logoutAndClose { [weak self] (success, error) -> Void in
             _ = self?.navigationController?.popViewController(animated: true)
         }
-    } 
+    }
     
     //navigation title 세팅
     func navigationTitleSetting(date:Date) {
@@ -329,9 +325,16 @@ class ViewController: UIViewController, SelectDateSendDelegate {
             }
         }
         
-        let swipeDate = formatter.date(from: "\(year)-\(month)-\(date.day!)")
+        if year < 2018 {
+            return nil
+        } else if year == 2018 && month == 1 {
+            return nil
+        }
+        else {
+            let swipeDate = formatter.date(from: "\(year)-\(month)-\(date.day!)")
         
-        return swipeDate
+            return swipeDate
+        }
     }
     
     override func didReceiveMemoryWarning() {

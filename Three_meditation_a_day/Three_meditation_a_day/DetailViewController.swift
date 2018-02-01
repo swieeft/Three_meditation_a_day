@@ -196,6 +196,11 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             } catch {
                 print("Parsing error \(error)")
             }
+            
+            DispatchQueue.main.async(execute: {
+                self.detailTableView.reloadData()
+                self.activityIndicator.stopAnimating()
+            })
         });
         task.resume()
     }

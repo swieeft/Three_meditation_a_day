@@ -54,6 +54,7 @@ class SelectTimePopupViewController: UIViewController {
         let notification = UNMutableNotificationContent()
         notification.title = title
         notification.body = body
+        notification.sound = UNNotificationSound.default()
         
         let triggerDate = Calendar.current.dateComponents([.hour,.minute], from: date)
         
