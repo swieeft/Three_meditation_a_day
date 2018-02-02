@@ -42,6 +42,8 @@
 		B541EC9A20087D6500CFA685 /* Bible.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC9920087D6500CFA685 /* Bible.png */; };
 		B541EC9C2008923500CFA685 /* WriteMeditationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541EC9B2008923500CFA685 /* WriteMeditationViewController.swift */; };
 		B541ECA02008B15500CFA685 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541EC9F2008B15500CFA685 /* Define.swift */; };
+		B5C6108320244F4300BD2DE1 /* CalenderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C6108220244F4300BD2DE1 /* CalenderView.xib */; };
+		B5C6108520244F7800BD2DE1 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6108420244F7800BD2DE1 /* CalenderView.swift */; };
 		B5F56AB52000FD8A00CCED3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F56AB42000FD8A00CCED3E /* AppDelegate.swift */; };
 		B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F56AB62000FD8A00CCED3E /* ViewController.swift */; };
 		B5F56ABA2000FD8A00CCED3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F56AB82000FD8A00CCED3E /* Main.storyboard */; };
@@ -92,6 +94,8 @@
 		B541EC9920087D6500CFA685 /* Bible.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bible.png; sourceTree = "<group>"; };
 		B541EC9B2008923500CFA685 /* WriteMeditationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMeditationViewController.swift; sourceTree = "<group>"; };
 		B541EC9F2008B15500CFA685 /* Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
+		B5C6108220244F4300BD2DE1 /* CalenderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalenderView.xib; sourceTree = "<group>"; };
+		B5C6108420244F7800BD2DE1 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		B5F56AB12000FD8A00CCED3E /* Three_meditation_a_day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Three_meditation_a_day.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5F56AB42000FD8A00CCED3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5F56AB62000FD8A00CCED3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 				B51E1CBE200DADB2002B7400 /* Briging-Header.h */,
 				B51E1CC1200DB7A8002B7400 /* ConfigConstants.swift */,
 				B51E1CC5200DBE50002B7400 /* LoginViewController.swift */,
+				B5C6108220244F4300BD2DE1 /* CalenderView.xib */,
+				B5C6108420244F7800BD2DE1 /* CalenderView.swift */,
 			);
 			path = Three_meditation_a_day;
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 				B5F56ABC2000FD8A00CCED3E /* Assets.xcassets in Resources */,
 				B5F56ACB200468F200CCED3E /* Default@2x.png in Resources */,
 				B51E1C9B2009CC63002B7400 /* Icon-App-20x20@3x.png in Resources */,
+				B5C6108320244F4300BD2DE1 /* CalenderView.xib in Resources */,
 				B541EC9420086FB600CFA685 /* DetailTableViewCell.xib in Resources */,
 				B51E1C9E2009CC63002B7400 /* Icon-App-76x76@1x.png in Resources */,
 				B51E1CA72009CC63002B7400 /* Icon-App-60x60@2x.png in Resources */,
@@ -317,6 +324,7 @@
 				B5F56AD620047B1D00CCED3E /* SettingViewController.swift in Sources */,
 				B541EC972008763500CFA685 /* BibleVersesTableViewCell.swift in Sources */,
 				B51E1CB8200DA6A2002B7400 /* AlarmCellTableViewCell.swift in Sources */,
+				B5C6108520244F7800BD2DE1 /* CalenderView.swift in Sources */,
 				B541EC9C2008923500CFA685 /* WriteMeditationViewController.swift in Sources */,
 				B51E1CC6200DBE50002B7400 /* LoginViewController.swift in Sources */,
 				B5F56ADB200741CA00CCED3E /* SelectDatePopupViewController.swift in Sources */,
