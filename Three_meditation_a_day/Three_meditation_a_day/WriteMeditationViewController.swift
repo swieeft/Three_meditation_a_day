@@ -27,6 +27,8 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
     var currentTime:Int = 0
     var bibleVerses:String = ""
     var meditation:String = ""
+    var cellHeight:CGFloat = 0.0
+    var statusBarHeight:CGFloat = 20.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,7 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
         
         writeMeditationTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
-        var naviHeight:CGFloat = UIApplication.shared.statusBarFrame.size.height //statusBar 높이
+        var naviHeight:CGFloat = statusBarHeight //statusBar 높이
         if(self.navigationController != nil){
             naviHeight += (self.navigationController?.navigationBar.frame.size.height)!//네비게이션바 높이
         }
@@ -78,6 +80,8 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
         cell.contentsLabel.numberOfLines = 0
         
         cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
+        cellHeight = cell.frame.size.height
         
         return cell
     }
@@ -218,14 +222,14 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
     
     @objc func viewBibleVersesAction(sender:UIBarButtonItem) {
         
-        var naviHeight:CGFloat = UIApplication.shared.statusBarFrame.size.height //statusBar 높이
+        var naviHeight:CGFloat = statusBarHeight
         if(self.navigationController != nil){
             naviHeight += (self.navigationController?.navigationBar.frame.size.height)!//네비게이션바 높이
         }
         
         if bibleVersesCellHeight.constant == naviHeight {
             sender.title = "말씀보기 ▲"
-            bibleVersesCellHeight.constant = 300
+            bibleVersesCellHeight.constant = cellHeight
         } else {
             sender.title = "말씀보기 ▼"
             bibleVersesCellHeight.constant = naviHeight

@@ -82,6 +82,7 @@ internal class Define: NSObject {
         static let get = "GET"
         static let searchTodayBibleVerses = url + "search/todaybibleverses"
         static let searchTodayMeditation = url + "search/todaymeditation"
+        static let searchCurrentMonthMeditation = url + "search/currentMonthMeditation"
         static let saveMorningMeditation = url + "save/morningmeditation"
         static let saveAfternoonMeditation = url + "save/afternoonmeditation"
         static let saveEveningMeditation = url + "save/eveningmeditation"

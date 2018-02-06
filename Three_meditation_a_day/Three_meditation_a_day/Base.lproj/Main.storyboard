@@ -117,9 +117,26 @@
                                                 <rect key="frame" x="268" y="0.0" width="53.5" height="100.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kas-Xs-p7S" customClass="CalenderView" customModule="Three_meditation_a_day" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kas-Xs-p7S">
                                                 <rect key="frame" x="321.5" y="0.0" width="53.5" height="100.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Nu-DN-uIG">
+                                                        <rect key="frame" x="12" y="37" width="30" height="27"/>
+                                                        <color key="backgroundColor" red="0.57191377880000005" green="0.18910209829999999" blue="0.16870631280000001" alpha="0.2088238441780822" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                                        <state key="normal" title="오늘">
+                                                            <color key="titleColor" red="0.57191377880000005" green="0.18910209829999999" blue="0.16870631280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="todayAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mr7-cT-rrb"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="1Nu-DN-uIG" firstAttribute="centerY" secondItem="Kas-Xs-p7S" secondAttribute="centerY" id="4PR-mL-55O"/>
+                                                    <constraint firstItem="1Nu-DN-uIG" firstAttribute="centerX" secondItem="Kas-Xs-p7S" secondAttribute="centerX" id="ZeK-Yq-kfe"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -374,12 +391,18 @@
                                     <outletCollection property="gestureRecognizers" destination="eak-5O-zyE" appends="YES" id="DGv-s5-EKj"/>
                                 </connections>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XzY-N1-XMu">
+                                <rect key="frame" x="168.5" y="315" width="37" height="37"/>
+                                <color key="color" red="0.57191377880000005" green="0.18910209829999999" blue="0.16870631280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Iya-AH-vIP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Dfa-4s-5nB"/>
+                            <constraint firstItem="XzY-N1-XMu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zyl-eJ-rof"/>
                             <constraint firstItem="Iya-AH-vIP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fVF-V4-Lq8"/>
                             <constraint firstItem="Iya-AH-vIP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pw0-vF-NX2"/>
                             <constraint firstItem="Iya-AH-vIP" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="x7Z-yc-vgU"/>
+                            <constraint firstItem="XzY-N1-XMu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xpJ-jl-XDA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -394,14 +417,9 @@
                                 <segue destination="SVj-jU-LYS" kind="presentation" identifier="selectDatePopup" animates="NO" modalPresentationStyle="overFullScreen" id="clp-LM-Q8J"/>
                             </connections>
                         </button>
-                        <barButtonItem key="rightBarButtonItem" image="Setting.png" id="GXU-Hs-vg7">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="Clb-ll-UXA" kind="show" id="Vkg-Zm-v5o"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="XzY-N1-XMu" id="Ic3-FC-pvQ"/>
                         <outlet property="firday1Weeks" destination="D4Y-mc-AIW" id="LgS-Rz-wnx"/>
                         <outlet property="firday2Weeks" destination="w8A-2E-mFq" id="xaH-Oa-iP8"/>
                         <outlet property="firday3Weeks" destination="9YZ-81-cMN" id="sd8-N6-yIz"/>
@@ -433,6 +451,7 @@
                         <outlet property="thursday4Weeks" destination="qgY-Ox-exs" id="QQ7-t8-zcE"/>
                         <outlet property="thursday5Weeks" destination="ggj-8o-2nU" id="VDM-QS-EZX"/>
                         <outlet property="thursday6Weeks" destination="QHd-lq-m80" id="oyh-uu-mN8"/>
+                        <outlet property="todayButton" destination="1Nu-DN-uIG" id="3UD-V3-VWn"/>
                         <outlet property="tuesday1Weeks" destination="kld-uJ-NeB" id="Ghl-Gu-GYH"/>
                         <outlet property="tuesday2Weeks" destination="FAq-n0-pU7" id="nTf-Ak-E8i"/>
                         <outlet property="tuesday3Weeks" destination="BrA-ab-dnm" id="DvT-Na-XLc"/>
@@ -879,7 +898,6 @@
     <resources>
         <image name="AfternoonAlarm.png" width="100" height="100"/>
         <image name="Default.png" width="375" height="667"/>
-        <image name="Setting.png" width="44" height="44"/>
         <image name="kakaoLogin.png" width="30" height="30"/>
     </resources>
 </document>

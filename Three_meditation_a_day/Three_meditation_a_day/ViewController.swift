@@ -15,6 +15,8 @@ protocol SelectDateSendDelegate {
 class ViewController: UIViewController, SelectDateSendDelegate {
     
     @IBOutlet weak var navigationTitleButton: UIButton!
+    @IBOutlet weak var todayButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //1주차
     @IBOutlet weak var sunday1Weeks: CalenderView!
@@ -71,6 +73,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     @IBOutlet weak var saturday6Weeks: CalenderView!
     
     var dayViews:[[CalenderView]] = [[CalenderView]]()
+    var meditation:[MeditationStruct] = [MeditationStruct]()
     var selectDate:Date = Date.init()
     
     fileprivate var user:KOUser? = nil
@@ -86,18 +89,47 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         [sunday3Weeks, monday3Weeks, tuesday3Weeks, wednesday3Weeks, thursday3Weeks, firday3Weeks, saturday3Weeks],
         [sunday4Weeks, monday4Weeks, tuesday4Weeks, wednesday4Weeks, thursday4Weeks, firday4Weeks, saturday4Weeks],
         [sunday5Weeks, monday5Weeks, tuesday5Weeks, wednesday5Weeks, thursday5Weeks, firday5Weeks, saturday5Weeks],
-        [sunday6Weeks, monday6Weeks, tuesday6Weeks, wednesday6Weeks, thursday6Weeks, firday6Weeks, saturday6Weeks]]
+        [sunday6Weeks, monday6Weeks, tuesday6Weeks, wednesday6Weeks, thursday6Weeks, firday6Weeks/*, saturday6Weeks*/]]
+        
+        todayButton.layer.borderColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 1).cgColor
+        todayButton.layer.borderWidth = 1
+        todayButton.layer.cornerRadius = 27/2
+        todayButton.layer.masksToBounds = true
         
         let currentDate = Date.init()
         
+        selectDate = currentDate
         UserDefaults.standard.set(currentDate, forKey: Define.forKeyStruct.selectDate)
         
-        navigationTitleSetting(date: currentDate)
-        
-        let logoutButton = UIBarButtonItem(title: "로그아웃", style: UIBarButtonItemStyle.plain, target: self, action: #selector(logoutAction(sender:)))
-        self.navigationItem.leftBarButtonItem = logoutButton
+        addNavigationItem()
         
         addViewGesture()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationTitleSetting(date: selectDate)
+    }
+    
+    func addNavigationItem() {
+        let logoutButton: UIButton = UIButton(type: UIButtonType.custom)
+        logoutButton.setImage(UIImage(named: "logout.png")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
+        logoutButton.addTarget(self, action: #selector(logoutAction(sender:)), for: UIControlEvents.touchUpInside)
+        logoutButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        
+        let logoutBarButton = UIBarButtonItem(customView: logoutButton)
+        logoutBarButton.tintColor = UIColor.white
+        
+        self.navigationItem.leftBarButtonItem = logoutBarButton
+        
+        let settingButton: UIButton = UIButton(type: UIButtonType.custom)
+        settingButton.setImage(UIImage(named: "settings.png")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
+        settingButton.addTarget(self, action: #selector(settingAction(sender:)), for: UIControlEvents.touchUpInside)
+        settingButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        
+        let settingBarButton = UIBarButtonItem(customView: settingButton)
+        settingBarButton.tintColor = UIColor.white
+        
+        self.navigationItem.rightBarButtonItem = settingBarButton
     }
     
     //calender view click gesture add
@@ -121,15 +153,22 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         let refreshAlert = UIAlertController(title: "로그아웃", message: "로그아웃을 하시겠습니까?", preferredStyle: UIAlertControllerStyle.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "예", style: .default, handler: { (action: UIAlertAction!) in
-            print("ok")
             self.logout()
         }))
         
         refreshAlert.addAction(UIAlertAction(title: "아니요", style: .cancel, handler: { (action: UIAlertAction!) in
-            print("no")
         }))
         
         present(refreshAlert, animated: true, completion: nil)
+    }
+    
+    @objc func settingAction(sender:UIBarButtonItem) {
+
+        let storyboard  = UIStoryboard(name: "Main", bundle: nil)
+                
+        let vc = storyboard.instantiateViewController(withIdentifier: "Setting")
+        
+        self.navigationController!.pushViewController(vc, animated: true)
     }
     
     func logout() {
@@ -140,6 +179,9 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     
     //navigation title 세팅
     func navigationTitleSetting(date:Date) {
+    
+        activityIndicator.startAnimating()
+        
         let formatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: Define.dateFormat.localeIdentifier) as Locale!
         formatter.dateFormat = Define.dateFormat.yearMonth
@@ -150,11 +192,11 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         
         selectDate = date
         
-        setViewCalender()
+        getDayMeditationStatusCheckData()
     }
     
-    //캘린더 생성
-    func setViewCalender() {
+    //묵상 입력 상태를 가져옴
+    func getDayMeditationStatusCheckData()  {
         
         let calendar = Calendar(identifier: .gregorian)
         let date = calendar.dateComponents([.year, .month], from: self.selectDate)
@@ -162,6 +204,41 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         if date.year == nil || date.month == nil {
             return
         }
+        
+        let userid = UserDefaults.standard.string(forKey: Define.forKeyStruct.kakaoEmail)
+        
+        let urlComponents = NSURLComponents(string: Define.webServer.searchCurrentMonthMeditation)!
+        
+        urlComponents.queryItems = [
+            URLQueryItem(name: Define.jsonKey.userid, value: userid!),
+            URLQueryItem(name: Define.jsonKey.year, value: String(describing: (date.year)!)),
+            URLQueryItem(name: Define.jsonKey.month, value: String(describing: (date.month)!)),
+        ]
+        
+        var request = URLRequest(url: urlComponents.url!)
+        request.httpMethod = Define.webServer.get
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
+            guard let data = data else { return }
+            
+            do {
+                self.meditation = try JSONDecoder().decode([MeditationStruct].self, from: data)
+            } catch {
+                print("Parsing error \(error)")
+            }
+            
+            DispatchQueue.main.async(execute: {
+                self.setViewCalender(date: date, meditation: self.meditation)
+                self.activityIndicator.stopAnimating()
+            })
+        });
+        task.resume()
+    }
+    
+    //캘린더 생성
+    func setViewCalender(date:DateComponents, meditation:[MeditationStruct]) {
         
         var lastDay:Int = 0
         
@@ -187,6 +264,8 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         let endDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(lastDay)")
         
         if startDate != nil && endDate != nil {
+            let calendar = Calendar(identifier: .gregorian)
+            
             let startDateWeek = calendar.dateComponents([.weekOfMonth, .weekday], from: startDate!)
             let endDateWeek = calendar.dateComponents([.weekOfMonth, .weekday], from: endDate!)
             
@@ -253,6 +332,26 @@ class ViewController: UIViewController, SelectDateSendDelegate {
                         view.dayLabel.text = ""
                     } else {
                         view.dayLabel.text = String(day)
+                        
+                        let todayMeditationArr = meditation.filter{$0.day == day}
+                        
+                        if todayMeditationArr.count > 0 {
+                            
+                            let todayMeditation = todayMeditationArr[0]
+                            
+                            if todayMeditation.morning != "" {
+                                view.morningLable.isHidden = false
+                            }
+                            if todayMeditation.afternoon != "" {
+                                view.afternoonLabel.isHidden = false
+                                view.setNeedsDisplay()
+                            }
+                            if todayMeditation.evening != "" {
+                                view.eveningLabel.isHidden = false
+                                view.setNeedsDisplay()
+                            }
+                        }
+                        
                         day += 1
                     }
                 }
@@ -336,6 +435,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         }
     }
     
+    //swipe 시 날짜 생성
     func getSwipeGestureActionDate(isRight:Bool) -> Date? {
         
         let calendar = Calendar(identifier: .gregorian)
@@ -375,6 +475,13 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         
             return swipeDate
         }
+    }
+    
+    //캘린더를 오늘 날짜의 월로 이동
+    @IBAction func todayAction(_ sender: Any) {
+        
+        let currentDate = Date.init()
+        navigationTitleSetting(date:currentDate)
     }
     
     override func didReceiveMemoryWarning() {

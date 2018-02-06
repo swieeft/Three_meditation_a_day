@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        Thread.sleep(forTimeInterval: 2.0)
+        
         setupEntryController()
         
         initNotificationSetupCheck()
@@ -44,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         reloadRootViewController()
         
         KOSession.shared().clientSecret = SessionConstants.clientSecret;
+        
         return true
     }
 
