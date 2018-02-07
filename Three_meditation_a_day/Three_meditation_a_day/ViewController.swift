@@ -89,7 +89,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         [sunday3Weeks, monday3Weeks, tuesday3Weeks, wednesday3Weeks, thursday3Weeks, firday3Weeks, saturday3Weeks],
         [sunday4Weeks, monday4Weeks, tuesday4Weeks, wednesday4Weeks, thursday4Weeks, firday4Weeks, saturday4Weeks],
         [sunday5Weeks, monday5Weeks, tuesday5Weeks, wednesday5Weeks, thursday5Weeks, firday5Weeks, saturday5Weeks],
-        [sunday6Weeks, monday6Weeks, tuesday6Weeks, wednesday6Weeks, thursday6Weeks, firday6Weeks/*, saturday6Weeks*/]]
+        [sunday6Weeks, monday6Weeks, tuesday6Weeks, wednesday6Weeks, thursday6Weeks, firday6Weeks]]
         
         todayButton.layer.borderColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 1).cgColor
         todayButton.layer.borderWidth = 1
@@ -192,12 +192,6 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         
         selectDate = date
         
-        getDayMeditationStatusCheckData()
-    }
-    
-    //묵상 입력 상태를 가져옴
-    func getDayMeditationStatusCheckData()  {
-        
         let calendar = Calendar(identifier: .gregorian)
         let date = calendar.dateComponents([.year, .month], from: self.selectDate)
         
@@ -205,12 +199,51 @@ class ViewController: UIViewController, SelectDateSendDelegate {
             return
         }
         
+        let guestLogin = UserDefaults.standard.bool(forKey: Define.forKeyStruct.guestLogin)
+        
+        if guestLogin {
+            setViewCalender(date: date)
+            self.activityIndicator.stopAnimating()
+        } else {
+            getDayMeditationStatusCheckData(date:date)
+        }
+    }
+    
+    fileprivate func requestMe(_ displayResult: Bool = false) {
+
+        KOSessionTask.meTask { [weak self] (user, error) -> Void in
+            if let error = error as NSError? {
+                print(error)
+            } else {
+                if displayResult {
+                    print((user as! KOUser).description)
+                }
+
+                self?.user = user as? KOUser
+                UserDefaults.standard.set(self?.user?.email ?? "--", forKey: Define.forKeyStruct.kakaoEmail)
+
+                DispatchQueue.main.async(execute: {
+                    self?.viewDidAppear(true)
+                })
+            }
+        }
+    }
+    
+    //묵상 입력 상태를 가져옴
+    func getDayMeditationStatusCheckData(date:DateComponents)  {
+        
         let userid = UserDefaults.standard.string(forKey: Define.forKeyStruct.kakaoEmail)
         
         let urlComponents = NSURLComponents(string: Define.webServer.searchCurrentMonthMeditation)!
         
+        if userid == nil {
+            requestMe()
+            self.activityIndicator.stopAnimating()
+            return
+        }
+        
         urlComponents.queryItems = [
-            URLQueryItem(name: Define.jsonKey.userid, value: userid!),
+            URLQueryItem(name: Define.jsonKey.userid, value: userid),
             URLQueryItem(name: Define.jsonKey.year, value: String(describing: (date.year)!)),
             URLQueryItem(name: Define.jsonKey.month, value: String(describing: (date.month)!)),
         ]
@@ -232,13 +265,14 @@ class ViewController: UIViewController, SelectDateSendDelegate {
             DispatchQueue.main.async(execute: {
                 self.setViewCalender(date: date, meditation: self.meditation)
                 self.activityIndicator.stopAnimating()
+                self.view.setNeedsDisplay()
             })
         });
         task.resume()
     }
     
     //캘린더 생성
-    func setViewCalender(date:DateComponents, meditation:[MeditationStruct]) {
+    func setViewCalender(date:DateComponents, meditation:[MeditationStruct]? = nil) {
         
         var lastDay:Int = 0
         
@@ -333,22 +367,25 @@ class ViewController: UIViewController, SelectDateSendDelegate {
                     } else {
                         view.dayLabel.text = String(day)
                         
-                        let todayMeditationArr = meditation.filter{$0.day == day}
-                        
-                        if todayMeditationArr.count > 0 {
+                        let guestLogin = UserDefaults.standard.bool(forKey: Define.forKeyStruct.guestLogin)
+                        if guestLogin == false {
+                            let todayMeditationArr = meditation!.filter{$0.day == day}
                             
-                            let todayMeditation = todayMeditationArr[0]
-                            
-                            if todayMeditation.morning != "" {
-                                view.morningLable.isHidden = false
-                            }
-                            if todayMeditation.afternoon != "" {
-                                view.afternoonLabel.isHidden = false
-                                view.setNeedsDisplay()
-                            }
-                            if todayMeditation.evening != "" {
-                                view.eveningLabel.isHidden = false
-                                view.setNeedsDisplay()
+                            if todayMeditationArr.count > 0 {
+                                
+                                let todayMeditation = todayMeditationArr[0]
+                                
+                                if todayMeditation.morning != "" {
+                                    view.morningLable.isHidden = false
+                                }
+                                if todayMeditation.afternoon != "" {
+                                    view.afternoonLabel.isHidden = false
+                                    view.setNeedsDisplay()
+                                }
+                                if todayMeditation.evening != "" {
+                                    view.eveningLabel.isHidden = false
+                                    view.setNeedsDisplay()
+                                }
                             }
                         }
                         

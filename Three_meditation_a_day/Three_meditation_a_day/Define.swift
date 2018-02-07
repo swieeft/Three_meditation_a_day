@@ -23,6 +23,8 @@ internal class Define: NSObject {
         
         static let kakaoEmail = "kakaoEmail"
         static let accessToken = "accessToken"
+        
+        static let guestLogin = "guestLogin"
     }
     
     struct dateFormat {

@@ -132,6 +132,13 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             bibleVersesCellHeight = !bibleVersesCellHeight
             tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         } else {
+            
+            let guestLogin = UserDefaults.standard.bool(forKey: Define.forKeyStruct.guestLogin)
+            
+            if guestLogin {
+                return
+            }
+            
             let cell = tableView.cellForRow(at: indexPath) as! DetailTableViewCell
             
             let storyboard  = UIStoryboard(name: "Main", bundle: nil)
@@ -207,6 +214,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     //오늘의 묵상 내용을 가져옴
     func getTodayMeditationWebResponse() {
+        
+        let guestLogin = UserDefaults.standard.bool(forKey: Define.forKeyStruct.guestLogin)
+        
+        if guestLogin {
+            return
+        }
         
         let date = getSelectDate()
         

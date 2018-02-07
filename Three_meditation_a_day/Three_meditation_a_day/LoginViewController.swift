@@ -16,6 +16,25 @@ class LoginViewController: UIViewController {
 
         kakaoLoginButton.layer.cornerRadius = 3
     }
+    @IBAction func guestLoginAction(_ sender: Any) {
+    
+        UserDefaults.standard.set(true, forKey: Define.forKeyStruct.guestLogin)
+        
+        let refreshAlert = UIAlertController(title: "Guest Login", message: "Guest로 로그인 하시면 기능에 제한이 있습니다.\n로그인 하시겠습니까?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "예", style: .default, handler: { (action: UIAlertAction!) in
+            let storyboard  = UIStoryboard(name: "Main", bundle: nil)
+            
+            let vc = storyboard.instantiateViewController(withIdentifier: "Main")
+            
+            self.navigationController!.pushViewController(vc, animated: true)
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "아니요", style: .cancel, handler: { (action: UIAlertAction!) in
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
+    }
     
     @IBAction func kakaoLoginAction(_ sender: Any) {
         
@@ -38,6 +57,8 @@ class LoginViewController: UIViewController {
             
             self.accessTokenCheck()
             
+            UserDefaults.standard.set(false, forKey: Define.forKeyStruct.guestLogin)
+            
         }, authTypes: [NSNumber(value: KOAuthType.talk.rawValue), NSNumber(value: KOAuthType.account.rawValue)])
     }
     
@@ -59,8 +80,6 @@ class LoginViewController: UIViewController {
             request.httpBody = data
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
-
-            print(json)
 
             let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
                 guard let data = data else { return }
@@ -89,7 +108,7 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
-                //UserDefaults.standard.set(accessTokenInfo?.id, forKey: Define.forKeyStruct.accessToken)
+                UserDefaults.standard.set(accessTokenInfo?.id, forKey: Define.forKeyStruct.accessToken)
                 self.requestMe(accessToken: accessTokenInfo?.id)
             }
         })

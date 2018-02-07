@@ -58,7 +58,7 @@ class SelectTimePopupViewController: UIViewController {
         
         let triggerDate = Calendar.current.dateComponents([.hour,.minute], from: date)
         
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
         
         let request = UNNotificationRequest(identifier: identifier, content: notification, trigger: trigger)
         

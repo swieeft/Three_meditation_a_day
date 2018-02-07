@@ -769,25 +769,27 @@
                                     <action selector="kakaoLoginAction:" destination="foc-sR-CFp" eventType="touchUpInside" id="POe-9b-2ya"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2018년 ParkGilNam. All rights reserved." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pv-7z-wOW">
-                                <rect key="frame" x="108" y="635" width="251" height="12"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22U-Q1-7aQ">
+                                <rect key="frame" x="146" y="565" width="83" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Guest Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="guestLoginAction:" destination="foc-sR-CFp" eventType="touchUpInside" id="NBN-i3-YZ3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="22U-Q1-7aQ" firstAttribute="centerX" secondItem="tAj-Nc-EhG" secondAttribute="centerX" id="2oz-dp-MOO"/>
                             <constraint firstItem="WOP-NO-rPP" firstAttribute="trailing" secondItem="KW0-ZF-YeL" secondAttribute="trailing" id="EIW-ja-B2S"/>
-                            <constraint firstItem="WOP-NO-rPP" firstAttribute="bottom" secondItem="2pv-7z-wOW" secondAttribute="bottom" constant="20" id="J5e-y7-X26"/>
-                            <constraint firstItem="WOP-NO-rPP" firstAttribute="trailing" secondItem="2pv-7z-wOW" secondAttribute="trailing" constant="16" id="KUd-hc-QIS"/>
+                            <constraint firstItem="22U-Q1-7aQ" firstAttribute="top" secondItem="86j-fl-jwQ" secondAttribute="bottom" constant="8" id="cmy-Qv-m4I"/>
                             <constraint firstItem="KW0-ZF-YeL" firstAttribute="leading" secondItem="WOP-NO-rPP" secondAttribute="leading" id="hVd-Hc-xzH"/>
                             <constraint firstItem="86j-fl-jwQ" firstAttribute="centerY" secondItem="tAj-Nc-EhG" secondAttribute="centerY" constant="200" id="jQX-SW-uZU"/>
                             <constraint firstItem="KW0-ZF-YeL" firstAttribute="top" secondItem="tAj-Nc-EhG" secondAttribute="top" id="kZe-EY-zCb"/>
-                            <constraint firstItem="2pv-7z-wOW" firstAttribute="top" secondItem="86j-fl-jwQ" secondAttribute="bottom" constant="78" id="koP-fD-2Gy"/>
                             <constraint firstItem="86j-fl-jwQ" firstAttribute="centerX" secondItem="tAj-Nc-EhG" secondAttribute="centerX" id="o7h-Or-x0v"/>
                             <constraint firstItem="WOP-NO-rPP" firstAttribute="bottom" secondItem="KW0-ZF-YeL" secondAttribute="bottom" id="sRu-X6-BJg"/>
-                            <constraint firstItem="2pv-7z-wOW" firstAttribute="leading" secondItem="WOP-NO-rPP" secondAttribute="leading" constant="108" id="whe-kv-3je"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WOP-NO-rPP"/>
                     </view>
