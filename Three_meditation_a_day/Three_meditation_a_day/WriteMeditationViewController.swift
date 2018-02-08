@@ -40,6 +40,15 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
         
         writeMeditationTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height { //1136(5 or 5S or 5C), 1334(6/6S/7/8), 2208(6+/6S+/7+/8+), 2436(x)
+            case 2436:
+                statusBarHeight = 44.0
+            default:
+                statusBarHeight = 20.0
+            }
+        }
+        
         var naviHeight:CGFloat = statusBarHeight //statusBar 높이
         if(self.navigationController != nil){
             naviHeight += (self.navigationController?.navigationBar.frame.size.height)!//네비게이션바 높이
@@ -221,6 +230,15 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
     }
     
     @objc func viewBibleVersesAction(sender:UIBarButtonItem) {
+        
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height { //1136(5 or 5S or 5C), 1334(6/6S/7/8), 2208(6+/6S+/7+/8+), 2436(x)
+            case 2436:
+                statusBarHeight = 44.0
+            default:
+                statusBarHeight = 20.0
+            }
+        }
         
         var naviHeight:CGFloat = statusBarHeight
         if(self.navigationController != nil){

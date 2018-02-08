@@ -115,6 +115,8 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         logoutButton.setImage(UIImage(named: "logout.png")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
         logoutButton.addTarget(self, action: #selector(logoutAction(sender:)), for: UIControlEvents.touchUpInside)
         logoutButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        logoutButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        logoutButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         let logoutBarButton = UIBarButtonItem(customView: logoutButton)
         logoutBarButton.tintColor = UIColor.white
@@ -125,6 +127,8 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         settingButton.setImage(UIImage(named: "settings.png")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
         settingButton.addTarget(self, action: #selector(settingAction(sender:)), for: UIControlEvents.touchUpInside)
         settingButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        settingButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        settingButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         let settingBarButton = UIBarButtonItem(customView: settingButton)
         settingBarButton.tintColor = UIColor.white
