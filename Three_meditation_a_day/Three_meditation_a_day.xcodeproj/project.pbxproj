@@ -46,6 +46,8 @@
 		B5C6108520244F7800BD2DE1 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6108420244F7800BD2DE1 /* CalenderView.swift */; };
 		B5C61089202962DD00BD2DE1 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C61088202962DD00BD2DE1 /* logout.png */; };
 		B5C6108D20296DF900BD2DE1 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C6108C20296DF900BD2DE1 /* settings.png */; };
+		B5C6119A20538E2600BD2DE1 /* CopyrightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6119820538E2600BD2DE1 /* CopyrightTableViewCell.swift */; };
+		B5C6119B20538E2600BD2DE1 /* CopyrightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C6119920538E2600BD2DE1 /* CopyrightTableViewCell.xib */; };
 		B5F56AB52000FD8A00CCED3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F56AB42000FD8A00CCED3E /* AppDelegate.swift */; };
 		B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F56AB62000FD8A00CCED3E /* ViewController.swift */; };
 		B5F56ABA2000FD8A00CCED3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F56AB82000FD8A00CCED3E /* Main.storyboard */; };
@@ -99,6 +101,8 @@
 		B5C6108420244F7800BD2DE1 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		B5C61088202962DD00BD2DE1 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
 		B5C6108C20296DF900BD2DE1 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		B5C6119820538E2600BD2DE1 /* CopyrightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyrightTableViewCell.swift; sourceTree = "<group>"; };
+		B5C6119920538E2600BD2DE1 /* CopyrightTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CopyrightTableViewCell.xib; sourceTree = "<group>"; };
 		B5F56AB12000FD8A00CCED3E /* Three_meditation_a_day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Three_meditation_a_day.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5F56AB42000FD8A00CCED3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5F56AB62000FD8A00CCED3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 				B51E1CC5200DBE50002B7400 /* LoginViewController.swift */,
 				B5C6108220244F4300BD2DE1 /* CalenderView.xib */,
 				B5C6108420244F7800BD2DE1 /* CalenderView.swift */,
+				B5C6119820538E2600BD2DE1 /* CopyrightTableViewCell.swift */,
+				B5C6119920538E2600BD2DE1 /* CopyrightTableViewCell.xib */,
 			);
 			path = Three_meditation_a_day;
 			sourceTree = "<group>";
@@ -298,6 +304,7 @@
 				B51E1C9B2009CC63002B7400 /* Icon-App-20x20@3x.png in Resources */,
 				B5C6108320244F4300BD2DE1 /* CalenderView.xib in Resources */,
 				B541EC9420086FB600CFA685 /* DetailTableViewCell.xib in Resources */,
+				B5C6119B20538E2600BD2DE1 /* CopyrightTableViewCell.xib in Resources */,
 				B51E1C9E2009CC63002B7400 /* Icon-App-76x76@1x.png in Resources */,
 				B51E1CA72009CC63002B7400 /* Icon-App-60x60@2x.png in Resources */,
 				B51E1C9D2009CC63002B7400 /* Icon-App-29x29@3x.png in Resources */,
@@ -320,6 +327,7 @@
 			files = (
 				B541EC9320086FB600CFA685 /* DetailTableViewCell.swift in Sources */,
 				B541ECA02008B15500CFA685 /* Define.swift in Sources */,
+				B5C6119A20538E2600BD2DE1 /* CopyrightTableViewCell.swift in Sources */,
 				B51E1CB6200D9621002B7400 /* SelectTimePopupViewController.swift in Sources */,
 				B51E1CC2200DB7A8002B7400 /* ConfigConstants.swift in Sources */,
 				B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */,

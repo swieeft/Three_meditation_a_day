@@ -44,6 +44,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
 
         detailTableView.register(UINib(nibName: Define.customCellStruct.detailCellNib, bundle:nil), forCellReuseIdentifier: Define.customCellStruct.detailCellId)
         detailTableView.register(UINib(nibName: Define.customCellStruct.bibleVersesCellNib, bundle:nil), forCellReuseIdentifier: Define.customCellStruct.bibleVersesCellId)
+        detailTableView.register(UINib(nibName: Define.customCellStruct.copyrightCellNib, bundle:nil), forCellReuseIdentifier: Define.customCellStruct.copyrightCellId)
         
         detailTableView.rowHeight = UITableViewAutomaticDimension
         
@@ -65,14 +66,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let defaultCell:UITableViewCell
         
-        if indexPath.row == 0 {
+        if indexPath.row == 0 { //말씀구절 셀
             let cell = tableView.dequeueReusableCell(withIdentifier: Define.customCellStruct.bibleVersesCellId, for: indexPath) as! BibleVersesTableViewCell
             
             if todayBibleVersesData == nil {
@@ -88,6 +89,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                 cell.titleLabel.text = Define.customCellStruct.bibleVersesCellTitle2
                 cell.contentsLabel.numberOfLines = 0
             }
+            defaultCell = cell
+        } else if indexPath.row == 4 { //저작권 표시 셀
+            let cell = tableView.dequeueReusableCell(withIdentifier: Define.customCellStruct.copyrightCellId, for: indexPath) as! CopyrightTableViewCell
+            
+            cell.copyrightLable.text = "본 제품에 사용한 「성경전서 개역개정판」의 저작권은\n재단법인 대한성서공회 소유이며 재단법인 대한성서공회의\n허락을 받고 사용하였음."
+            
             defaultCell = cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: Define.customCellStruct.detailCellId, for: indexPath) as! DetailTableViewCell
@@ -131,6 +138,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         if indexPath.row == 0 {
             bibleVersesCellHeight = !bibleVersesCellHeight
             tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        } else if indexPath.row == 4 {
+          //skip
         } else {
             
             let guestLogin = UserDefaults.standard.bool(forKey: Define.forKeyStruct.guestLogin)

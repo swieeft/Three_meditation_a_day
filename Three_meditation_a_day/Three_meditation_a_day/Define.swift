@@ -53,9 +53,11 @@ internal class Define: NSObject {
     struct customCellStruct {
         static let detailCellId = "DetailCell"
         static let bibleVersesCellId = "BibleVersesCell"
+        static let copyrightCellId = "CopyrightCell"
         
         static let detailCellNib = "DetailTableViewCell"
         static let bibleVersesCellNib = "BibleVersesTableViewCell"
+        static let copyrightCellNib = "CopyrightTableViewCell"
         
         static let bibleVersesCellTitle1 = "오늘의 말씀 ▼"
         static let bibleVersesCellTitle2 = "오늘의 말씀 ▲"
