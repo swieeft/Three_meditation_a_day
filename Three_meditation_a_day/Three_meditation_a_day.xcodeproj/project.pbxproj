@@ -168,9 +168,9 @@
 		2484A5F0216DD1AC000A1546 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				2484A5F2216DD1DE000A1546 /* TableViewCell */,
 				B541EC8F20086E1500CFA685 /* DetailViewController.swift */,
 				B541EC9B2008923500CFA685 /* WriteMeditationViewController.swift */,
+				2484A5F2216DD1DE000A1546 /* TableViewCell */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -178,9 +178,9 @@
 		2484A5F1216DD1BC000A1546 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				2484A5F5216DD273000A1546 /* TableViewCell */,
-				B51E1CB5200D9621002B7400 /* SelectTimePopupViewController.swift */,
 				B5F56AD520047B1D00CCED3E /* SettingViewController.swift */,
+				B51E1CB5200D9621002B7400 /* SelectTimePopupViewController.swift */,
+				2484A5F5216DD273000A1546 /* TableViewCell */,
 			);
 			path = Setting;
 			sourceTree = "<group>";

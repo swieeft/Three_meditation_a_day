@@ -11,11 +11,13 @@ import UIKit
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var kakaoLoginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         kakaoLoginButton.layer.cornerRadius = 3
     }
+    
     @IBAction func guestLoginAction(_ sender: Any) {
     
         UserDefaults.standard.set(true, forKey: ForKey.guestLogin.string)
@@ -24,9 +26,7 @@ class LoginViewController: UIViewController {
         
         refreshAlert.addAction(UIAlertAction(title: "예", style: .default, handler: { (action: UIAlertAction!) in
             let storyboard  = UIStoryboard(name: "Main", bundle: nil)
-            
             let vc = storyboard.instantiateViewController(withIdentifier: "Main")
-            
             self.navigationController!.pushViewController(vc, animated: true)
         }))
         
@@ -45,13 +45,12 @@ class LoginViewController: UIViewController {
         }
         
         session.open(completionHandler: { (error) -> Void in
-            
             if !session.isOpen() {
                 switch ((error as NSError?)?.code) {
                 case Int(KOErrorCancelled.rawValue):
-                    break;
+                    break
                 default:
-                    break;
+                    break
                 }
             }
             
@@ -64,7 +63,7 @@ class LoginViewController: UIViewController {
     
     func register(userid:String?, accessToken:NSNumber?) {
 
-        if userid == nil || accessToken == nil {
+        guard let _ = userid, let _ = accessToken else {
             return
         }
         
@@ -98,13 +97,12 @@ class LoginViewController: UIViewController {
     }
     
     fileprivate func accessTokenCheck() {
-        
         KOSessionTask.accessTokenInfoTask(completionHandler: {(accessTokenInfo, error) -> Void in
             if let error = error as NSError? {
                 print(error)
                 return
             } else {
-                if accessTokenInfo == nil {
+                guard let _ = accessTokenInfo else {
                     return
                 }
                 
@@ -115,7 +113,6 @@ class LoginViewController: UIViewController {
     }
     
     fileprivate func requestMe(_ displayResult: Bool = false, accessToken:NSNumber?) {
-        
         KOSessionTask.meTask { [weak self] (user, error) -> Void in
             if let error = error as NSError? {
                 print(error)

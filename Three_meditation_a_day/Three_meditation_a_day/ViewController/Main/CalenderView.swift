@@ -61,7 +61,11 @@ class CalenderView: UIView {
     }
     
     private func setCurrentDay(weekDate:WeekData, weekOfMonth:Int, weekDay:Int, year:Int, month:Int) -> Bool {
-        guard let currentWeekOfMonth = weekDate.currentWeekOfMonth, let currentWeekDay = weekDate.currentWeekDay, let currentYear = weekDate.currentWeek?.year, let currentMonth = weekDate.currentWeek?.month else {
+        guard let currentWeekOfMonth = weekDate.currentWeekOfMonth,
+            let currentWeekDay = weekDate.currentWeekDay,
+            let currentYear = weekDate.currentWeek?.year,
+            let currentMonth = weekDate.currentWeek?.month else {
+                
             return false
         }
         

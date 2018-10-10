@@ -34,17 +34,31 @@ class SelectTimePopupViewController: UIViewController {
         
         let selectTime = selectTimePicker.date
         
+        var forKey = ""
+        var title = ""
+        var body = ""
+        var id = ""
+        
         switch SelectCellTag {
         case 10:
-            UserDefaults.standard.set(selectTime, forKey: ForKey.morningTime.string)
-            notificationSetting(date: selectTime, title: NotiInfo.morning.title, body: NotiInfo.morning.body, identifier: NotiInfo.morning.id)
+            forKey = ForKey.morningTime.string
+            title = NotiInfo.morning.title
+            body = NotiInfo.morning.body
+            id = NotiInfo.morning.id
         case 11:
-            UserDefaults.standard.set(selectTime, forKey: ForKey.afternoonTime.string)
-            notificationSetting(date: selectTime, title: NotiInfo.afternoon.title, body: NotiInfo.afternoon.body, identifier: NotiInfo.afternoon.id)
+            forKey = ForKey.afternoonTime.string
+            title = NotiInfo.afternoon.title
+            body = NotiInfo.afternoon.body
+            id = NotiInfo.afternoon.id
         default:
-            UserDefaults.standard.set(selectTime, forKey: ForKey.eveningTime.string)
-            notificationSetting(date: selectTime, title: NotiInfo.evening.title, body: NotiInfo.evening.body, identifier: NotiInfo.evening.id)
+            forKey = ForKey.eveningTime.string
+            title = NotiInfo.evening.title
+            body = NotiInfo.evening.body
+            id = NotiInfo.evening.id
         }
+        
+        UserDefaults.standard.set(selectTime, forKey: forKey)
+        notificationSetting(date: selectTime, title: title, body: body, identifier: id)
         
         self.navigationController!.popViewController(animated: true)
     }

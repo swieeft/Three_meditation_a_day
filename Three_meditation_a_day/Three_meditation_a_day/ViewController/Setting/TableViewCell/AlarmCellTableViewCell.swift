@@ -15,6 +15,7 @@ class AlarmCellTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var alarmLabel: UILabel!
     @IBOutlet weak var onoffSwitch: UISwitch!
+    
     var cellTag:Int!
     
     override func awakeFromNib() {
@@ -27,26 +28,38 @@ class AlarmCellTableViewCell: UITableViewCell {
         let switchOnOff = sender.isOn
         let switchTag = sender.tag
         
+        var title:String = ""
+        var body:String = ""
+        var notiId:String = ""
+        var timeKey:String = ""
+        var switchKey:String = ""
+        
         switch switchTag {
         case 10:
-            let time:Date? = UserDefaults.standard.object(forKey: ForKey.morningTime.string) as? Date
-            if time != nil {
-                notificationSetting(date: time!, title: NotiInfo.morning.title, body: NotiInfo.morning.body, identifier: NotiInfo.morning.id, isOn: switchOnOff)
-            }
-            UserDefaults.standard.set(switchOnOff, forKey: ForKey.morningSwitchIsOn.string)
+            title = NotiInfo.morning.title
+            body = NotiInfo.morning.body
+            notiId = NotiInfo.morning.id
+            timeKey = ForKey.morningTime.string
+            switchKey = ForKey.morningSwitchIsOn.string
         case 11:
-            let time:Date? = UserDefaults.standard.object(forKey: ForKey.afternoonTime.string) as? Date
-            if time != nil {
-                notificationSetting(date: time!, title: NotiInfo.afternoon.title, body: NotiInfo.afternoon.body, identifier: NotiInfo.afternoon.id, isOn: switchOnOff)
-            }
-            UserDefaults.standard.set(switchOnOff, forKey: ForKey.afternoonSwitchIsOn.string)
+            title = NotiInfo.afternoon.title
+            body = NotiInfo.afternoon.body
+            notiId = NotiInfo.afternoon.id
+            timeKey = ForKey.afternoonTime.string
+            switchKey = ForKey.afternoonSwitchIsOn.string
         default:
-            let time:Date? = UserDefaults.standard.object(forKey: ForKey.eveningTime.string) as? Date
-            if time != nil {
-                notificationSetting(date: time!, title: NotiInfo.evening.title, body: NotiInfo.evening.body, identifier: NotiInfo.evening.id, isOn: switchOnOff)
-            }
-            UserDefaults.standard.set(switchOnOff, forKey: ForKey.eveningSwitchIsOn.string)
+            title = NotiInfo.evening.title
+            body = NotiInfo.evening.body
+            notiId = NotiInfo.evening.id
+            timeKey = ForKey.eveningTime.string
+            switchKey = ForKey.eveningSwitchIsOn.string
         }
+        
+        if let time = UserDefaults.standard.object(forKey: timeKey) as? Date {
+            notificationSetting(date: time, title: title, body: body, identifier: notiId, isOn: switchOnOff)
+        }
+        
+        UserDefaults.standard.set(switchOnOff, forKey: switchKey)
     }
     
     func notificationSetting(date:Date, title:String, body:String, identifier:String, isOn:Bool) {

@@ -30,32 +30,42 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmCell", for: indexPath) as! AlarmCellTableViewCell
         
-        cell.imgView.layer.cornerRadius = 50 / 2
+        var imageName = ""
+        var title = ""
+        var alarm = ""
+        var isOn = ""
+        var tag = 0
         
         switch indexPath.row {
         case 0:
-            cell.imgView.image = UIImage(named:CustomCell.images.morning.alarmName)
-            cell.titleLabel.text = CustomCell.title.morningAlarm.string
-            cell.alarmLabel.text = getSaveTime(forKey: ForKey.morningTime.string)
-            cell.onoffSwitch.isOn = getSwitchOnOff(forKey: ForKey.morningSwitchIsOn.string)
-            cell.onoffSwitch.tag = 10
-            cell.cellTag = 10
+            imageName = CustomCell.images.morning.alarmName
+            title = CustomCell.title.morningAlarm.string
+            alarm = ForKey.morningTime.string
+            isOn = ForKey.morningSwitchIsOn.string
+            tag = 10
         case 1:
-            cell.imgView.image = UIImage(named:CustomCell.images.afternoon.alarmName)
-            cell.titleLabel.text = CustomCell.title.afternoonAlarm.string
-            cell.alarmLabel.text = getSaveTime(forKey: ForKey.afternoonTime.string)
-            cell.onoffSwitch.isOn = getSwitchOnOff(forKey: ForKey.afternoonSwitchIsOn.string)
-            cell.onoffSwitch.tag = 11
-            cell.cellTag = 11
+            imageName = CustomCell.images.afternoon.alarmName
+            title = CustomCell.title.afternoonAlarm.string
+            alarm = ForKey.afternoonTime.string
+            isOn = ForKey.afternoonSwitchIsOn.string
+            tag = 11
         default:
-            cell.imgView.image = UIImage(named:CustomCell.images.evening.alarmName)
-            cell.titleLabel.text = CustomCell.title.eveningAlarm.string
-            cell.alarmLabel.text = getSaveTime(forKey: ForKey.eveningTime.string)
-            cell.onoffSwitch.isOn = getSwitchOnOff(forKey: ForKey.eveningSwitchIsOn.string)
-            cell.onoffSwitch.tag = 12
-            cell.cellTag = 12
+            imageName = CustomCell.images.evening.alarmName
+            title = CustomCell.title.eveningAlarm.string
+            alarm = ForKey.eveningTime.string
+            isOn = ForKey.eveningSwitchIsOn.string
+            tag = 12
         }
         
+        cell.imgView.image = UIImage(named:imageName)
+        cell.titleLabel.text = title
+        cell.alarmLabel.text = getSaveTime(forKey: alarm)
+        cell.onoffSwitch.isOn = UserDefaults.standard.bool(forKey: isOn)
+        cell.onoffSwitch.tag = tag
+        cell.cellTag = tag
+
+        
+        cell.imgView.layer.cornerRadius = 50 / 2
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         return cell
@@ -67,26 +77,17 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         formatter.locale = NSLocale(localeIdentifier: DateFormat.localeIdentifier.format) as Locale?
         formatter.dateFormat = DateFormat.time.format
         
-        let time:Date? = UserDefaults.standard.object(forKey: forKey) as? Date
-        
-        if time != nil
-        {
-            let timeString = formatter.string(from: time!)
-            return timeString
-        } else {
+        guard let time = UserDefaults.standard.object(forKey: forKey) as? Date else {
             return "시간설정"
         }
+        
+        let timeString = formatter.string(from: time)
+        return timeString
     }
     
     //설정한 값으로 스위치 버튼 값 변경
-    func getSwitchOnOff(forKey:String) -> Bool{
-        let isOn:Bool? = UserDefaults.standard.bool(forKey: forKey)
-        
-        if isOn != nil {
-            return isOn!
-        } else {
-            return true
-        }
+    func getSwitchOnOff(forKey:String) -> Bool {
+        return UserDefaults.standard.bool(forKey: forKey)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
