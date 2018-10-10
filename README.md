@@ -93,4 +93,5 @@
 * [Server Github 링크](https://github.com/swieeft/Three_meditation_a_day_Server)
 * [삼시묵상 블로그 링크](http://three-meditation-a-day.tistory.com/)
 
->> 현재 서비스 종료되었습니다.
+
+> **현재 서비스 종료되었습니다.**
