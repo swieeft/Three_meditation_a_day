@@ -29,23 +29,23 @@ class AlarmCellTableViewCell: UITableViewCell {
         
         switch switchTag {
         case 10:
-            let time:Date? = UserDefaults.standard.object(forKey: Define.forKeyStruct.morningTime) as? Date
+            let time:Date? = UserDefaults.standard.object(forKey: ForKey.morningTime.string) as? Date
             if time != nil {
-                notificationSetting(date: time!, title: Define.notificationStruct.morningTitle, body: Define.notificationStruct.morningBody, identifier: Define.notificationStruct.morningNotiId, isOn: switchOnOff)
+                notificationSetting(date: time!, title: NotiInfo.morning.title, body: NotiInfo.morning.body, identifier: NotiInfo.morning.id, isOn: switchOnOff)
             }
-            UserDefaults.standard.set(switchOnOff, forKey: Define.forKeyStruct.morningSwitchIsOn)
+            UserDefaults.standard.set(switchOnOff, forKey: ForKey.morningSwitchIsOn.string)
         case 11:
-            let time:Date? = UserDefaults.standard.object(forKey: Define.forKeyStruct.afternoonTime) as? Date
+            let time:Date? = UserDefaults.standard.object(forKey: ForKey.afternoonTime.string) as? Date
             if time != nil {
-                notificationSetting(date: time!, title: Define.notificationStruct.afternoonTitle, body: Define.notificationStruct.afternoonBody, identifier: Define.notificationStruct.afternoonNotiId, isOn: switchOnOff)
+                notificationSetting(date: time!, title: NotiInfo.afternoon.title, body: NotiInfo.afternoon.body, identifier: NotiInfo.afternoon.id, isOn: switchOnOff)
             }
-            UserDefaults.standard.set(switchOnOff, forKey: Define.forKeyStruct.afternoonSwitchIsOn)
+            UserDefaults.standard.set(switchOnOff, forKey: ForKey.afternoonSwitchIsOn.string)
         default:
-            let time:Date? = UserDefaults.standard.object(forKey: Define.forKeyStruct.eveningTime) as? Date
+            let time:Date? = UserDefaults.standard.object(forKey: ForKey.eveningTime.string) as? Date
             if time != nil {
-                notificationSetting(date: time!, title: Define.notificationStruct.eveningTitle, body: Define.notificationStruct.eveningBody, identifier: Define.notificationStruct.eveningNotiId, isOn: switchOnOff)
+                notificationSetting(date: time!, title: NotiInfo.evening.title, body: NotiInfo.evening.body, identifier: NotiInfo.evening.id, isOn: switchOnOff)
             }
-            UserDefaults.standard.set(switchOnOff, forKey: Define.forKeyStruct.eveningSwitchIsOn)
+            UserDefaults.standard.set(switchOnOff, forKey: ForKey.eveningSwitchIsOn.string)
         }
     }
     

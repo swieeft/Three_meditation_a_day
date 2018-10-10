@@ -63,7 +63,7 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(noti:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(noti:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        writeMeditationTableView.register(UINib(nibName: Define.customCellStruct.bibleVersesCellNib, bundle:nil), forCellReuseIdentifier: Define.customCellStruct.bibleVersesCellId)
+        writeMeditationTableView.register(UINib(nibName: CustomCell.Info.bibleVerses.nib, bundle:nil), forCellReuseIdentifier: CustomCell.Info.bibleVerses.id)
         
         writeMeditationTableView.rowHeight = UITableViewAutomaticDimension
         
@@ -83,7 +83,7 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: Define.customCellStruct.bibleVersesCellId, for: indexPath) as! BibleVersesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.Info.bibleVerses.id, for: indexPath) as! BibleVersesTableViewCell
         
         cell.contentsLabel.text = bibleVerses
         cell.contentsLabel.numberOfLines = 0
@@ -154,21 +154,21 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
             return
         }
         
-        let userid = UserDefaults.standard.string(forKey: Define.forKeyStruct.kakaoEmail)
+        let userid = UserDefaults.standard.string(forKey: ForKey.kakaoEmail.string)
         
         var urlString = ""
         var queryItemName:String = ""
         
         switch currentTime {
         case 0:
-            urlString = Define.webServer.saveMorningMeditation
-            queryItemName = Define.jsonKey.morning
+            urlString = Api.Url.host.saveMorningMeditation
+            queryItemName = JsonKey.morning.string
         case 1:
-            urlString = Define.webServer.saveAfternoonMeditation
-            queryItemName = Define.jsonKey.afternoon
+            urlString = Api.Url.host.saveAfternoonMeditation
+            queryItemName = JsonKey.afternoon.string
         case 2:
-            urlString = Define.webServer.saveEveningMeditation
-            queryItemName = Define.jsonKey.evening
+            urlString = Api.Url.host.saveEveningMeditation
+            queryItemName = JsonKey.evening.string
         default:
             urlString = ""
             queryItemName = ""
@@ -181,18 +181,18 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
         let pass = userid! + "token" + String(describing: accessToken)
         
         var json = [String:Any]()
-        json[Define.jsonKey.userid] = userid
-        json[Define.jsonKey.pass] = pass
-        json[Define.jsonKey.year] = String(describing: (dateComponents?.year!)!)
-        json[Define.jsonKey.month] = String(describing: (dateComponents?.month!)!)
-        json[Define.jsonKey.day] = String(describing: (dateComponents?.day!)!)
+        json[JsonKey.userid.string] = userid
+        json[JsonKey.pass.string] = pass
+        json[JsonKey.year.string] = String(describing: (dateComponents?.year!)!)
+        json[JsonKey.month.string] = String(describing: (dateComponents?.month!)!)
+        json[JsonKey.day.string] = String(describing: (dateComponents?.day!)!)
         json[queryItemName] = contentsTextView.text
         
         do {
             let data = try JSONSerialization.data(withJSONObject: json, options: [])
 
             var request = URLRequest(url: URL(string: urlString)!)
-            request.httpMethod = Define.webServer.post
+            request.httpMethod = Api.httpMethod.post.string
             request.httpBody = data
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")

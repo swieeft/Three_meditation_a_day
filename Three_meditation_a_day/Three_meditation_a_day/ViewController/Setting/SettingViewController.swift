@@ -34,24 +34,24 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         switch indexPath.row {
         case 0:
-            cell.imgView.image = UIImage(named:Define.customCellStruct.morningAlarmImg)
-            cell.titleLabel.text = Define.customCellStruct.morningAlarmTitle
-            cell.alarmLabel.text = getSaveTime(forKey: Define.forKeyStruct.morningTime)
-            cell.onoffSwitch.isOn = getSwitchOnOff(forKey: Define.forKeyStruct.morningSwitchIsOn)
+            cell.imgView.image = UIImage(named:CustomCell.images.morning.alarmName)
+            cell.titleLabel.text = CustomCell.title.morningAlarm.string
+            cell.alarmLabel.text = getSaveTime(forKey: ForKey.morningTime.string)
+            cell.onoffSwitch.isOn = getSwitchOnOff(forKey: ForKey.morningSwitchIsOn.string)
             cell.onoffSwitch.tag = 10
             cell.cellTag = 10
         case 1:
-            cell.imgView.image = UIImage(named:Define.customCellStruct.afternoonAlarmImg)
-            cell.titleLabel.text = Define.customCellStruct.afternoonAlarmTitle
-            cell.alarmLabel.text = getSaveTime(forKey: Define.forKeyStruct.afternoonTime)
-            cell.onoffSwitch.isOn = getSwitchOnOff(forKey: Define.forKeyStruct.afternoonSwitchIsOn)
+            cell.imgView.image = UIImage(named:CustomCell.images.afternoon.alarmName)
+            cell.titleLabel.text = CustomCell.title.afternoonAlarm.string
+            cell.alarmLabel.text = getSaveTime(forKey: ForKey.afternoonTime.string)
+            cell.onoffSwitch.isOn = getSwitchOnOff(forKey: ForKey.afternoonSwitchIsOn.string)
             cell.onoffSwitch.tag = 11
             cell.cellTag = 11
         default:
-            cell.imgView.image = UIImage(named:Define.customCellStruct.eveningAlarmImg)
-            cell.titleLabel.text = Define.customCellStruct.eveningAlarmTitle
-            cell.alarmLabel.text = getSaveTime(forKey: Define.forKeyStruct.eveningTime)
-            cell.onoffSwitch.isOn = getSwitchOnOff(forKey: Define.forKeyStruct.eveningSwitchIsOn)
+            cell.imgView.image = UIImage(named:CustomCell.images.evening.alarmName)
+            cell.titleLabel.text = CustomCell.title.eveningAlarm.string
+            cell.alarmLabel.text = getSaveTime(forKey: ForKey.eveningTime.string)
+            cell.onoffSwitch.isOn = getSwitchOnOff(forKey: ForKey.eveningSwitchIsOn.string)
             cell.onoffSwitch.tag = 12
             cell.cellTag = 12
         }
@@ -64,8 +64,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     //설정한 시간을 가져옴
     func getSaveTime(forKey:String) -> String {
         let formatter = DateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: Define.dateFormat.localeIdentifier) as Locale!
-        formatter.dateFormat = Define.dateFormat.time
+        formatter.locale = NSLocale(localeIdentifier: DateFormat.localeIdentifier.format) as Locale?
+        formatter.dateFormat = DateFormat.time.format
         
         let time:Date? = UserDefaults.standard.object(forKey: forKey) as? Date
         

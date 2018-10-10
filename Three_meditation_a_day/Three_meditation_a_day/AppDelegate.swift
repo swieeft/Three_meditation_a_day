@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         reloadRootViewController()
         
-        KOSession.shared().clientSecret = SessionConstants.clientSecret;
+        KOSession.shared().clientSecret = SessionConstants.clientSecret.string
         
         return true
     }

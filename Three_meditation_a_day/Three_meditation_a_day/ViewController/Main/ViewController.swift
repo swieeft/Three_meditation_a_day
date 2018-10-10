@@ -99,7 +99,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         let currentDate = Date.init()
         
         selectDate = currentDate
-        UserDefaults.standard.set(currentDate, forKey: Define.forKeyStruct.selectDate)
+        UserDefaults.standard.set(currentDate, forKey: ForKey.selectDate.string)
         
         addNavigationItem()
         
@@ -187,8 +187,8 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         activityIndicator.startAnimating()
         
         let formatter = DateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: Define.dateFormat.localeIdentifier) as Locale!
-        formatter.dateFormat = Define.dateFormat.yearMonth
+        formatter.locale = NSLocale(localeIdentifier: DateFormat.localeIdentifier.format) as Locale?
+        formatter.dateFormat = DateFormat.yearMonth.format
         
         let dateString = formatter.string(from: date)
         
@@ -203,7 +203,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
             return
         }
         
-        let guestLogin = UserDefaults.standard.bool(forKey: Define.forKeyStruct.guestLogin)
+        let guestLogin = UserDefaults.standard.bool(forKey: ForKey.guestLogin.string)
         
         if guestLogin {
             setViewCalender(date: date)
@@ -224,7 +224,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
                 }
 
                 self?.user = user as? KOUser
-                UserDefaults.standard.set(self?.user?.email ?? "--", forKey: Define.forKeyStruct.kakaoEmail)
+                UserDefaults.standard.set(self?.user?.email ?? "--", forKey: ForKey.kakaoEmail.string)
 
                 DispatchQueue.main.async(execute: {
                     self?.viewDidAppear(true)
@@ -236,9 +236,9 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     //묵상 입력 상태를 가져옴
     func getDayMeditationStatusCheckData(date:DateComponents)  {
         
-        let userid = UserDefaults.standard.string(forKey: Define.forKeyStruct.kakaoEmail)
+        let userid = UserDefaults.standard.string(forKey: ForKey.kakaoEmail.string)
         
-        let urlComponents = NSURLComponents(string: Define.webServer.searchCurrentMonthMeditation)!
+        let urlComponents = NSURLComponents(string: Api.Url.host.searchCurrentMonthMeditation)!
         
         if userid == nil {
             requestMe()
@@ -247,13 +247,13 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         }
         
         urlComponents.queryItems = [
-            URLQueryItem(name: Define.jsonKey.userid, value: userid),
-            URLQueryItem(name: Define.jsonKey.year, value: String(describing: (date.year)!)),
-            URLQueryItem(name: Define.jsonKey.month, value: String(describing: (date.month)!)),
+            URLQueryItem(name: JsonKey.userid.string, value: userid),
+            URLQueryItem(name: JsonKey.year.string, value: String(describing: (date.year)!)),
+            URLQueryItem(name: JsonKey.month.string, value: String(describing: (date.month)!)),
         ]
         
         var request = URLRequest(url: urlComponents.url!)
-        request.httpMethod = Define.webServer.get
+        request.httpMethod = Api.httpMethod.get.string
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
@@ -294,7 +294,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         }
         
         let formatter = DateFormatter()
-        formatter.dateFormat = Define.dateFormat.yearMonthDay
+        formatter.dateFormat = DateFormat.yearMonthDay.format
         
         let firstDay:Int = 1
         
@@ -371,7 +371,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
                     } else {
                         view.dayLabel.text = String(day)
                         
-                        let guestLogin = UserDefaults.standard.bool(forKey: Define.forKeyStruct.guestLogin)
+                        let guestLogin = UserDefaults.standard.bool(forKey: ForKey.guestLogin.string)
                         if guestLogin == false {
                             let todayMeditationArr = meditation!.filter{$0.day == day}
                             
@@ -417,7 +417,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         if day! != "" {
             let calendar = Calendar(identifier: .gregorian)
             let formatter = DateFormatter()
-            formatter.dateFormat = Define.dateFormat.yearMonthDay
+            formatter.dateFormat = DateFormat.yearMonthDay.format
 
             let date = calendar.dateComponents([.year, .month], from: self.selectDate)
             let clickDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(day!)")
@@ -430,7 +430,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
             if clickDate! <= currentDate{
                 let storyboard  = UIStoryboard(name: "Main", bundle: nil)
 
-                formatter.dateFormat = Define.dateFormat.yearMonthDayDat
+                formatter.dateFormat = DateFormat.yearMonthDayDat.format
                 let dateString = formatter.string(from: clickDate!)
 
                 let vc = storyboard.instantiateViewController(withIdentifier: "Detail")
@@ -481,7 +481,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         
         let calendar = Calendar(identifier: .gregorian)
         let formatter = DateFormatter()
-        formatter.dateFormat = Define.dateFormat.yearMonthDay
+        formatter.dateFormat = DateFormat.yearMonthDay.format
         
         let date = calendar.dateComponents([.year, .month, .day], from: self.selectDate)
         

@@ -36,14 +36,14 @@ class SelectTimePopupViewController: UIViewController {
         
         switch SelectCellTag {
         case 10:
-            UserDefaults.standard.set(selectTime, forKey: Define.forKeyStruct.morningTime)
-            notificationSetting(date: selectTime, title: Define.notificationStruct.morningTitle, body: Define.notificationStruct.morningBody, identifier: Define.notificationStruct.morningNotiId)
+            UserDefaults.standard.set(selectTime, forKey: ForKey.morningTime.string)
+            notificationSetting(date: selectTime, title: NotiInfo.morning.title, body: NotiInfo.morning.body, identifier: NotiInfo.morning.id)
         case 11:
-            UserDefaults.standard.set(selectTime, forKey: Define.forKeyStruct.afternoonTime)
-            notificationSetting(date: selectTime, title: Define.notificationStruct.afternoonTitle, body: Define.notificationStruct.afternoonBody, identifier: Define.notificationStruct.afternoonNotiId)
+            UserDefaults.standard.set(selectTime, forKey: ForKey.afternoonTime.string)
+            notificationSetting(date: selectTime, title: NotiInfo.afternoon.title, body: NotiInfo.afternoon.body, identifier: NotiInfo.afternoon.id)
         default:
-            UserDefaults.standard.set(selectTime, forKey: Define.forKeyStruct.eveningTime)
-            notificationSetting(date: selectTime, title: Define.notificationStruct.eveningTitle, body: Define.notificationStruct.eveningBody, identifier: Define.notificationStruct.eveningNotiId)
+            UserDefaults.standard.set(selectTime, forKey: ForKey.eveningTime.string)
+            notificationSetting(date: selectTime, title: NotiInfo.evening.title, body: NotiInfo.evening.body, identifier: NotiInfo.evening.id)
         }
         
         self.navigationController!.popViewController(animated: true)

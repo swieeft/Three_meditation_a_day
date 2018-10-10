@@ -28,7 +28,6 @@
 		B51E1CB6200D9621002B7400 /* SelectTimePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E1CB5200D9621002B7400 /* SelectTimePopupViewController.swift */; };
 		B51E1CB8200DA6A2002B7400 /* AlarmCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E1CB7200DA6A2002B7400 /* AlarmCellTableViewCell.swift */; };
 		B51E1CBD200DAB1C002B7400 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51E1CBC200DAB1C002B7400 /* KakaoOpenSDK.framework */; };
-		B51E1CC2200DB7A8002B7400 /* ConfigConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E1CC1200DB7A8002B7400 /* ConfigConstants.swift */; };
 		B51E1CC4200DBD95002B7400 /* kakaoLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1CC3200DBD95002B7400 /* kakaoLogin.png */; };
 		B51E1CC6200DBE50002B7400 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51E1CC5200DBE50002B7400 /* LoginViewController.swift */; };
 		B541EC8C20086BCE00CFA685 /* Afternoon.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC8920086BCE00CFA685 /* Afternoon.png */; };
@@ -41,7 +40,7 @@
 		B541EC982008763500CFA685 /* BibleVersesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B541EC962008763500CFA685 /* BibleVersesTableViewCell.xib */; };
 		B541EC9A20087D6500CFA685 /* Bible.png in Resources */ = {isa = PBXBuildFile; fileRef = B541EC9920087D6500CFA685 /* Bible.png */; };
 		B541EC9C2008923500CFA685 /* WriteMeditationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541EC9B2008923500CFA685 /* WriteMeditationViewController.swift */; };
-		B541ECA02008B15500CFA685 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541EC9F2008B15500CFA685 /* Define.swift */; };
+		B541ECA02008B15500CFA685 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541EC9F2008B15500CFA685 /* Enum.swift */; };
 		B5C6108320244F4300BD2DE1 /* CalenderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5C6108220244F4300BD2DE1 /* CalenderView.xib */; };
 		B5C6108520244F7800BD2DE1 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6108420244F7800BD2DE1 /* CalenderView.swift */; };
 		B5C61089202962DD00BD2DE1 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C61088202962DD00BD2DE1 /* logout.png */; };
@@ -83,7 +82,6 @@
 		B51E1CB7200DA6A2002B7400 /* AlarmCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCellTableViewCell.swift; sourceTree = "<group>"; };
 		B51E1CBC200DAB1C002B7400 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		B51E1CBE200DADB2002B7400 /* Briging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Briging-Header.h"; sourceTree = "<group>"; };
-		B51E1CC1200DB7A8002B7400 /* ConfigConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigConstants.swift; sourceTree = "<group>"; };
 		B51E1CC3200DBD95002B7400 /* kakaoLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kakaoLogin.png; sourceTree = "<group>"; };
 		B51E1CC5200DBE50002B7400 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B541EC8920086BCE00CFA685 /* Afternoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Afternoon.png; sourceTree = "<group>"; };
@@ -96,7 +94,7 @@
 		B541EC962008763500CFA685 /* BibleVersesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BibleVersesTableViewCell.xib; sourceTree = "<group>"; };
 		B541EC9920087D6500CFA685 /* Bible.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bible.png; sourceTree = "<group>"; };
 		B541EC9B2008923500CFA685 /* WriteMeditationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMeditationViewController.swift; sourceTree = "<group>"; };
-		B541EC9F2008B15500CFA685 /* Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
+		B541EC9F2008B15500CFA685 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		B5C6108220244F4300BD2DE1 /* CalenderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalenderView.xib; sourceTree = "<group>"; };
 		B5C6108420244F7800BD2DE1 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		B5C61088202962DD00BD2DE1 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
@@ -129,6 +127,102 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2484A5ED216DC1CE000A1546 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				B5F56ABD2000FD8A00CCED3E /* LaunchScreen.storyboard */,
+				B5F56AB82000FD8A00CCED3E /* Main.storyboard */,
+				2484A5EE216DD152000A1546 /* Xib */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		2484A5EE216DD152000A1546 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				B541EC9220086FB600CFA685 /* DetailTableViewCell.xib */,
+				B5C6108220244F4300BD2DE1 /* CalenderView.xib */,
+				B541EC962008763500CFA685 /* BibleVersesTableViewCell.xib */,
+				B5C6119920538E2600BD2DE1 /* CopyrightTableViewCell.xib */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
+		2484A5EF216DD19C000A1546 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2484A5F4216DD20C000A1546 /* Main */,
+				2484A5F3216DD205000A1546 /* Login */,
+				2484A5F1216DD1BC000A1546 /* Setting */,
+				2484A5F0216DD1AC000A1546 /* Detail */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2484A5F0216DD1AC000A1546 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				2484A5F2216DD1DE000A1546 /* TableViewCell */,
+				B541EC8F20086E1500CFA685 /* DetailViewController.swift */,
+				B541EC9B2008923500CFA685 /* WriteMeditationViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		2484A5F1216DD1BC000A1546 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				2484A5F5216DD273000A1546 /* TableViewCell */,
+				B51E1CB5200D9621002B7400 /* SelectTimePopupViewController.swift */,
+				B5F56AD520047B1D00CCED3E /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		2484A5F2216DD1DE000A1546 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B5C6119820538E2600BD2DE1 /* CopyrightTableViewCell.swift */,
+				B541EC952008763500CFA685 /* BibleVersesTableViewCell.swift */,
+				B541EC9120086FB600CFA685 /* DetailTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		2484A5F3216DD205000A1546 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B51E1CC5200DBE50002B7400 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2484A5F4216DD20C000A1546 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B5C6108420244F7800BD2DE1 /* CalenderView.swift */,
+				B5F56ADA200741CA00CCED3E /* SelectDatePopupViewController.swift */,
+				B5F56AB62000FD8A00CCED3E /* ViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		2484A5F5216DD273000A1546 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B51E1CB7200DA6A2002B7400 /* AlarmCellTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		2484A5F6216DD2A9000A1546 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B541EC9F2008B15500CFA685 /* Enum.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		B51E1CBB200DAAC9002B7400 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,31 +251,14 @@
 		B5F56AB32000FD8A00CCED3E /* Three_meditation_a_day */ = {
 			isa = PBXGroup;
 			children = (
+				2484A5F6216DD2A9000A1546 /* Data */,
+				2484A5EF216DD19C000A1546 /* ViewController */,
+				2484A5ED216DC1CE000A1546 /* StoryBoard */,
 				B5F56AC6200468DD00CCED3E /* Resource */,
 				B5F56AB42000FD8A00CCED3E /* AppDelegate.swift */,
-				B5F56AB62000FD8A00CCED3E /* ViewController.swift */,
-				B5F56AB82000FD8A00CCED3E /* Main.storyboard */,
 				B5F56ABB2000FD8A00CCED3E /* Assets.xcassets */,
-				B5F56ABD2000FD8A00CCED3E /* LaunchScreen.storyboard */,
 				B5F56AC02000FD8A00CCED3E /* Info.plist */,
-				B5F56AD520047B1D00CCED3E /* SettingViewController.swift */,
-				B5F56ADA200741CA00CCED3E /* SelectDatePopupViewController.swift */,
-				B541EC8F20086E1500CFA685 /* DetailViewController.swift */,
-				B541EC9120086FB600CFA685 /* DetailTableViewCell.swift */,
-				B541EC9220086FB600CFA685 /* DetailTableViewCell.xib */,
-				B541EC952008763500CFA685 /* BibleVersesTableViewCell.swift */,
-				B541EC962008763500CFA685 /* BibleVersesTableViewCell.xib */,
-				B541EC9B2008923500CFA685 /* WriteMeditationViewController.swift */,
-				B541EC9F2008B15500CFA685 /* Define.swift */,
-				B51E1CB5200D9621002B7400 /* SelectTimePopupViewController.swift */,
-				B51E1CB7200DA6A2002B7400 /* AlarmCellTableViewCell.swift */,
 				B51E1CBE200DADB2002B7400 /* Briging-Header.h */,
-				B51E1CC1200DB7A8002B7400 /* ConfigConstants.swift */,
-				B51E1CC5200DBE50002B7400 /* LoginViewController.swift */,
-				B5C6108220244F4300BD2DE1 /* CalenderView.xib */,
-				B5C6108420244F7800BD2DE1 /* CalenderView.swift */,
-				B5C6119820538E2600BD2DE1 /* CopyrightTableViewCell.swift */,
-				B5C6119920538E2600BD2DE1 /* CopyrightTableViewCell.xib */,
 			);
 			path = Three_meditation_a_day;
 			sourceTree = "<group>";
@@ -326,10 +403,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B541EC9320086FB600CFA685 /* DetailTableViewCell.swift in Sources */,
-				B541ECA02008B15500CFA685 /* Define.swift in Sources */,
+				B541ECA02008B15500CFA685 /* Enum.swift in Sources */,
 				B5C6119A20538E2600BD2DE1 /* CopyrightTableViewCell.swift in Sources */,
 				B51E1CB6200D9621002B7400 /* SelectTimePopupViewController.swift in Sources */,
-				B51E1CC2200DB7A8002B7400 /* ConfigConstants.swift in Sources */,
 				B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */,
 				B5F56AB52000FD8A00CCED3E /* AppDelegate.swift in Sources */,
 				B541EC9020086E1500CFA685 /* DetailViewController.swift in Sources */,

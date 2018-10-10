@@ -42,9 +42,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        detailTableView.register(UINib(nibName: Define.customCellStruct.detailCellNib, bundle:nil), forCellReuseIdentifier: Define.customCellStruct.detailCellId)
-        detailTableView.register(UINib(nibName: Define.customCellStruct.bibleVersesCellNib, bundle:nil), forCellReuseIdentifier: Define.customCellStruct.bibleVersesCellId)
-        detailTableView.register(UINib(nibName: Define.customCellStruct.copyrightCellNib, bundle:nil), forCellReuseIdentifier: Define.customCellStruct.copyrightCellId)
+        detailTableView.register(UINib(nibName: CustomCell.Info.detail.nib, bundle:nil), forCellReuseIdentifier: CustomCell.Info.detail.id)
+        detailTableView.register(UINib(nibName: CustomCell.Info.bibleVerses.nib, bundle:nil), forCellReuseIdentifier: CustomCell.Info.bibleVerses.id)
+        detailTableView.register(UINib(nibName: CustomCell.Info.copyright.nib, bundle:nil), forCellReuseIdentifier: CustomCell.Info.copyright.id)
         
         detailTableView.rowHeight = UITableViewAutomaticDimension
         
@@ -74,7 +74,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let defaultCell:UITableViewCell
         
         if indexPath.row == 0 { //말씀구절 셀
-            let cell = tableView.dequeueReusableCell(withIdentifier: Define.customCellStruct.bibleVersesCellId, for: indexPath) as! BibleVersesTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.Info.bibleVerses.id, for: indexPath) as! BibleVersesTableViewCell
             
             if todayBibleVersesData == nil {
                 cell.contentsLabel.text = ""
@@ -83,46 +83,46 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
             if bibleVersesCellHeight == false {
-                cell.titleLabel.text = Define.customCellStruct.bibleVersesCellTitle1
+                cell.titleLabel.text = CustomCell.title.bibleVersesExpand.string
                 cell.contentsLabel.numberOfLines = 1
             } else {
-                cell.titleLabel.text = Define.customCellStruct.bibleVersesCellTitle2
+                cell.titleLabel.text = CustomCell.title.bibleVersesFolding.string
                 cell.contentsLabel.numberOfLines = 0
             }
             defaultCell = cell
         } else if indexPath.row == 4 { //저작권 표시 셀
-            let cell = tableView.dequeueReusableCell(withIdentifier: Define.customCellStruct.copyrightCellId, for: indexPath) as! CopyrightTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.Info.copyright.id, for: indexPath) as! CopyrightTableViewCell
             
             cell.copyrightLable.text = "본 제품에 사용한 「성경전서 개역개정판」의 저작권은\n재단법인 대한성서공회 소유이며 재단법인 대한성서공회의\n허락을 받고 사용하였음."
             
             defaultCell = cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Define.customCellStruct.detailCellId, for: indexPath) as! DetailTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.Info.detail.id, for: indexPath) as! DetailTableViewCell
             
             cell.contentsLabel.text = ""
             
             switch indexPath.row {
             case 1 :
-                cell.imgView?.image = UIImage(named: Define.customCellStruct.morningImg)
-                cell.titleLabel.text = Define.customCellStruct.morningTitle
+                cell.imgView?.image = UIImage(named: CustomCell.images.morning.basicName)
+                cell.titleLabel.text = CustomCell.title.morning.string
                 if meditationData != nil {
                     cell.contentsLabel.text = meditationData?.morning
                 }
-                cell.tag = Define.currentTime.morning
+                cell.tag = CurrentTime.morning.tag
             case 2 :
-                cell.imgView?.image = UIImage(named: Define.customCellStruct.afternoonImg)
-                cell.titleLabel.text = Define.customCellStruct.afternoonTitle
+                cell.imgView?.image = UIImage(named: CustomCell.images.afternoon.basicName)
+                cell.titleLabel.text = CustomCell.title.afternoon.string
                 if meditationData != nil {
                     cell.contentsLabel.text = meditationData?.afternoon
                 }
-                cell.tag = Define.currentTime.afternoon
+                cell.tag = CurrentTime.afternoon.tag
             default :
-                cell.imgView?.image = UIImage(named: Define.customCellStruct.eveningImg)
-                cell.titleLabel.text = Define.customCellStruct.eveningTitle
+                cell.imgView?.image = UIImage(named: CustomCell.images.evening.basicName)
+                cell.titleLabel.text = CustomCell.title.evening.string
                 if meditationData != nil {
                     cell.contentsLabel.text = meditationData?.evening
                 }
-                cell.tag = Define.currentTime.evening
+                cell.tag = CurrentTime.evening.tag
             }
             
             defaultCell = cell
@@ -142,7 +142,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
           //skip
         } else {
             
-            let guestLogin = UserDefaults.standard.bool(forKey: Define.forKeyStruct.guestLogin)
+            let guestLogin = UserDefaults.standard.bool(forKey: ForKey.guestLogin.string)
             
             if guestLogin {
                 return
@@ -191,16 +191,16 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             return
         }
         
-        let urlComponents = NSURLComponents(string: Define.webServer.searchTodayBibleVerses)!
+        let urlComponents = NSURLComponents(string: Api.Url.host.searchTodayBibleVerses)!
         
         urlComponents.queryItems = [
-            URLQueryItem(name: Define.jsonKey.year, value: String(describing: (date?.year!)!)),
-            URLQueryItem(name: Define.jsonKey.month, value: String(describing: (date?.month!)!)),
-            URLQueryItem(name: Define.jsonKey.day, value: String(describing: (date?.day!)!)),
+            URLQueryItem(name: JsonKey.year.string, value: String(describing: (date?.year!)!)),
+            URLQueryItem(name: JsonKey.month.string, value: String(describing: (date?.month!)!)),
+            URLQueryItem(name: JsonKey.day.string, value: String(describing: (date?.day!)!)),
         ]
         
         var request = URLRequest(url: urlComponents.url!)
-        request.httpMethod = Define.webServer.get
+        request.httpMethod = Api.httpMethod.get.string
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
@@ -224,7 +224,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     //오늘의 묵상 내용을 가져옴
     func getTodayMeditationWebResponse() {
         
-        let guestLogin = UserDefaults.standard.bool(forKey: Define.forKeyStruct.guestLogin)
+        let guestLogin = UserDefaults.standard.bool(forKey: ForKey.guestLogin.string)
         
         if guestLogin {
             return
@@ -236,19 +236,19 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             return
         }
         
-        let userid = UserDefaults.standard.string(forKey: Define.forKeyStruct.kakaoEmail)
+        let userid = UserDefaults.standard.string(forKey: ForKey.kakaoEmail.string)
         
-        let urlComponents = NSURLComponents(string: Define.webServer.searchTodayMeditation)!
+        let urlComponents = NSURLComponents(string: Api.Url.host.searchTodayMeditation)!
         
         urlComponents.queryItems = [
-            URLQueryItem(name: Define.jsonKey.userid, value: userid),
-            URLQueryItem(name: Define.jsonKey.year, value: String(describing: (date?.year!)!)),
-            URLQueryItem(name: Define.jsonKey.month, value: String(describing: (date?.month!)!)),
-            URLQueryItem(name: Define.jsonKey.day, value: String(describing: (date?.day!)!)),
+            URLQueryItem(name: JsonKey.userid.string, value: userid),
+            URLQueryItem(name: JsonKey.year.string, value: String(describing: (date?.year!)!)),
+            URLQueryItem(name: JsonKey.month.string, value: String(describing: (date?.month!)!)),
+            URLQueryItem(name: JsonKey.day.string, value: String(describing: (date?.day!)!)),
         ]
         
         var request = URLRequest(url: urlComponents.url!)
-        request.httpMethod = Define.webServer.get
+        request.httpMethod = Api.httpMethod.get.string
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
@@ -272,7 +272,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     //날짜 데이터 만들기
     func getSelectDate() -> DateComponents? {
         let formatter = DateFormatter()
-        formatter.dateFormat = Define.dateFormat.yearMonthDayDat
+        formatter.dateFormat = DateFormat.yearMonthDayDat.format
         
         if self.navigationItem.title == nil {
             return nil

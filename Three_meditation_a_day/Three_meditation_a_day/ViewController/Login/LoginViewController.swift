@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     }
     @IBAction func guestLoginAction(_ sender: Any) {
     
-        UserDefaults.standard.set(true, forKey: Define.forKeyStruct.guestLogin)
+        UserDefaults.standard.set(true, forKey: ForKey.guestLogin.string)
         
         let refreshAlert = UIAlertController(title: "Guest Login", message: "Guest로 로그인 하시면 기능에 제한이 있습니다.\n로그인 하시겠습니까?", preferredStyle: UIAlertControllerStyle.alert)
         
@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
         session.open(completionHandler: { (error) -> Void in
             
             if !session.isOpen() {
-                switch ((error as NSError!).code) {
+                switch ((error as NSError?)?.code) {
                 case Int(KOErrorCancelled.rawValue):
                     break;
                 default:
@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
             
             self.accessTokenCheck()
             
-            UserDefaults.standard.set(false, forKey: Define.forKeyStruct.guestLogin)
+            UserDefaults.standard.set(false, forKey: ForKey.guestLogin.string)
             
         }, authTypes: [NSNumber(value: KOAuthType.talk.rawValue), NSNumber(value: KOAuthType.account.rawValue)])
     }
@@ -69,14 +69,14 @@ class LoginViewController: UIViewController {
         }
         
         var json = [String:Any]()
-        json[Define.jsonKey.userid] = userid
-        json[Define.jsonKey.accesstoken] = String(describing: accessToken!)
+        json[JsonKey.userid.string] = userid
+        json[JsonKey.accesstoken.string] = String(describing: accessToken!)
 
         do {
             let data = try JSONSerialization.data(withJSONObject: json, options: [])
 
-            var request = URLRequest(url: URL(string: Define.webServer.userRegister)!)
-            request.httpMethod = Define.webServer.post
+            var request = URLRequest(url: URL(string: Api.Url.host.userRegister)!)
+            request.httpMethod = Api.httpMethod.post.string
             request.httpBody = data
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -108,7 +108,7 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
-                UserDefaults.standard.set(accessTokenInfo?.id, forKey: Define.forKeyStruct.accessToken)
+                UserDefaults.standard.set(accessTokenInfo?.id, forKey: ForKey.accessToken.string)
                 self.requestMe(accessToken: accessTokenInfo?.id)
             }
         })
@@ -126,7 +126,7 @@ class LoginViewController: UIViewController {
                 
                 let koUser = user as! KOUser
                 
-                UserDefaults.standard.set(koUser.email ?? "--", forKey: Define.forKeyStruct.kakaoEmail)
+                UserDefaults.standard.set(koUser.email ?? "--", forKey: ForKey.kakaoEmail.string)
                 self?.register(userid: koUser.email, accessToken: accessToken)
             }
         }
