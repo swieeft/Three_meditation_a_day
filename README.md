@@ -70,4 +70,27 @@
   <br></br> 
   <img src="images/samsi8.png" width="200"/>
   
+## 3. 사용된 기술 및 도구
+* **개발 언어**
+  * Swift 4.0 : App 개발언어
+  * Node.js(ubuntu v7.10.1) : Web Server 개발언어
+  
+* **개발 도구**
+  * XCode 9.2 : App 개발 IDE
+  * ATOM 1.23.3 : Web Server 개발 IDE
+  * AWS(Ubuntu) : Web Server, DB Server 구축
+  * MongoDB(ubuntu v3.6.2)
+  
+* **라이브러리**
+  * Kakao SDK(ios-v1.6.0) : App Login 및 사용자 관리를 위한 데이터 사용
+  * Mongoose : Node.js와 MongoDB 연동을 위한 Node.js 모듈
+
+* **기타**
+  * Sketch : UI 이미지 및 아이콘 디자인
+  
+## 4. 링크
+* [삼시묵상 AppStore 링크](https://itunes.apple.com/kr/app/%EC%82%BC%EC%8B%9C%EB%AC%B5%EC%83%81/id1343039640?mt=8)
+* [Server Github 링크](https://github.com/swieeft/Three_meditation_a_day_Server)
+* [삼시묵상 블로그 링크](http://three-meditation-a-day.tistory.com/)
+
 >> 현재 서비스 종료되었습니다.
