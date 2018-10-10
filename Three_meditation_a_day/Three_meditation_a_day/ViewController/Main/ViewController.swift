@@ -18,59 +18,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     @IBOutlet weak var todayButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    //1주차
-    @IBOutlet weak var sunday1Weeks: CalenderView!
-    @IBOutlet weak var monday1Weeks: CalenderView!
-    @IBOutlet weak var tuesday1Weeks: CalenderView!
-    @IBOutlet weak var wednesday1Weeks: CalenderView!
-    @IBOutlet weak var thursday1Weeks: CalenderView!
-    @IBOutlet weak var firday1Weeks: CalenderView!
-    @IBOutlet weak var saturday1Weeks: CalenderView!
-    
-    //2주차
-    @IBOutlet weak var sunday2Weeks: CalenderView!
-    @IBOutlet weak var monday2Weeks: CalenderView!
-    @IBOutlet weak var tuesday2Weeks: CalenderView!
-    @IBOutlet weak var wednesday2Weeks: CalenderView!
-    @IBOutlet weak var thursday2Weeks: CalenderView!
-    @IBOutlet weak var firday2Weeks: CalenderView!
-    @IBOutlet weak var saturday2Weeks: CalenderView!
-    
-    //3주차
-    @IBOutlet weak var sunday3Weeks: CalenderView!
-    @IBOutlet weak var monday3Weeks: CalenderView!
-    @IBOutlet weak var tuesday3Weeks: CalenderView!
-    @IBOutlet weak var wednesday3Weeks: CalenderView!
-    @IBOutlet weak var thursday3Weeks: CalenderView!
-    @IBOutlet weak var firday3Weeks: CalenderView!
-    @IBOutlet weak var saturday3Weeks: CalenderView!
-    
-    //4주차
-    @IBOutlet weak var sunday4Weeks: CalenderView!
-    @IBOutlet weak var monday4Weeks: CalenderView!
-    @IBOutlet weak var tuesday4Weeks: CalenderView!
-    @IBOutlet weak var wednesday4Weeks: CalenderView!
-    @IBOutlet weak var thursday4Weeks: CalenderView!
-    @IBOutlet weak var firday4Weeks: CalenderView!
-    @IBOutlet weak var saturday4Weeks: CalenderView!
-    
-    //5주차
-    @IBOutlet weak var sunday5Weeks: CalenderView!
-    @IBOutlet weak var monday5Weeks: CalenderView!
-    @IBOutlet weak var tuesday5Weeks: CalenderView!
-    @IBOutlet weak var wednesday5Weeks: CalenderView!
-    @IBOutlet weak var thursday5Weeks: CalenderView!
-    @IBOutlet weak var firday5Weeks: CalenderView!
-    @IBOutlet weak var saturday5Weeks: CalenderView!
-    
-    //6주차
-    @IBOutlet weak var sunday6Weeks: CalenderView!
-    @IBOutlet weak var monday6Weeks: CalenderView!
-    @IBOutlet weak var tuesday6Weeks: CalenderView!
-    @IBOutlet weak var wednesday6Weeks: CalenderView!
-    @IBOutlet weak var thursday6Weeks: CalenderView!
-    @IBOutlet weak var firday6Weeks: CalenderView!
-    @IBOutlet weak var saturday6Weeks: CalenderView!
+    @IBOutlet var dayViewCollection:[CalenderView] = []
     
     var dayViews:[[CalenderView]] = [[CalenderView]]()
     var meditation:[MeditationStruct] = [MeditationStruct]()
@@ -84,13 +32,6 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dayViews = [[sunday1Weeks, monday1Weeks, tuesday1Weeks, wednesday1Weeks, thursday1Weeks, firday1Weeks, saturday1Weeks],
-        [sunday2Weeks, monday2Weeks, tuesday2Weeks, wednesday2Weeks, thursday2Weeks, firday2Weeks, saturday2Weeks],
-        [sunday3Weeks, monday3Weeks, tuesday3Weeks, wednesday3Weeks, thursday3Weeks, firday3Weeks, saturday3Weeks],
-        [sunday4Weeks, monday4Weeks, tuesday4Weeks, wednesday4Weeks, thursday4Weeks, firday4Weeks, saturday4Weeks],
-        [sunday5Weeks, monday5Weeks, tuesday5Weeks, wednesday5Weeks, thursday5Weeks, firday5Weeks, saturday5Weeks],
-        [sunday6Weeks, monday6Weeks, tuesday6Weeks, wednesday6Weeks, thursday6Weeks, firday6Weeks]]
-        
         todayButton.layer.borderColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 1).cgColor
         todayButton.layer.borderWidth = 1
         todayButton.layer.cornerRadius = 27/2
@@ -101,7 +42,8 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         selectDate = currentDate
         UserDefaults.standard.set(currentDate, forKey: ForKey.selectDate.string)
         
-        addNavigationItem()
+        self.navigationItem.addLeftItem(image: UIImage(named: "logout.png")!, target: self, action: #selector(logoutAction(sender:)))
+        self.navigationItem.addRight(image: UIImage(named: "settings.png")!, target: self, action: #selector(settingAction(sender:)))
         
         addViewGesture()
     }
@@ -110,50 +52,28 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         navigationTitleSetting(date: selectDate)
     }
     
-    func addNavigationItem() {
-        let logoutButton: UIButton = UIButton(type: UIButtonType.custom)
-        logoutButton.setImage(UIImage(named: "logout.png")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
-        logoutButton.addTarget(self, action: #selector(logoutAction(sender:)), for: UIControlEvents.touchUpInside)
-        logoutButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        logoutButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        logoutButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        let logoutBarButton = UIBarButtonItem(customView: logoutButton)
-        logoutBarButton.tintColor = UIColor.white
-        
-        self.navigationItem.leftBarButtonItem = logoutBarButton
-        
-        let settingButton: UIButton = UIButton(type: UIButtonType.custom)
-        settingButton.setImage(UIImage(named: "settings.png")?.withRenderingMode(.alwaysTemplate), for: UIControlState.normal)
-        settingButton.addTarget(self, action: #selector(settingAction(sender:)), for: UIControlEvents.touchUpInside)
-        settingButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        settingButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        settingButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        
-        let settingBarButton = UIBarButtonItem(customView: settingButton)
-        settingBarButton.tintColor = UIColor.white
-        
-        self.navigationItem.rightBarButtonItem = settingBarButton
-    }
-    
     //calender view click gesture add
     func addViewGesture() {
-
-        for weekViewsIndex in 0..<dayViews.count {
-            let weekViews = dayViews[weekViewsIndex]
+        
+        var weekViews:[CalenderView] = []
+        
+        for i in 0..<dayViewCollection.count {
+            let dayView = dayViewCollection[i]
             
-            for viewIndex in 0..<weekViews.count {
-                let view = weekViews[viewIndex]
-                
-                let gesture = UITapGestureRecognizer(target: self, action: #selector(goDetailPage(sender:)))
-                view.addGestureRecognizer(gesture)
+            weekViews.append(dayView)
+            
+            if (i + 1) % 7 == 0 {
+                dayViews.append(weekViews)
+                weekViews.removeAll()
             }
+            
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(goDetailPage(sender:)))
+            dayView.addGestureRecognizer(gesture)
         }
     }
     
     //logout button click
     @objc func logoutAction(sender:UIBarButtonItem) {
-        
         let refreshAlert = UIAlertController(title: "로그아웃", message: "로그아웃을 하시겠습니까?", preferredStyle: UIAlertControllerStyle.alert)
         
         refreshAlert.addAction(UIAlertAction(title: "예", style: .default, handler: { (action: UIAlertAction!) in
@@ -163,15 +83,12 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         refreshAlert.addAction(UIAlertAction(title: "아니요", style: .cancel, handler: { (action: UIAlertAction!) in
         }))
         
-        present(refreshAlert, animated: true, completion: nil)
+        self.present(refreshAlert, animated: true, completion: nil)
     }
     
     @objc func settingAction(sender:UIBarButtonItem) {
-
         let storyboard  = UIStoryboard(name: "Main", bundle: nil)
-                
         let vc = storyboard.instantiateViewController(withIdentifier: "Setting")
-        
         self.navigationController!.pushViewController(vc, animated: true)
     }
     
@@ -199,7 +116,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
         let calendar = Calendar(identifier: .gregorian)
         let date = calendar.dateComponents([.year, .month], from: self.selectDate)
         
-        if date.year == nil || date.month == nil {
+        guard let _ = date.year, let _ = date.month else {
             return
         }
         
@@ -214,7 +131,6 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     }
     
     fileprivate func requestMe(_ displayResult: Bool = false) {
-
         KOSessionTask.meTask { [weak self] (user, error) -> Void in
             if let error = error as NSError? {
                 print(error)
@@ -235,17 +151,13 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     
     //묵상 입력 상태를 가져옴
     func getDayMeditationStatusCheckData(date:DateComponents)  {
-        
-        let userid = UserDefaults.standard.string(forKey: ForKey.kakaoEmail.string)
-        
-        let urlComponents = NSURLComponents(string: Api.Url.host.searchCurrentMonthMeditation)!
-        
-        if userid == nil {
+        guard let userid = UserDefaults.standard.string(forKey: ForKey.kakaoEmail.string) else {
             requestMe()
             self.activityIndicator.stopAnimating()
             return
         }
         
+        let urlComponents = NSURLComponents(string: Api.Url.host.searchCurrentMonthMeditation)!
         urlComponents.queryItems = [
             URLQueryItem(name: JsonKey.userid.string, value: userid),
             URLQueryItem(name: JsonKey.year.string, value: String(describing: (date.year)!)),
@@ -277,124 +189,19 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     
     //캘린더 생성
     func setViewCalender(date:DateComponents, meditation:[MeditationStruct]? = nil) {
+        let weekData = WeekData()
+        weekData.setData(date: date)
         
-        var lastDay:Int = 0
+        var day:Int = 1
         
-        switch date.month! {
-        case 1, 3, 5, 7, 8, 10, 12:
-            lastDay = 31
-        case 4, 6, 9, 11:
-            lastDay = 30
-        default:
-            if  date.year! % 400 == 0 || date.year! % 4 == 0 && date.year! % 100 != 0 {
-                lastDay = 29
-            } else {
-                lastDay = 28
-            }
-        }
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = DateFormat.yearMonthDay.format
-        
-        let firstDay:Int = 1
-        
-        let startDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(firstDay)")
-        let endDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(lastDay)")
-        
-        if startDate != nil && endDate != nil {
-            let calendar = Calendar(identifier: .gregorian)
-            
-            let startDateWeek = calendar.dateComponents([.weekOfMonth, .weekday], from: startDate!)
-            let endDateWeek = calendar.dateComponents([.weekOfMonth, .weekday], from: endDate!)
-            
-            let currentWeek = calendar.dateComponents([.weekOfMonth, .weekday], from: Date.init())
-            let currentDate = calendar.dateComponents([.year, .month], from: Date.init())
+        for weekOfMonth in 0..<dayViews.count {
+            let weekOfMonthViews = dayViews[weekOfMonth]
 
-            let startDateWeekOfMonth = startDateWeek.weekOfMonth! - 1
-            let startDateWeekDay = startDateWeek.weekday! - 1
-            let endDateWeekOfMonth = endDateWeek.weekOfMonth! - 1
-            let endDateWeekDay = endDateWeek.weekday! - 1
-            let currentDateWeekOfMonth = currentWeek.weekOfMonth! - 1
-            let currentDateWeekDay = currentWeek.weekday! - 1
-
-            var day:Int = 1
-            
-            for weekOfMonth in 0..<dayViews.count {
-                let weekOfMonthViews = dayViews[weekOfMonth]
-
-                if weekOfMonth < startDateWeekOfMonth || weekOfMonth > endDateWeekOfMonth {
-                    for weekDay in 0..<weekOfMonthViews.count {
-                        let view = weekOfMonthViews[weekDay]
-                        view.dayLabel.text = ""
-                        view.morningLable.isHidden = true
-                        view.afternoonLabel.isHidden = true
-                        view.eveningLabel.isHidden = true
-                        view.layer.borderWidth = 0
-                        view.layer.borderColor = UIColor.white.cgColor
-                    }
-                    continue
-                }
-
-                for weekDay in 0..<weekOfMonthViews.count {
-
-                    let view = weekOfMonthViews[weekDay]
-                    
-                    view.morningLable.isHidden = true
-                    view.afternoonLabel.isHidden = true
-                    view.eveningLabel.isHidden = true
-
-                    if currentDateWeekOfMonth == weekOfMonth
-                        && currentDateWeekDay == weekDay
-                        && currentDate.year == date.year
-                        && currentDate.month == date.month {
-                        
-                        view.layer.borderWidth = 3
-                        view.layer.borderColor = UIColor(red: 0.53, green: 0.035, blue: 0.035, alpha: 1).cgColor
-                    } else {
-                        view.layer.borderWidth = 0
-                        view.layer.borderColor = UIColor.white.cgColor
-
-                        switch weekDay {
-                        case 0 :
-                            view.dayLabel.textColor = UIColor.red
-                        case 6:
-                            view.dayLabel.textColor = UIColor.blue
-                        default :
-                            view.dayLabel.textColor = UIColor.black
-                        }
-                    }
-
-                    if weekDay < startDateWeekDay && weekOfMonth == startDateWeekOfMonth {
-                        view.dayLabel.text = ""
-                    } else if weekDay > endDateWeekDay && weekOfMonth == endDateWeekOfMonth {
-                        view.dayLabel.text = ""
-                    } else {
-                        view.dayLabel.text = String(day)
-                        
-                        let guestLogin = UserDefaults.standard.bool(forKey: ForKey.guestLogin.string)
-                        if guestLogin == false {
-                            let todayMeditationArr = meditation!.filter{$0.day == day}
-                            
-                            if todayMeditationArr.count > 0 {
-                                
-                                let todayMeditation = todayMeditationArr[0]
-                                
-                                if todayMeditation.morning != "" {
-                                    view.morningLable.isHidden = false
-                                }
-                                if todayMeditation.afternoon != "" {
-                                    view.afternoonLabel.isHidden = false
-                                    view.setNeedsDisplay()
-                                }
-                                if todayMeditation.evening != "" {
-                                    view.eveningLabel.isHidden = false
-                                    view.setNeedsDisplay()
-                                }
-                            }
-                        }
-                        
-                        day += 1
-                    }
+            for weekDay in 0..<weekOfMonthViews.count {
+                let view = weekOfMonthViews[weekDay]
+                
+                if view.setView(date: date, weekDate: weekData, weekOfMonth: weekOfMonth, weekDay: weekDay, meditation:meditation, day:day) {
+                    day += 1
                 }
             }
         }
@@ -402,42 +209,40 @@ class ViewController: UIViewController, SelectDateSendDelegate {
 
     //날짜를 선택하면 Detail page로 이동
     @objc func goDetailPage(sender:UIGestureRecognizer) {
-        let view = sender.view as? CalenderView
-        
-        if view == nil {
-            return
-        }
-    
-        let day = view?.dayLabel.text
-        
-        if day == nil {
+        guard let view = sender.view as? CalenderView else {
             return
         }
         
-        if day! != "" {
-            let calendar = Calendar(identifier: .gregorian)
-            let formatter = DateFormatter()
-            formatter.dateFormat = DateFormat.yearMonthDay.format
-
-            let date = calendar.dateComponents([.year, .month], from: self.selectDate)
-            let clickDate = formatter.date(from: "\(date.year!)-\(date.month!)-\(day!)")
-            let currentDate = Date.init()
-
-            if clickDate == nil {
-                return
-            }
-
-            if clickDate! <= currentDate{
-                let storyboard  = UIStoryboard(name: "Main", bundle: nil)
-
-                formatter.dateFormat = DateFormat.yearMonthDayDat.format
-                let dateString = formatter.string(from: clickDate!)
-
-                let vc = storyboard.instantiateViewController(withIdentifier: "Detail")
-                vc.navigationItem.title = dateString
-
-                self.navigationController!.pushViewController(vc, animated: true)
-            }
+        guard let day = view.dayLabel.text, day == "" else {
+            return
+        }
+        
+        let calendar = Calendar(identifier: .gregorian)
+        let formatter = DateFormatter()
+        formatter.dateFormat = DateFormat.yearMonthDay.format
+        
+        let date = calendar.dateComponents([.year, .month], from: self.selectDate)
+        
+        guard let year = date.year, let month = date.month else {
+            return
+        }
+        
+        guard let clickDate = formatter.date(from: "\(year)-\(month)-\(day)") else {
+            return
+        }
+        
+        let currentDate = Date.init()
+        
+        if clickDate <= currentDate{
+            let storyboard  = UIStoryboard(name: "Main", bundle: nil)
+            
+            formatter.dateFormat = DateFormat.yearMonthDayDat.format
+            let dateString = formatter.string(from: clickDate)
+            
+            let vc = storyboard.instantiateViewController(withIdentifier: "Detail")
+            vc.navigationItem.title = dateString
+            
+            self.navigationController!.pushViewController(vc, animated: true)
         }
     }
     
@@ -449,78 +254,31 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     //월 선택창 열기
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectDatePopup" {
-            
             let viewController : SelectDatePopupViewController = segue.destination as! SelectDatePopupViewController
-            
             viewController.delegate = self
         }
     }
     
     //손가락 왼쪽 -> 오른쪽 드래그 시 이전 달로 캘린더 변경
     @IBAction func swipeGestureRightAction(_ sender: UISwipeGestureRecognizer) {
-
-        let lastDate = getSwipeGestureActionDate(isRight: true)
-        
-        if lastDate != nil {
-            navigationTitleSetting(date:lastDate!)
-        }
+        swipeNewDate(isRight: true)
     }
     
     //손가락 오른쪽 -> 왼쪽 드래그 시 다음 달로 캘린더 변경
     @IBAction func swipeGestureLeftAction(_ sender: UISwipeGestureRecognizer) {
-        
-        let nextDate = getSwipeGestureActionDate(isRight: false)
-        
-        if nextDate != nil {
-            navigationTitleSetting(date:nextDate!)
-        }
+        swipeNewDate(isRight: false)
     }
     
-    //swipe 시 날짜 생성
-    func getSwipeGestureActionDate(isRight:Bool) -> Date? {
-        
-        let calendar = Calendar(identifier: .gregorian)
-        let formatter = DateFormatter()
-        formatter.dateFormat = DateFormat.yearMonthDay.format
-        
-        let date = calendar.dateComponents([.year, .month, .day], from: self.selectDate)
-        
-        var year = 0
-        var month = 0
-        
-        if isRight {
-            if date.month! == 1 {
-                year = date.year! - 1
-                month = 12
-            } else {
-                year = date.year!
-                month = date.month! - 1
-            }
-        } else {
-            if date.month! == 12 {
-                year = date.year! + 1
-                month = 1
-            } else {
-                year = date.year!
-                month = date.month! + 1
-            }
+    func swipeNewDate(isRight:Bool) {
+        guard let newDate = Utils.getNewDate(isRight: isRight, selectDate: self.selectDate) else {
+            return
         }
         
-        if year < 2018 {
-            return nil
-        } else if year == 2018 && month == 1 {
-            return nil
-        }
-        else {
-            let swipeDate = formatter.date(from: "\(year)-\(month)-\(date.day!)")
-        
-            return swipeDate
-        }
+        navigationTitleSetting(date:newDate)
     }
     
     //캘린더를 오늘 날짜의 월로 이동
     @IBAction func todayAction(_ sender: Any) {
-        
         let currentDate = Date.init()
         navigationTitleSetting(date:currentDate)
     }

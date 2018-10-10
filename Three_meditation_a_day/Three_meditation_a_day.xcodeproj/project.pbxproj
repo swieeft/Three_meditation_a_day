@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2484A5F9216DE744000A1546 /* UINavigationItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2484A5F8216DE744000A1546 /* UINavigationItemExtension.swift */; };
+		2484A5FC216DE91A000A1546 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2484A5FB216DE91A000A1546 /* Utils.swift */; };
+		2484A5FE216DF05E000A1546 /* WeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2484A5FD216DF05E000A1546 /* WeekData.swift */; };
 		B51E1C8A2009C5AB002B7400 /* AppStoreIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1C892009C5AB002B7400 /* AppStoreIcon.png */; };
 		B51E1C9B2009CC63002B7400 /* Icon-App-20x20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1C8D2009CC62002B7400 /* Icon-App-20x20@3x.png */; };
 		B51E1C9C2009CC63002B7400 /* Icon-App-29x29@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1C8E2009CC62002B7400 /* Icon-App-29x29@1x.png */; };
@@ -60,6 +63,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2484A5F8216DE744000A1546 /* UINavigationItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationItemExtension.swift; sourceTree = "<group>"; };
+		2484A5FB216DE91A000A1546 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		2484A5FD216DF05E000A1546 /* WeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekData.swift; sourceTree = "<group>"; };
 		B51E1C892009C5AB002B7400 /* AppStoreIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppStoreIcon.png; sourceTree = "<group>"; };
 		B51E1C8D2009CC62002B7400 /* Icon-App-20x20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@3x.png"; sourceTree = "<group>"; };
 		B51E1C8E2009CC62002B7400 /* Icon-App-29x29@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@1x.png"; sourceTree = "<group>"; };
@@ -200,9 +206,9 @@
 		2484A5F4216DD20C000A1546 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				B5F56AB62000FD8A00CCED3E /* ViewController.swift */,
 				B5C6108420244F7800BD2DE1 /* CalenderView.swift */,
 				B5F56ADA200741CA00CCED3E /* SelectDatePopupViewController.swift */,
-				B5F56AB62000FD8A00CCED3E /* ViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -219,8 +225,25 @@
 			isa = PBXGroup;
 			children = (
 				B541EC9F2008B15500CFA685 /* Enum.swift */,
+				2484A5FD216DF05E000A1546 /* WeekData.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		2484A5F7216DE71B000A1546 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2484A5F8216DE744000A1546 /* UINavigationItemExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2484A5FA216DE906000A1546 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2484A5FB216DE91A000A1546 /* Utils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		B51E1CBB200DAAC9002B7400 /* Frameworks */ = {
@@ -251,10 +274,12 @@
 		B5F56AB32000FD8A00CCED3E /* Three_meditation_a_day */ = {
 			isa = PBXGroup;
 			children = (
+				2484A5FA216DE906000A1546 /* Utils */,
+				B5F56AC6200468DD00CCED3E /* Resource */,
 				2484A5F6216DD2A9000A1546 /* Data */,
+				2484A5F7216DE71B000A1546 /* Extension */,
 				2484A5EF216DD19C000A1546 /* ViewController */,
 				2484A5ED216DC1CE000A1546 /* StoryBoard */,
-				B5F56AC6200468DD00CCED3E /* Resource */,
 				B5F56AB42000FD8A00CCED3E /* AppDelegate.swift */,
 				B5F56ABB2000FD8A00CCED3E /* Assets.xcassets */,
 				B5F56AC02000FD8A00CCED3E /* Info.plist */,
@@ -404,8 +429,11 @@
 			files = (
 				B541EC9320086FB600CFA685 /* DetailTableViewCell.swift in Sources */,
 				B541ECA02008B15500CFA685 /* Enum.swift in Sources */,
+				2484A5F9216DE744000A1546 /* UINavigationItemExtension.swift in Sources */,
+				2484A5FC216DE91A000A1546 /* Utils.swift in Sources */,
 				B5C6119A20538E2600BD2DE1 /* CopyrightTableViewCell.swift in Sources */,
 				B51E1CB6200D9621002B7400 /* SelectTimePopupViewController.swift in Sources */,
+				2484A5FE216DF05E000A1546 /* WeekData.swift in Sources */,
 				B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */,
 				B5F56AB52000FD8A00CCED3E /* AppDelegate.swift in Sources */,
 				B541EC9020086E1500CFA685 /* DetailViewController.swift in Sources */,
