@@ -12,7 +12,11 @@
 비록 iOS를 배우며 처음 개발한 어플리케이션이다보니 부족한 부분이 많지만 그 안에 어떻게 하면 사용자들이 
 더 쉽고 더 간단하게 어플을 사용할 수 있을까 고심하여 만든 어플리케이션입니다.
 
-## 2. 화면구성
+## 2. 전체화면 구성 및 흐름
+
+<img src="images/ViewFlow.png" width="100%"/>
+
+## 3. 세부화면
 * **LaunchScreen (앱 로딩 화면)**
 
   <img src="images/samsi1.png" width="200"/>
@@ -70,7 +74,7 @@
   <br></br> 
   <img src="images/samsi8.png" width="200"/>
   
-## 3. 사용된 기술 및 도구
+## 4. 사용된 기술 및 도구
 * **개발 언어**
   * Swift 4.0 : App 개발언어
   * Node.js(ubuntu v7.10.1) : Web Server 개발언어
@@ -88,7 +92,7 @@
 * **기타**
   * Sketch : UI 이미지 및 아이콘 디자인
   
-## 4. 링크
+## 5. 링크
 * [삼시묵상 AppStore 링크](https://itunes.apple.com/kr/app/%EC%82%BC%EC%8B%9C%EB%AC%B5%EC%83%81/id1343039640?mt=8)
 * [Server Github 링크](https://github.com/swieeft/Three_meditation_a_day_Server)
 * [삼시묵상 블로그 링크](http://three-meditation-a-day.tistory.com/)
