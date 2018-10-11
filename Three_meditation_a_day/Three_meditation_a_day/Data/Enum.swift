@@ -144,6 +144,63 @@ enum Api {
             }
         }
     }
+    
+    static func getData<T:Decodable>(data:T, urlComponents:NSURLComponents, httpMethod:String, completion: @escaping (_ data:T, _ success:Bool) -> Void) {
+        var tempData:T = data
+        
+        var request = URLRequest(url: urlComponents.url!)
+        request.httpMethod = httpMethod
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
+            guard let data = data else { return }
+            
+            do {
+                tempData = try JSONDecoder().decode(T.self, from: data)
+            } catch {
+                print("Parsing error \(error)")
+                
+                DispatchQueue.main.async(execute: {
+                    completion(tempData, false)
+                })
+            }
+            
+            DispatchQueue.main.async(execute: {
+                completion(tempData, true)
+            })
+        });
+        task.resume()
+    }
+    
+    static func getData<T:Decodable>(data:T, urlComponents:NSURLComponents, httpMethod:String, body:Data, completion: @escaping (_ data:T, _ success:Bool) -> Void) {
+        var tempData:T = data
+        
+        var request = URLRequest(url: urlComponents.url!)
+        request.httpMethod = httpMethod
+        request.httpBody = body
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
+            guard let data = data else { return }
+            
+            do {
+                tempData = try JSONDecoder().decode(T.self, from: data)
+            } catch {
+                print("Parsing error \(error)")
+                
+                DispatchQueue.main.async(execute: {
+                    completion(tempData, false)
+                })
+            }
+            
+            DispatchQueue.main.async(execute: {
+                completion(tempData, true)
+            })
+        });
+        task.resume()
+    }
 }
 
 enum SessionConstants {

@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol SelectDateSendDelegate {
-    func selectDateSend(selectDate:Date)
-}
-
 class ViewController: UIViewController, SelectDateSendDelegate {
     
     @IBOutlet weak var navigationTitleButton: UIButton!
@@ -21,7 +17,7 @@ class ViewController: UIViewController, SelectDateSendDelegate {
     @IBOutlet var dayViewCollection:[CalenderView] = []
     
     var dayViews:[[CalenderView]] = [[CalenderView]]()
-    var meditation:[MeditationStruct] = [MeditationStruct]()
+    var meditation:[MeditationData] = [MeditationData]()
     var selectDate:Date = Date.init()
     
     fileprivate var user:KOUser? = nil
@@ -164,31 +160,23 @@ class ViewController: UIViewController, SelectDateSendDelegate {
             URLQueryItem(name: JsonKey.month.string, value: String(describing: (date.month)!)),
         ]
         
-        var request = URLRequest(url: urlComponents.url!)
-        request.httpMethod = Api.httpMethod.get.string
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-            guard let data = data else { return }
-            
-            do {
-                self.meditation = try JSONDecoder().decode([MeditationStruct].self, from: data)
-            } catch {
-                print("Parsing error \(error)")
+        Api.getData(data: self.meditation, urlComponents: urlComponents, httpMethod: Api.httpMethod.get.string) { (data, success) in
+            if success == false {
+                return
             }
+            
+            self.meditation = data
             
             DispatchQueue.main.async(execute: {
                 self.setViewCalender(date: date, meditation: self.meditation)
                 self.activityIndicator.stopAnimating()
                 self.view.setNeedsDisplay()
             })
-        });
-        task.resume()
+        }
     }
     
     //캘린더 생성
-    func setViewCalender(date:DateComponents, meditation:[MeditationStruct]? = nil) {
+    func setViewCalender(date:DateComponents, meditation:[MeditationData]? = nil) {
         let weekData = WeekData()
         weekData.setData(date: date)
         

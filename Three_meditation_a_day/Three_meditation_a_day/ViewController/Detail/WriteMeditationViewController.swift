@@ -8,14 +8,6 @@
 
 import UIKit
 
-protocol SaveDataSendDelegate {
-    func saveDataSendDelegate(bibleVerses:String, meditation:String, date:DateComponents, currentTime:Int)
-}
-
-struct resultStruct:Decodable {
-    let result:Int
-}
-
 class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, SaveDataSendDelegate {
 
     @IBOutlet weak var writeMeditationTableView: UITableView!
@@ -150,7 +142,7 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
     }
     
     func saveMeditation(accessToken:NSNumber) {
-        if dateComponents == nil {
+        guard let _ = dateComponents else {
             return
         }
         
@@ -170,11 +162,10 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
             urlString = Api.Url.host.saveEveningMeditation
             queryItemName = JsonKey.evening.string
         default:
-            urlString = ""
-            queryItemName = ""
+            return
         }
         
-        if urlString == "" || queryItemName == ""{
+        if urlString == "" || queryItemName == "" {
             return
         }
         
@@ -190,57 +181,39 @@ class WriteMeditationViewController: UIViewController, UITextViewDelegate, UITab
         
         do {
             let data = try JSONSerialization.data(withJSONObject: json, options: [])
-
-            var request = URLRequest(url: URL(string: urlString)!)
-            request.httpMethod = Api.httpMethod.post.string
-            request.httpBody = data
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-            let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-                guard let data = data else { return }
             
-                do {
-                    let result:resultStruct = try JSONDecoder().decode(resultStruct.self, from: data)
-                
-                    var title = ""
-                    var message = ""
-                    if result.result == 0 {
-                        title = "저장실패"
-                        message = "묵상 저장을 실패하였습니다.\n잠시 후 다시 시도해주세요."
-                    } else {
-                        title = "저장성공"
-                        message = "묵상 내용을 저장하였습니다."
-                    }
-                    
-                    let dialog = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
-                    
-                    dialog.addAction(action)
-                    
-                    self.present(dialog, animated: true, completion: nil)
-                } catch {
-                    print("Parsing error \(error)")
+            let result:ResultData = ResultData(result: 0)
+            guard let urlComponents = NSURLComponents(string: urlString) else {
+                return
+            }
+            
+            Api.getData(data: result, urlComponents: urlComponents, httpMethod: Api.httpMethod.post.string, body: data) { (data, success) in
+                if success == false {
+                    return
                 }
-            });
-            task.resume()
+                
+                let title = data.result == 0 ? "저장실패" : "저장성공"
+                let message = data.result == 0 ? "묵상 저장을 실패하였습니다.\n잠시 후 다시 시도해주세요." : "묵상 내용을 저장하였습니다."
+                
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
+                alert.addAction(action)
+                
+                self.present(alert, animated: true, completion: nil)
+            }
         } catch {
-            
+            print("JSON Serialization fail...")
         }
     }
     
     @objc func viewBibleVersesAction(sender:UIBarButtonItem) {
         
         if UIDevice().userInterfaceIdiom == .phone {
-            switch UIScreen.main.nativeBounds.height { //1136(5 or 5S or 5C), 1334(6/6S/7/8), 2208(6+/6S+/7+/8+), 2436(x)
-            case 2436:
-                statusBarHeight = 44.0
-            default:
-                statusBarHeight = 20.0
-            }
+            statusBarHeight = UIScreen.main.nativeBounds.height == 2436 ? 44.0 : 20.0 //1136(5 or 5S or 5C), 1334(6/6S/7/8), 2208(6+/6S+/7+/8+), 2436(x)
         }
         
         var naviHeight:CGFloat = statusBarHeight
+        
         if(self.navigationController != nil){
             naviHeight += (self.navigationController?.navigationBar.frame.size.height)!//네비게이션바 높이
         }

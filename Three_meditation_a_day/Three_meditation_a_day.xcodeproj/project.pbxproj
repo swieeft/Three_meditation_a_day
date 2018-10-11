@@ -10,6 +10,10 @@
 		2484A5F9216DE744000A1546 /* UINavigationItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2484A5F8216DE744000A1546 /* UINavigationItemExtension.swift */; };
 		2484A5FC216DE91A000A1546 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2484A5FB216DE91A000A1546 /* Utils.swift */; };
 		2484A5FE216DF05E000A1546 /* WeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2484A5FD216DF05E000A1546 /* WeekData.swift */; };
+		2484A600216EDD7A000A1546 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2484A5FF216EDD7A000A1546 /* Protocol.swift */; };
+		2484A602216EDDAC000A1546 /* TodayBibleVersesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2484A601216EDDAC000A1546 /* TodayBibleVersesData.swift */; };
+		2484A604216EDDEE000A1546 /* MeditationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2484A603216EDDEE000A1546 /* MeditationData.swift */; };
+		2484A606216F0CEC000A1546 /* ResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2484A605216F0CEC000A1546 /* ResultData.swift */; };
 		B51E1C8A2009C5AB002B7400 /* AppStoreIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1C892009C5AB002B7400 /* AppStoreIcon.png */; };
 		B51E1C9B2009CC63002B7400 /* Icon-App-20x20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1C8D2009CC62002B7400 /* Icon-App-20x20@3x.png */; };
 		B51E1C9C2009CC63002B7400 /* Icon-App-29x29@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E1C8E2009CC62002B7400 /* Icon-App-29x29@1x.png */; };
@@ -66,6 +70,10 @@
 		2484A5F8216DE744000A1546 /* UINavigationItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationItemExtension.swift; sourceTree = "<group>"; };
 		2484A5FB216DE91A000A1546 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2484A5FD216DF05E000A1546 /* WeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekData.swift; sourceTree = "<group>"; };
+		2484A5FF216EDD7A000A1546 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		2484A601216EDDAC000A1546 /* TodayBibleVersesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayBibleVersesData.swift; sourceTree = "<group>"; };
+		2484A603216EDDEE000A1546 /* MeditationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationData.swift; sourceTree = "<group>"; };
+		2484A605216F0CEC000A1546 /* ResultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultData.swift; sourceTree = "<group>"; };
 		B51E1C892009C5AB002B7400 /* AppStoreIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppStoreIcon.png; sourceTree = "<group>"; };
 		B51E1C8D2009CC62002B7400 /* Icon-App-20x20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@3x.png"; sourceTree = "<group>"; };
 		B51E1C8E2009CC62002B7400 /* Icon-App-29x29@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@1x.png"; sourceTree = "<group>"; };
@@ -226,6 +234,9 @@
 			children = (
 				B541EC9F2008B15500CFA685 /* Enum.swift */,
 				2484A5FD216DF05E000A1546 /* WeekData.swift */,
+				2484A601216EDDAC000A1546 /* TodayBibleVersesData.swift */,
+				2484A603216EDDEE000A1546 /* MeditationData.swift */,
+				2484A605216F0CEC000A1546 /* ResultData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -242,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				2484A5FB216DE91A000A1546 /* Utils.swift */,
+				2484A5FF216EDD7A000A1546 /* Protocol.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -274,9 +286,9 @@
 		B5F56AB32000FD8A00CCED3E /* Three_meditation_a_day */ = {
 			isa = PBXGroup;
 			children = (
-				2484A5FA216DE906000A1546 /* Utils */,
 				B5F56AC6200468DD00CCED3E /* Resource */,
 				2484A5F6216DD2A9000A1546 /* Data */,
+				2484A5FA216DE906000A1546 /* Utils */,
 				2484A5F7216DE71B000A1546 /* Extension */,
 				2484A5EF216DD19C000A1546 /* ViewController */,
 				2484A5ED216DC1CE000A1546 /* StoryBoard */,
@@ -432,10 +444,13 @@
 				2484A5F9216DE744000A1546 /* UINavigationItemExtension.swift in Sources */,
 				2484A5FC216DE91A000A1546 /* Utils.swift in Sources */,
 				B5C6119A20538E2600BD2DE1 /* CopyrightTableViewCell.swift in Sources */,
+				2484A600216EDD7A000A1546 /* Protocol.swift in Sources */,
 				B51E1CB6200D9621002B7400 /* SelectTimePopupViewController.swift in Sources */,
 				2484A5FE216DF05E000A1546 /* WeekData.swift in Sources */,
 				B5F56AB72000FD8A00CCED3E /* ViewController.swift in Sources */,
+				2484A602216EDDAC000A1546 /* TodayBibleVersesData.swift in Sources */,
 				B5F56AB52000FD8A00CCED3E /* AppDelegate.swift in Sources */,
+				2484A606216F0CEC000A1546 /* ResultData.swift in Sources */,
 				B541EC9020086E1500CFA685 /* DetailViewController.swift in Sources */,
 				B5F56AD620047B1D00CCED3E /* SettingViewController.swift in Sources */,
 				B541EC972008763500CFA685 /* BibleVersesTableViewCell.swift in Sources */,
@@ -444,6 +459,7 @@
 				B541EC9C2008923500CFA685 /* WriteMeditationViewController.swift in Sources */,
 				B51E1CC6200DBE50002B7400 /* LoginViewController.swift in Sources */,
 				B5F56ADB200741CA00CCED3E /* SelectDatePopupViewController.swift in Sources */,
+				2484A604216EDDEE000A1546 /* MeditationData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -73,24 +73,19 @@ class LoginViewController: UIViewController {
 
         do {
             let data = try JSONSerialization.data(withJSONObject: json, options: [])
-
-            var request = URLRequest(url: URL(string: Api.Url.host.userRegister)!)
-            request.httpMethod = Api.httpMethod.post.string
-            request.httpBody = data
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-
-            let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-                guard let data = data else { return }
-
-                do {
-                    let result:resultStruct = try JSONDecoder().decode(resultStruct.self, from: data)
-                    print(result.result)
-                } catch {
-                    print("Parsing error \(error)")
+            
+            let result:ResultData = ResultData(result: 0)
+            guard let urlComponents = NSURLComponents(string: Api.Url.host.userRegister) else {
+                return
+            }
+            
+            Api.getData(data: result, urlComponents: urlComponents, httpMethod: Api.httpMethod.post.string, body: data) { (data, success) in
+                if success == false {
+                    return
                 }
-            });
-            task.resume()
+                
+                print(data.result)
+            }
         } catch {
 
         }

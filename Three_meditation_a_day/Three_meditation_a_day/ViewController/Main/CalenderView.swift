@@ -37,7 +37,7 @@ class CalenderView: UIView {
         dayLabel.text = ""
     }
     
-    func setView(date:DateComponents, weekDate:WeekData, weekOfMonth:Int, weekDay:Int, meditation:[MeditationStruct]? = nil, day:Int) -> Bool {
+    func setView(date:DateComponents, weekDate:WeekData, weekOfMonth:Int, weekDay:Int, meditation:[MeditationData]? = nil, day:Int) -> Bool {
         guard let year = date.year, let month = date.month else {
             return false
         }
@@ -91,7 +91,7 @@ class CalenderView: UIView {
         }
     }
     
-    private func setDayText(weekDate:WeekData, weekOfMonth:Int, weekDay:Int, meditation:[MeditationStruct]? = nil, day:Int) -> Bool {
+    private func setDayText(weekDate:WeekData, weekOfMonth:Int, weekDay:Int, meditation:[MeditationData]? = nil, day:Int) -> Bool {
         guard let startWeekOfMonth = weekDate.startWeekOfMonth, let startWeekDay = weekDate.startWeekDay else {
             return false
         }
@@ -114,10 +114,8 @@ class CalenderView: UIView {
         }
     }
     
-    private func setWrittenContemplationLabel(day:Int, meditation:[MeditationStruct]? = nil) {
-        let guestLogin = UserDefaults.standard.bool(forKey: ForKey.guestLogin.string)
-        
-        if guestLogin {
+    private func setWrittenContemplationLabel(day:Int, meditation:[MeditationData]? = nil) {
+        if UserDefaults.standard.bool(forKey: ForKey.guestLogin.string) {
             return
         }
         
